@@ -152,6 +152,26 @@
   margin:14px 0 2px;padding-top:12px;border-top:1px dotted rgba(42,155,143,.28);
   font-size:12px;line-height:1.9;color:#3E6670;
 }
+.welcome-path-lead{
+  margin:0 0 12px;font-size:14px;line-height:1.7;color:#164E56;
+}
+.welcome-steps{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+}
+.welcome-step{
+  display:flex;align-items:flex-start;gap:8px;height:100%;
+  padding:10px 10px 12px;border-radius:14px;
+  background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.7);
+  text-decoration:none;color:inherit;transition:background .15s;
+}
+.welcome-step:hover{background:rgba(255,255,255,.72)}
+.welcome-step-num{
+  flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(145deg,#2A9B8F,#3eb5c0);color:#fff;font-size:12px;font-weight:700;
+}
+.welcome-step b{display:block;font-size:13px;font-weight:600;color:#164E56}
+.welcome-step small{display:block;margin-top:3px;font-size:11px;line-height:1.55;color:#6D8B92}
 .welcome-benefits{
   display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
 }
@@ -185,6 +205,7 @@
   .welcome-identity-row{grid-template-columns:64px 1fr;gap:12px}
   .welcome-seal{display:none}
   .welcome-avatar{width:64px;height:64px;font-size:22px}
+  .welcome-steps{grid-template-columns:1fr}
   .welcome-benefits{grid-template-columns:repeat(2,1fr);gap:8px}
   .welcome-card-title{letter-spacing:1px}
   .welcome-fields>div{grid-template-columns:52px 1fr}
