@@ -1,4 +1,5 @@
 import { currentUser } from "@/lib/auth";
+import { aspirationHasContent, resolveAspiration, type AspirationPage } from "@/lib/aspiration";
 import { buildProfilePlanPdf, PROFILE_PDF_FILENAME } from "@/lib/profile-plan-pdf";
 import { lastCjkFontError, lastCjkFontMode } from "@/lib/pdf-cjk-font";
 import { getProfileByUserId, getPublicProfileBySlug } from "@/lib/profile";
@@ -19,6 +20,7 @@ export async function GET(request: Request) {
     let expertise = "";
     let direction = "";
     let cases = "";
+    let aspiration: AspirationPage | null = null;
     let updatedAt: string | null = null;
     let publicUrl: string | null = null;
     let cacheControl = "private, no-store";
@@ -33,6 +35,7 @@ export async function GET(request: Request) {
       expertise = pub.expertise || "";
       direction = pub.direction || "";
       cases = pub.cases || "";
+      aspiration = pub.aspiration;
       updatedAt = pub.updatedAt || null;
       publicUrl = `${origin.replace(/\/$/, "")}/u/${pub.slug}`;
       cacheControl = "public, max-age=60";
@@ -50,11 +53,15 @@ export async function GET(request: Request) {
       expertise = profile.expertise || "";
       direction = profile.direction || "";
       cases = profile.cases || "";
+      aspiration = resolveAspiration(profile);
       updatedAt = profile.updated_at || null;
       if (profile.published === 1 && profile.slug) {
         publicUrl = `${origin.replace(/\/$/, "")}/u/${profile.slug}`;
       }
-      if (!experience.trim() && !expertise.trim() && !direction.trim() && !cases.trim()) {
+      const hasBody =
+        (aspiration && aspirationHasContent(aspiration)) ||
+        Boolean(experience.trim() || expertise.trim() || direction.trim() || cases.trim());
+      if (!hasBody) {
         return Response.json(
           { error: "还没有可下载的内容。请先完成探索 / AI 分身后重新生成，或在框里填写。" },
           { status: 400 },
@@ -68,6 +75,7 @@ export async function GET(request: Request) {
       expertise,
       direction,
       cases,
+      aspiration,
       publicUrl,
       updatedAt,
     };

@@ -289,6 +289,49 @@ export async function dispatchAction(request: Request, form: FormData) {
     return back(request, "/tea", "提议已提交，通过审核后才会公开报名。");
   }
 
+  if (action === "save_profile") {
+    const denied = needUser(request, user, "/profile");
+    if (denied || !user) return denied!;
+    const { saveProfile } = await import("./profile");
+    const { parseAspirationJson, aspirationFromLegacy } = await import("./aspiration");
+    const published = String(form.get("published") || "") === "1" || form.get("published") === "on";
+    const rawAspiration = String(form.get("aspiration_json") || "");
+    const aspiration = rawAspiration.trim()
+      ? parseAspirationJson(rawAspiration)
+      : aspirationFromLegacy({
+          experience: String(form.get("experience") || ""),
+          expertise: String(form.get("expertise") || ""),
+          direction: String(form.get("direction") || ""),
+          cases: String(form.get("cases") || ""),
+        });
+    if (!aspiration) return back(request, "/profile", "向往内容没有保存成功，请再试一次。");
+    const result = await saveProfile(user.id, {
+      slug: String(form.get("slug") || ""),
+      aspiration,
+      published,
+    });
+    if (!result.ok) return back(request, "/profile", result.reason);
+    const msg = result.profile.published
+      ? `「我的向往」已保存并公开，可分享 /u/${result.profile.slug}`
+      : "「我的向往」已保存（仍为私密草稿）。勾选公开并保存后即可分享。";
+    return back(request, "/profile", msg);
+  }
+
+  if (action === "regenerate_profile") {
+    const denied = needUser(request, user, "/profile");
+    if (denied || !user) return denied!;
+    const { syncProfileFromSources } = await import("./profile");
+    const result = await syncProfileFromSources(user.id, "overwrite");
+    if (!result.ok) return back(request, "/profile", result.reason);
+    if (result.source === "none") {
+      return back(request, "/profile", result.reason || "请先完成七维探索或与 AI 分身生成方向纪要。");
+    }
+    const msg = result.changed
+      ? "已根据探索与方向纪要重新写成六段「我的向往」，请核对后保存。"
+      : "「我的向往」已是最新生成结果，可直接改完再保存。";
+    return back(request, "/profile", msg);
+  }
+
   if (!user || user.role !== "admin") return back(request, "/", "这里只对运营管理员开放。");
 
   if (action === "admin_resolve") {
@@ -409,41 +452,6 @@ export async function dispatchAction(request: Request, form: FormData) {
       .bind(crypto.randomUUID(), slug, title, summary, category, body.slice(0, 30000), prompt.slice(0, 4000), icon.slice(0, 4), cover.slice(0, 500))
       .run();
     return back(request, `/energy/${slug}`, "资源已发布。");
-  }
-
-  if (action === "save_profile") {
-    const denied = needUser(request, user, "/profile");
-    if (denied || !user) return denied!;
-    const { saveProfile } = await import("./profile");
-    const published = String(form.get("published") || "") === "1" || form.get("published") === "on";
-    const result = await saveProfile(user.id, {
-      slug: String(form.get("slug") || ""),
-      experience: String(form.get("experience") || ""),
-      expertise: String(form.get("expertise") || ""),
-      direction: String(form.get("direction") || ""),
-      cases: String(form.get("cases") || ""),
-      published,
-    });
-    if (!result.ok) return back(request, "/profile", result.reason);
-    const msg = result.profile.published
-      ? `「我的向往」已保存并公开，可分享 /u/${result.profile.slug}`
-      : "「我的向往」已保存（仍为私密草稿）。勾选公开并保存后即可分享。";
-    return back(request, "/profile", msg);
-  }
-
-  if (action === "regenerate_profile") {
-    const denied = needUser(request, user, "/profile");
-    if (denied || !user) return denied!;
-    const { syncProfileFromSources } = await import("./profile");
-    const result = await syncProfileFromSources(user.id, "overwrite");
-    if (!result.ok) return back(request, "/profile", result.reason);
-    if (result.source === "none") {
-      return back(request, "/profile", result.reason || "请先完成七维探索或与 AI 分身生成方向纪要。");
-    }
-    const msg = result.changed
-      ? "已根据探索方案 / 方向纪要重新生成「我的向往」，请点框核对修改后保存。"
-      : "「我的向往」内容已是最新生成结果，可点框修改后保存。";
-    return back(request, "/profile", msg);
   }
 
   return back(request, next, "这个动作没有被认出来。");

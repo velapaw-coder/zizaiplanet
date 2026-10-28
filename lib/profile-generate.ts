@@ -1,3 +1,4 @@
+import { emptyAspiration, normalizeAspiration, type AspirationPage, type PracticeStep, type ResonanceGroup, type StoryNode } from "./aspiration";
 import type { HomeCard } from "./compose";
 import { clip, firstClause } from "./text";
 
@@ -6,7 +7,17 @@ export type ProfileDraftFields = {
   expertise: string;
   direction: string;
   cases: string;
+  aspiration: AspirationPage;
   source: "none" | "explore" | "partner" | "both";
+};
+
+const EMPTY_DRAFT: ProfileDraftFields = {
+  experience: "",
+  expertise: "",
+  direction: "",
+  cases: "",
+  aspiration: emptyAspiration(),
+  source: "none",
 };
 
 function room(card: HomeCard, id: string) {
@@ -33,9 +44,7 @@ export function draftPublicProfileFields(input: {
   const hasExplore = Boolean(card && card.litCount > 0);
   const hasPartner = Boolean(summary);
 
-  if (!hasExplore && !hasPartner) {
-    return { experience: "", expertise: "", direction: "", cases: "", source: "none" };
-  }
+  if (!hasExplore && !hasPartner) return { ...EMPTY_DRAFT, aspiration: emptyAspiration() };
 
   const talent = card ? room(card, "talent") : null;
   const taste = card ? room(card, "taste") : null;
@@ -113,7 +122,237 @@ export function draftPublicProfileFields(input: {
   const source: ProfileDraftFields["source"] =
     hasExplore && hasPartner ? "both" : hasPartner ? "partner" : "explore";
 
-  return { experience, expertise, direction, cases, source };
+  const aspiration = draftAspiration({
+    card,
+    partnerOneLiner,
+    partnerAbility,
+    partnerDirections,
+    partnerStep,
+    summary,
+  });
+
+  return { experience, expertise, direction, cases, aspiration, source };
+}
+
+type RoomLike = { keywords?: string[]; quote?: string | null } | null;
+
+function tight(text: string, max: number) {
+  const part = (text || "").split(/[，。！？、；\n]/)[0]?.trim() || "";
+  return part.replace(/\s+/g, " ").slice(0, max);
+}
+
+function polishLead(text: string, max: number) {
+  const stripped = tight(text, max + 16).replace(
+    /^(我想成为|想成为|我希望成为|希望成为|我向往|向往|我想|想|我喜欢|喜欢|我希望|希望|我觉得|觉得|我感到|感到)/,
+    "",
+  );
+  return stripped.trim().slice(0, max);
+}
+
+/** A short pill from the resident's own words. No site-wide slogan list. */
+export function keywordFromQuote(text: string) {
+  const cleaned = (text || "")
+    .replace(
+      /^(我想成为|想成为|我希望成为|希望成为|我向往|向往|我想|想|我喜欢|喜欢|我希望|希望|我觉得|觉得|我感到|感到|真正|特别|很)/,
+      "",
+    )
+    .trim();
+  const parts = cleaned
+    .split(/[，。！？、；：:\n的时后里和与]/)
+    .map((part) => part.trim())
+    .filter((part) => part.length >= 2 && part.length <= 8);
+  if (!parts.length) {
+    const fallback = cleaned.replace(/\s+/g, "").slice(0, 4);
+    return fallback.length >= 2 ? fallback : "";
+  }
+  let best = parts[0];
+  let bestScore = Math.abs(best.length - 4);
+  for (const part of parts.slice(1)) {
+    const score = Math.abs(part.length - 4);
+    if (score <= bestScore) {
+      best = part;
+      bestScore = score;
+    }
+  }
+  return best;
+}
+
+function keywordFromRoom(room: RoomLike) {
+  if (!room) return "";
+  const listed = (room.keywords || []).map((item) => item.trim()).find((item) => item.length >= 2 && item.length <= 8);
+  if (listed) return listed;
+  return keywordFromQuote(room.quote || "");
+}
+
+function uniq(items: Array<string | undefined | null>, max: number) {
+  const out: string[] = [];
+  for (const item of items) {
+    const text = String(item || "").trim();
+    if (!text || out.includes(text)) continue;
+    out.push(text);
+    if (out.length >= max) break;
+  }
+  return out;
+}
+
+function visionPhrase(quote: string, max: number) {
+  const after = /[：:]/.test(quote) ? quote.split(/[：:]/).slice(1).join("：") : quote;
+  return clip(after.trim(), max).replace(/…$/, "");
+}
+
+function splitList(text: string) {
+  return text
+    .replace(/\s*(\d+)[.、．]\s*/g, "\n$1. ")
+    .split(/[\n；;、]/)
+    .map((part) => part.replace(/^\d+[.、．]\s*/, "").trim())
+    .filter((part) => part.length >= 2);
+}
+
+function beliefPoints(quote: string) {
+  const parts = splitList(quote).filter((part) => part.length <= 40);
+  if (parts.length >= 2) return parts.slice(0, 5);
+  const one = tight(quote, 48);
+  return one ? [one] : [];
+}
+
+function mentionsAi(text: string) {
+  return /AI|AIGC|人工智能|大模型/i.test(text);
+}
+
+function draftAspiration(input: {
+  card: HomeCard | null;
+  partnerOneLiner: string;
+  partnerAbility: string;
+  partnerDirections: string;
+  partnerStep: string;
+  summary: string;
+}): AspirationPage {
+  const card = input.card;
+  const talent = card ? room(card, "talent") : null;
+  const taste = card ? room(card, "taste") : null;
+  const vision = card ? room(card, "vision") : null;
+  const origin = card ? room(card, "origin") : null;
+  const identity = card ? room(card, "identity") : null;
+  const values = card ? room(card, "values") : null;
+  const relation = card ? room(card, "relation") : null;
+
+  const identityBit = identity?.quote ? polishLead(identity.quote, 28) : "";
+  const visionBit = vision?.quote ? visionPhrase(vision.quote, 36) : "";
+  const originBit = origin?.quote ? polishLead(origin.quote, 24) : "";
+
+  let sentence = "";
+  if (input.partnerOneLiner) sentence = clip(input.partnerOneLiner, 160);
+  else if (identityBit && visionBit) sentence = `我想成为${identityBit}，把日子过成「${visionBit}」。`;
+  else if (visionBit) sentence = `我想把日子过成「${visionBit}」。`;
+  else if (identityBit) sentence = `我想成为${identityBit}。`;
+  else if (originBit) sentence = `我在意的是：${originBit}。`;
+  else if (talent?.quote) sentence = `我自然会做的事是：${tight(talent.quote, 36)}。`;
+
+  const keywords = uniq(
+    [taste, talent, values, vision, identity, origin].map((item) => keywordFromRoom(item)),
+    3,
+  );
+
+  const nodes: StoryNode[] = [];
+  if (origin?.quote) {
+    nodes.push({
+      when: "起点",
+      title: keywordFromQuote(origin.quote) || "起点",
+      detail: clip(origin.quote, 100),
+    });
+  }
+  if (talent?.quote) {
+    nodes.push({
+      when: "已会",
+      title: keywordFromQuote(talent.quote) || "已会的事",
+      detail: clip(talent.quote, 100),
+    });
+  }
+  if (taste?.quote) {
+    nodes.push({
+      when: "眼下",
+      title: keywordFromQuote(taste.quote) || "现在的生活",
+      detail: clip(taste.quote, 100),
+    });
+  }
+  if (vision?.quote || identity?.quote) {
+    const source = vision?.quote || identity?.quote || "";
+    nodes.push({
+      when: "正去往",
+      title: keywordFromQuote(source) || "想去的方向",
+      detail: clip(source, 100),
+    });
+  }
+  if (!nodes.length && input.partnerAbility) {
+    nodes.push({ when: "", title: "已经有的", detail: clip(input.partnerAbility, 100) });
+  }
+
+  const points = values?.quote ? beliefPoints(values.quote) : [];
+  const closing = "";
+
+  const steps: PracticeStep[] = [];
+  const seen = vision?.quote || origin?.quote;
+  if (seen) steps.push({ name: "看见", detail: clip(vision?.quote || origin?.quote || "", 80) });
+  if (talent?.quote) steps.push({ name: "动手", detail: clip(talent.quote, 80) });
+  else if (input.partnerAbility) steps.push({ name: "动手", detail: clip(input.partnerAbility, 80) });
+  if (values?.quote) steps.push({ name: "校准", detail: clip(values.quote, 80) });
+  if (input.partnerDirections && steps.length < 3) {
+    for (const item of splitList(input.partnerDirections)) {
+      if (steps.length >= 3) break;
+      steps.push({ name: keywordFromQuote(item) || tight(item, 8) || "一条路", detail: tight(item, 80) });
+    }
+  }
+  if (input.partnerStep) steps.push({ name: "下一步", detail: clip(input.partnerStep, 80) });
+  else if (relation?.quote && steps.length < 4) steps.push({ name: "靠近", detail: clip(relation.quote, 80) });
+
+  const aiWord = mentionsAi(`${input.summary}\n${vision?.quote || ""}\n${talent?.quote || ""}`) ? "AI" : "";
+  const longingKeywords = uniq(
+    [vision, identity, origin].map((item) => keywordFromRoom(item)).concat(aiWord ? [aiWord] : []),
+    4,
+  );
+  let line = "";
+  if (visionBit && identityBit) line = `我想靠近的是${visionBit}。也希望自己成为${identityBit}。`;
+  else if (visionBit) line = `我想靠近的是：${visionBit}`;
+  else if (input.partnerDirections) line = `可以先靠近这些：${clip(splitList(input.partnerDirections).join("、"), 80)}`;
+  else if (input.partnerOneLiner && input.partnerOneLiner !== sentence) line = clip(input.partnerOneLiner, 160);
+
+  const groups: ResonanceGroup[] = [];
+  if (relation?.quote || vision?.quote || input.partnerOneLiner) {
+    groups.push({
+      who: relation?.quote ? clip(relation.quote, 80) : "向往与我靠近的人",
+      direction: vision?.quote
+        ? clip(vision.quote, 80)
+        : input.partnerOneLiner || sentence || "一起把方向说清楚",
+      connect: "先读这一页，愿意的话再用你习惯的方式打个招呼",
+      goal: "",
+    });
+  }
+  if (talent?.quote || input.partnerAbility) {
+    const able = talent?.quote ? tight(talent.quote, 28) : tight(input.partnerAbility, 28);
+    groups.push({
+      who: able ? `能和「${able}」互补的人` : "能力可以互补的人",
+      direction: input.partnerOneLiner || visionBit || "一起把一件具体的小事做完",
+      connect: "先做完一件很小的事，再决定要不要继续",
+      goal: "",
+    });
+  }
+  if (/客户|用户|访谈|老板|学员/.test(input.summary) && groups.length < 4) {
+    groups.push({
+      who: "正面临相近问题、愿意被认真听完的人",
+      direction: input.partnerOneLiner || "先把真实需要听清楚",
+      connect: "一次访谈，或一次很小的交付",
+      goal: input.partnerStep ? clip(input.partnerStep, 80) : "",
+    });
+  }
+
+  return normalizeAspiration({
+    claim: { sentence, keywords },
+    story: { nodes },
+    believe: { points, closing },
+    practice: { steps: steps.slice(0, 4) },
+    longing: { keywords: longingKeywords, line },
+    resonance: { groups: groups.slice(0, 4) },
+  });
 }
 
 /** Prefer a readable latin slug from display name; else zp-xxxxxxxx. */
