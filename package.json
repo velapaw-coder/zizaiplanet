@@ -43,6 +43,6 @@
     "db:seed": "wrangler d1 execute DB --local --file=./seed/seed.sql",
     "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
     "db:seed:remote": "wrangler d1 execute DB --remote --file=./seed/seed.sql",
-    "test": "tsx --test lib/compose.test.ts lib/identity.test.ts lib/moderate.test.ts lib/password.test.ts lib/explore-plan.test.ts lib/profile-generate.test.ts lib/aspiration.test.ts"
+    "test": "tsx --test lib/compose.test.ts lib/identity.test.ts lib/moderate.test.ts lib/password.test.ts lib/explore-plan.test.ts lib/profile-generate.test.ts lib/aspiration.test.ts lib/seo.test.ts"
   }
 }

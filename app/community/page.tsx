@@ -8,9 +8,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { currentUser } from "@/lib/auth";
 import { liked, listPosts } from "@/lib/content";
 import { siteOrigin } from "@/lib/origin";
+import { pageMeta } from "@/lib/seo";
 import { clip, formatWhen, one } from "@/lib/text";
 
-export const metadata: Metadata = { title: "同频家园" };
+export const metadata: Metadata = pageMeta({
+  title: "同频家园",
+  description: "创造者之间的短分享，登录后可见。",
+  path: "/community",
+  noindex: true,
+});
 
 export default async function CommunityPage({
   searchParams,

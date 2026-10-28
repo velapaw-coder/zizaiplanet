@@ -18,9 +18,15 @@ import { ROOMS } from "@/lib/rooms";
 import { composeExplorePlan } from "@/lib/explore-plan";
 import { getCommunityWecomQrUrl } from "@/lib/site-settings";
 ;
+import { pageMeta } from "@/lib/seo";
 import { formatWhen, one, postStatusLabel, roleLabel } from "@/lib/text";
 
-export const metadata: Metadata = { title: "创造者家园" };
+export const metadata: Metadata = pageMeta({
+  title: "创造者家园",
+  description: "登录后的创造者家园：七维探索、收藏的创造手记与善用AI，以及同频交流。",
+  path: "/garden",
+  noindex: true,
+});
 
 export default async function GardenPage({
   searchParams,

@@ -5,9 +5,10 @@ import { Turnstile } from "@/components/turnstile";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PAGE_COPY, pageMeta } from "@/lib/seo";
 import { safeNext, one } from "@/lib/text";
 
-export const metadata: Metadata = { title: "成为自由创造者" };
+export const metadata: Metadata = pageMeta(PAGE_COPY.join);
 
 export default async function JoinPage({
   searchParams,

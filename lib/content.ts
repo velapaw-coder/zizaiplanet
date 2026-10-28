@@ -68,6 +68,20 @@ export async function listArticles() {
   return rows.results;
 }
 
+/** Slug + date only, for sitemap.xml. Same published set as the journal index. */
+export async function listArticleSitemapEntries() {
+  const rows = await db()
+    .prepare("SELECT slug, published_at FROM articles ORDER BY published_at DESC")
+    .all<{ slug: string; published_at: string }>();
+  return rows.results;
+}
+
+/** Public 善用AI guides. Same rows the energy index links to. */
+export async function listResourceSitemapEntries() {
+  const rows = await db().prepare("SELECT slug FROM resources ORDER BY title").all<{ slug: string }>();
+  return rows.results;
+}
+
 export async function getArticle(slug: string) {
   return db().prepare("SELECT * FROM articles WHERE slug = ?").bind(slug).first<Article>();
 }

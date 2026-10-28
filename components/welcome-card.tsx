@@ -79,7 +79,7 @@ export function WelcomeCard({
 
       <header className="welcome-card-brand">
         <span className="welcome-card-logo">
-          <img src="/logo.png" alt="" />
+          <img src="/logo.png" alt="自在星球" />
         </span>
         <span>
           <b>自在星球</b>

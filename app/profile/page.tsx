@@ -4,9 +4,10 @@ import { aspirationHasContent, resolveAspiration } from "@/lib/aspiration";
 import { currentUser } from "@/lib/auth";
 import { ensureProfileDraft, syncProfileFromSources } from "@/lib/profile";
 import { siteOrigin } from "@/lib/origin";
+import { PAGE_COPY, pageMeta } from "@/lib/seo";
 import { formatWhen, one } from "@/lib/text";
 
-export const metadata: Metadata = { title: "我的向往" };
+export const metadata: Metadata = pageMeta(PAGE_COPY.profile);
 
 export default async function ProfileEditPage({
   searchParams,
@@ -21,6 +22,9 @@ export default async function ProfileEditPage({
         <div className="wrap">
           <h1 className="page-title">我的向往</h1>
           <p className="help">「我的向往」写下你想成为、想去往的自由生活。完成七维探索或 AI 分身后会写成一页可分享的个人页，每一段都能改。请先登录。</p>
+          <p className="help">
+            可以先 <a href="/explore">见自己</a>，再让 <a href="/partner">AI分身</a> 帮你认清起点。
+          </p>
           <a className="btn-primary" href="/join?login=1&next=/profile">
             去登录
           </a>

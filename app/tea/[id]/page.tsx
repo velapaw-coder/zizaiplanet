@@ -3,9 +3,18 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@/lib/auth";
 import { getEvent, userRsvp } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
 import { formatWhen } from "@/lib/text";
 
-export const metadata: Metadata = { title: "茶局" };
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  return pageMeta({
+    title: "星球茶局",
+    description: "创造者之间的茶局，登录后可见。",
+    path: `/tea/${id}`,
+    noindex: true,
+  });
+}
 
 export default async function EventPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

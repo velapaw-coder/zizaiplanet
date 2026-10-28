@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { PAGE_COPY, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "关于我们" };
+export const metadata: Metadata = pageMeta(PAGE_COPY.about);
 
 const STORY = [
   "自在星球｜AI创造自由。技术越强大，人越需要找回自己。人生不只有一种活法，生意也不只有一种模式。我们不为追逐 AI 而学习 AI，而是为了创造更自由的人生而使用 AI。",

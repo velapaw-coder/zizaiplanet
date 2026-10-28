@@ -9,34 +9,29 @@ import { Textarea } from "@/components/ui/textarea";
 import { currentUser } from "@/lib/auth";
 import { getPost, liked, listComments } from "@/lib/content";
 import { siteOrigin } from "@/lib/origin";
+import { pageMeta } from "@/lib/seo";
 import { clip, formatWhen, one, postStatusLabel } from "@/lib/text";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const post = await getPost(id);
-  const origin = await siteOrigin();
   if (!post || post.status !== "visible") {
-    return { title: "分享未公开", robots: { index: false, follow: false } };
+    return pageMeta({
+      title: "分享未公开",
+      description: "这篇分享没有对站外公开。",
+      path: `/community/${id}`,
+      noindex: true,
+    });
   }
-  const title = `${post.topic} · ${post.author_name}`;
-  const description = clip(post.body, 80).replace(/…$/, "");
-  const image = post.image_key ? `${origin}/api/media/${post.image_key}` : `${origin}/logo.png`;
-  const url = `${origin}/community/${post.id}`;
-  return {
+  return pageMeta({
     title: post.topic,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      title,
-      description,
-      url,
-      siteName: "自在星球",
-      locale: "zh_CN",
-      type: "article",
-      images: [{ url: image, alt: "自在星球" }],
-    },
-    twitter: { card: "summary_large_image", title, description, images: [image] },
-  };
+    description: clip(post.body, 80).replace(/…$/, "") || `${post.author_name}的分享`,
+    path: `/community/${post.id}`,
+    type: "article",
+    image: post.image_key ? `/api/media/${post.image_key}` : "/logo.png",
+    imageAlt: post.topic,
+    noindex: true,
+  });
 }
 
 export default async function PostPage({

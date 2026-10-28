@@ -14,7 +14,7 @@ export function Logo({
           <img
             className="logo-img"
             src="/logo.png"
-            alt=""
+            alt="自在星球"
             width={88}
             height={88}
             decoding="async"

@@ -2,20 +2,16 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { currentUser } from "@/lib/auth";
+import { OG_IMAGE_PATH, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL, jsonLdScript, siteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 export const dynamic = "force-dynamic";
 
-const APP_URL = "https://www.zizaiplanet.com";
-const SITE_TITLE = "自在星球 · AI创造自由";
-const SITE_DESCRIPTION =
-  "以道驭AI，以创造得自由。见自己、明其道、善用AI，把热爱长成能带来人生自由的生意。AI自由创造，创造自由生活。";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(APP_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s · 自在星球",
+    template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   icons: {
@@ -30,17 +26,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "zh_CN",
-    siteName: "自在星球",
+    siteName: SITE_NAME,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    url: APP_URL,
-    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "自在星球" }],
+    url: SITE_URL,
+    images: [{ url: OG_IMAGE_PATH, width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/og-default.png"],
+    images: [OG_IMAGE_PATH],
   },
 };
 
@@ -72,6 +68,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         />
         <link rel="preload" href="/logo.webp" as="image" type="image/webp" />
         <meta name="theme-color" content="#f5fafb" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(siteJsonLd()) }} />
       </head>
       <body>
         <SiteHeader user={user ? { displayName: user.display_name } : null} admin={user?.role === "admin"} />

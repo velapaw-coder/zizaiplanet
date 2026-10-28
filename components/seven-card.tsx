@@ -65,7 +65,7 @@ export function SevenCard({
 
       <header className="seven-card-brand">
         <span className="seven-card-logo">
-          <img src="/logo.png" alt="" />
+          <img src="/logo.png" alt="自在星球" />
         </span>
         <span>
           <b>自在星球</b>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { listResources } from "@/lib/content";
+import { PAGE_COPY, pageMeta } from "@/lib/seo";
 import { optimizeRemoteImageUrl } from "@/lib/text";
 
-export const metadata: Metadata = { title: "善用AI" };
+export const metadata: Metadata = pageMeta(PAGE_COPY.energy);
 
 export default async function EnergyPage() {
   const resources = await listResources();
@@ -13,7 +14,9 @@ export default async function EnergyPage() {
           <div className="kicker">AI ENERGY STATION</div>
           <h1 className="page-title">善用AI</h1>
           <p>
-            善用AI，是为了创造更自由的生活。这里是工具与操作手册：注册开通、制图视频、本地部署、办公提效与内容流水线。每篇都有步骤与配图，照着做就能干活；理念向内容请看创造手记。领取后会出现在创造者家园。
+            善用AI，是为了创造更自由的生活。这里是工具与操作手册：注册开通、制图视频、本地部署、办公提效与内容流水线。每篇都有步骤与配图，照着做就能干活；理念向内容请看
+            <a href="/journal">创造手记</a>
+            。领取后会出现在创造者家园。
           </p>
         </div>
         {resources.length === 0 ? <div className="warn">这里还是空的。</div> : null}
@@ -33,7 +36,7 @@ export default async function EnergyPage() {
                 <div className="r-icon">{resource.icon}</div>
                 <div>
                   <div className="topic">{resource.category}</div>
-                  <h3>{resource.title}</h3>
+                  <h2>{resource.title}</h2>
                   <p>{resource.summary}</p>
                   <span>查看 ↗</span>
                 </div>
