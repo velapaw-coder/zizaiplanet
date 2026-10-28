@@ -18,7 +18,7 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
           <div className="warn">
             茶局仅登录后的自由创造者可见。请先
             <a href={`/join?login=1&next=/tea/${id}`}>登录</a>
-            ，或从 <a href="/garden">我的家园</a> 进入。
+            ，或从 <a href="/garden">创造者家园</a> 进入。
           </div>
         </div>
       </main>

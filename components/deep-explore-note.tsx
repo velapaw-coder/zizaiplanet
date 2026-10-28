@@ -15,7 +15,7 @@ export function DeepExploreNote({ compact = false }: Props) {
         {" · "}
         <a href="/profile">我的向往</a>
         {" · "}
-        <a href="/garden#garden-compose">我的家园发帖</a>
+        <a href="/garden#garden-compose">创造者家园发帖</a>
       </p>
       <p className="help" style={{ marginTop: 10 }}>
         可选：若想在自己的助手里跑更深题库，可下载{" "}

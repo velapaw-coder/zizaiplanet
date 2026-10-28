@@ -467,7 +467,7 @@ export function ProfileStudio({ data }: { data: ProfileStudioData }) {
 
           {!aspirationHasContent(page) ? (
             <p className="pp-empty">
-              还没有内容。可先去「认识自己」或「我的 AI 分身」，再点上方「重新生成」；也可直接在每一段里写。
+              还没有内容。可先去「见自己」或「我的 AI 分身」，再点上方「重新生成」；也可直接在每一段里写。
             </p>
           ) : null}
 
@@ -513,7 +513,7 @@ export function ProfileStudio({ data }: { data: ProfileStudioData }) {
               </a>
               <a href="/partner">回 AI 分身</a>
               <a href="/community">去同频家园</a>
-              <a href="/explore">认识自己</a>
+              <a href="/explore">见自己</a>
             </div>
           </footer>
         </form>

@@ -29,7 +29,7 @@ export default async function AdminPage({
             本地可以把 admin@zizaiplanet.com 填进登录页。
           </p>
           <a className="btn-primary" href={user ? "/garden" : "/join?login=1&next=/admin"}>
-            {user ? "回我的家园" : "去登录"}
+            {user ? "回创造者家园" : "去登录"}
           </a>
         </div>
       </main>
@@ -51,7 +51,7 @@ export default async function AdminPage({
         <div>
           <div className="kicker">STUDIO</div>
           <h1 className="page-title">运营</h1>
-          <p className="help">处理举报、茶局提议，配置七维对话大模型，以及发布生活志和能量站。这里没有招商，也没有积分。</p>
+          <p className="help">处理举报、茶局提议，配置七维对话大模型，以及发布创造手记和善用AI。这里没有招商，也没有积分。</p>
           <Notice text={one(params.notice)} />
         </div>
         <section className="share">
@@ -256,7 +256,7 @@ export default async function AdminPage({
           <form className="share" action="/api/action" method="post">
             <input type="hidden" name="action" value="admin_article" />
             <h2 className="serif" style={{ marginTop: 0 }}>
-              发布生活志
+              发布创造手记
             </h2>
             <Field id="article-slug" name="slug" label="路径" placeholder="slow-morning" />
             <Field id="article-title" name="title" label="标题" />
@@ -276,7 +276,7 @@ export default async function AdminPage({
           <form className="share" action="/api/action" method="post">
             <input type="hidden" name="action" value="admin_resource" />
             <h2 className="serif" style={{ marginTop: 0 }}>
-              发布能量站
+              发布善用AI
             </h2>
             <Field id="resource-slug" name="slug" label="路径" placeholder="weekend-note" />
             <Field id="resource-title" name="title" label="标题" />

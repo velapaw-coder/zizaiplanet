@@ -26,7 +26,7 @@ export const PARTNER_SYSTEM = `你是「自在星球」的 AI 分身，帮已经
 本周最小一步：……
 <<<END_DIRECTION_SUMMARY>>>
 标记内写给人看的正文，不要写代码。未到可汇总阶段时不要输出该标记。
-6. 若对方尚未完成七维，先温和建议去完成「认识自己」七维探索，再继续深聊。`;
+6. 若对方尚未完成七维，先温和建议去完成「见自己」七维探索，再继续深聊。`;
 
 type PartnerSession = {
   id: string;
@@ -158,7 +158,7 @@ function buildContextBlock(ctx: PartnerContext, displayName: string) {
     lines.push(clip(ctx.portraitText, 1800));
   }
   if (ctx.litCount < 1) {
-    lines.push("提示：对方几乎还没有七维探索记录，请先引导他去 /explore 完成认识自己。");
+    lines.push("提示：对方几乎还没有七维探索记录，请先引导他去 /explore 完成「见自己」。");
   }
   return lines.join("\n");
 }
@@ -174,7 +174,7 @@ function parseDirectionSummary(content: string): { cleaned: string; summary: str
 function mockPartnerReply(turns: number, lastUser: string, ctx: PartnerContext): string {
   if (turns <= 1) {
     return ctx.litCount < 1
-      ? "你好，我是你的 AI 分身（演示模式）。我这边还几乎看不到你的七维探索记录。建议你先去「认识自己」完成七维聊天；有了画像后，我们再一起梳理能力与方向。\n\n（配置大模型密钥后即可真实对话。）"
+      ? "你好，我是你的 AI 分身（演示模式）。我这边还几乎看不到你的七维探索记录。建议你先去「见自己」完成七维聊天；有了画像后，我们再一起梳理能力与方向。\n\n（配置大模型密钥后即可真实对话。）"
       : `你好，我是你的 AI 分身（演示模式）。我已读到你七维里约 ${ctx.litCount} 维的摘要${ctx.oneLiner ? `，本源一句是「${clip(ctx.oneLiner, 36)}」` : ""}。\n\n接下来我们可以：1）解读画像；2）梳理你已有的能力与关系；3）提出几个值得进一步研究的方向。你想先从哪一块开始？\n\n（当前未配置密钥，回复为演示。）`;
   }
   if (/方向|汇总|纪要|下载|PDF|总结|方案/.test(lastUser) || turns > 6) {

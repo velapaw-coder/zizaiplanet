@@ -20,7 +20,7 @@ import { getCommunityWecomQrUrl } from "@/lib/site-settings";
 ;
 import { formatWhen, one, postStatusLabel, roleLabel } from "@/lib/text";
 
-export const metadata: Metadata = { title: "我的家园" };
+export const metadata: Metadata = { title: "创造者家园" };
 
 export default async function GardenPage({
   searchParams,
@@ -82,11 +82,11 @@ export default async function GardenPage({
     <main className="section tight">
       <div className="wrap stack">
         <div>
-          <div className="kicker">我的家园</div>
+          <div className="kicker">创造者家园</div>
           <h1 className="page-title">{user ? `${user.display_name}的七维探索` : "先看一看，再决定要不要留下"}</h1>
           <p className="help">
             {user ? `你是${roleLabel(user.role)}。` : "访客的探索只留在这台浏览器里。"}
-            家园默认私密，没有积分，也没有排行。
+            创造者家园默认私密，没有积分，也没有排行。
           </p>
           <Notice text={one(params.notice)} />
         </div>
@@ -140,7 +140,7 @@ export default async function GardenPage({
             ) : null}
             <div className="row-actions" style={{ marginTop: 14 }}>
               <a className="btn-primary" href="/explore">
-                {growthLit >= 7 ? "重修某一维" : "继续认识自己"}
+                {growthLit >= 7 ? "重修某一维" : "继续见自己"}
               </a>
               <a href="/partner">与 AI 分身继续聊</a>
               {partner?.direction_summary ? (
@@ -152,7 +152,7 @@ export default async function GardenPage({
             </div>
             <ol className="help" style={{ lineHeight: 2, paddingLeft: 18, marginTop: 16 }}>
               <li>
-                <a href="/explore">认识自己</a>
+                <a href="/explore">见自己</a>
                 {growthLit > 0 ? " ✓" : ""}
               </li>
               <li>
@@ -268,12 +268,12 @@ export default async function GardenPage({
                   <div className="stack">
                     {lists.articles.map((item) => (
                       <a key={item.slug} href={`/journal/${item.slug}`}>
-                        星球生活志 · {item.title}
+                        创造手记 · {item.title}
                       </a>
                     ))}
                     {lists.resources.map((item) => (
                       <a key={item.slug} href={`/energy/${item.slug}`}>
-                        能量站 · {item.title}
+                        善用AI · {item.title}
                       </a>
                     ))}
                   </div>

@@ -6,7 +6,7 @@ import { currentUser } from "@/lib/auth";
 import { getResource, isClaimed } from "@/lib/content";
 import { one, optimizeRemoteImageUrl } from "@/lib/text";
 
-export const metadata: Metadata = { title: "AI能量站" };
+export const metadata: Metadata = { title: "善用AI" };
 
 function renderBlocks(body: string) {
   return body.split(/\n\n+/).map((block, index) => {
@@ -68,7 +68,7 @@ export default async function ResourcePage({
     <main className="section tight">
       <div className="wrap" style={{ maxWidth: 780 }}>
         <a className="help" href="/energy">
-          ← AI能量站
+          ← 善用AI
         </a>
         <div className="topic" style={{ marginTop: 18 }}>
           {resource.category}
@@ -93,12 +93,12 @@ export default async function ResourcePage({
           <input type="hidden" name="action" value="claim" />
           <input type="hidden" name="resource_id" value={resource.id} />
           <Button type="submit" variant={claimed ? "outline" : "default"}>
-            {claimed ? "从家园移出" : "收入我的家园"}
+            {claimed ? "从创造者家园移出" : "收入创造者家园"}
           </Button>
         </form>
         <div className="row-actions" style={{ marginTop: 12 }}>
           <Button asChild variant="outline">
-            <a href="/energy">返回 AI能量站</a>
+            <a href="/energy">返回善用AI</a>
           </Button>
         </div>
       </div>

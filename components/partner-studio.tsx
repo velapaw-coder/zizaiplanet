@@ -267,7 +267,7 @@ export function PartnerStudio() {
               {ctx && ctx.litCount < 1 ? (
                 <>
                   {" · "}
-                  <a href="/explore">先去认识自己</a>
+                  <a href="/explore">先去见自己</a>
                 </>
               ) : null}
             </p>
@@ -324,7 +324,7 @@ export function PartnerStudio() {
             <div className="partner-side-links">
               <a href="/profile">查看自动生成的「我的向往」 →</a>
               <a href="/community">去同频家园 →</a>
-              <a href="/garden#growth">回我的家园 · 成长空间 →</a>
+              <a href="/garden#growth">回创造者家园 · 成长空间 →</a>
             </div>
           </div>
         </aside>

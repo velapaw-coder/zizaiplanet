@@ -10,7 +10,7 @@ import { absoluteUrl, clip, formatWhen, one, optimizeRemoteImageUrl } from "@/li
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticle(slug);
-  if (!article) return { title: "星球生活志" };
+  if (!article) return { title: "创造手记" };
   const origin = await siteOrigin();
   const title = article.title;
   const description =
@@ -52,7 +52,7 @@ export default async function ArticlePage({
     <main className="section tight">
       <div className="wrap">
         <a className="help" href="/journal">
-          ← 星球生活志
+          ← 创造手记
         </a>
         <div className="topic" style={{ marginTop: 18 }}>
           {article.topic}
@@ -91,12 +91,12 @@ export default async function ArticlePage({
           <input type="hidden" name="article_id" value={article.id} />
           <input type="hidden" name="next" value={`/journal/${article.slug}`} />
           <Button type="submit" variant={saved ? "outline" : "default"}>
-            {saved ? "取消收藏" : "收藏到我的家园"}
+            {saved ? "取消收藏" : "收藏到创造者家园"}
           </Button>
         </form>
         <div className="row-actions" style={{ marginTop: 12 }}>
           <Button asChild variant="outline">
-            <a href="/journal">返回星球生活志</a>
+            <a href="/journal">返回创造手记</a>
           </Button>
         </div>
       </div>

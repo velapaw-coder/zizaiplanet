@@ -246,7 +246,7 @@ export async function dispatchAction(request: Request, form: FormData) {
       "INSERT INTO claims (user_id, resource_id, created_at) VALUES (?, ?, ?)",
       [user.id, resourceId],
     );
-    return back(request, `/energy/${resource.slug}`, "已放进我的家园。");
+    return back(request, `/energy/${resource.slug}`, "已放进创造者家园。");
   }
 
   if (action === "rsvp") {

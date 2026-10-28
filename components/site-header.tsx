@@ -4,13 +4,13 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Logo } from "./logo";
 
-/** 顶栏：认识自己 · AI分身 · 我的向往 · 星球生活志 · AI能量站 · 关于我们（同频家园/茶局仅登录后「我的家园」） */
+/** 顶栏：见自己 · AI分身 · 我的向往 · 创造手记 · 善用AI · 关于我们（同频家园/茶局仅登录后「创造者家园」） */
 const SERVICE_LINKS = [
-  { href: "/explore", label: "认识自己" },
+  { href: "/explore", label: "见自己" },
   { href: "/partner", label: "AI分身" },
   { href: "/profile", label: "我的向往" },
-  { href: "/journal", label: "星球生活志" },
-  { href: "/energy", label: "AI能量站" },
+  { href: "/journal", label: "创造手记" },
+  { href: "/energy", label: "善用AI" },
   { href: "/about", label: "关于我们" },
 ];
 
@@ -55,7 +55,7 @@ export function SiteHeader({
         </nav>
         {user ? (
           <a className="join" href="/garden">
-            我的家园 ↗
+            创造者家园 ↗
           </a>
         ) : (
           <a className="join" href="/join">
@@ -73,7 +73,7 @@ export function SiteHeader({
           </a>
         ))}
         <a href={user ? "/garden" : "/join"} onClick={() => setOpen(false)}>
-          {user ? "我的家园" : "自由创造者"}
+          {user ? "创造者家园" : "自由创造者"}
         </a>
         {user ? (
           <form action="/api/action" method="post">
