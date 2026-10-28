@@ -440,9 +440,35 @@
 .seven-card-studio{padding:18px 14px 14px}
 .seven-card-studio .seven-card-title{font-size:clamp(20px,2.4vw,28px);letter-spacing:2px}
 .seven-card-studio .seven-orbs{grid-template-columns:repeat(7,minmax(0,1fr));gap:6px 4px}
-.seven-card-studio .seven-orb{padding:6px 2px 8px}
+.seven-card-studio .seven-orb{
+  min-width:0;max-width:100%;padding:6px 2px 8px;
+  container-type:inline-size;container-name:seven-orb;
+}
 .seven-card-studio .seven-orb-glow{width:42px;height:42px}
 .seven-card-studio .seven-orb-guide{display:none}
+.seven-card-studio .seven-orb-state{
+  max-width:100%;min-width:0;box-sizing:border-box;line-height:1.35;
+}
+.seven-orb-lit-line + .seven-orb-lit-line{margin-left:.35em}
+/* 右侧卡一列大约 45–60px。长状态和四字维名留在自己的格子里，不再画到旁边。 */
+@container seven-orb (max-width: 112px) {
+  .seven-orb-state:has(.seven-orb-lit-line){
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:1px;white-space:normal;letter-spacing:0;line-height:1.25;
+    padding:4px 3px 5px;
+  }
+  .seven-orb-lit-line{
+    display:block;white-space:nowrap;letter-spacing:0;line-height:1.35;font-size:10px;
+  }
+  .seven-orb-lit-line + .seven-orb-lit-line{margin-left:0}
+}
+@container seven-orb (max-width: 52px) {
+  .seven-orb-state:has(.seven-orb-lit-line){padding:3px 2px 4px}
+  .seven-orb-lit-line{font-size:9px}
+}
+@container seven-orb (max-width: 48px) {
+  b{font-size:10px;letter-spacing:0;line-height:1.3;max-width:100%}
+}
 @media (max-width:960px){
   .explore-studio-grid{grid-template-columns:1fr;gap:16px}
   .explore-studio-card{position:static}
