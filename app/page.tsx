@@ -130,9 +130,9 @@ export default function HomePage() {
                 poster="/intro-poster-sm.webp"
                 aria-label="自在星球介绍视频"
               >
-                <source src="/api/media/site/intro.mp4?v=2" type="video/mp4" />
+                <source src="/api/media/site/intro.mp4?v=3" type="video/mp4" />
                 你的浏览器不支持视频播放，请
-                <a href="/api/media/site/intro.mp4?v=2">下载介绍视频</a>
+                <a href="/api/media/site/intro.mp4?v=3">下载介绍视频</a>
                 。
               </video>
             </div>

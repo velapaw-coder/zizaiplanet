@@ -34,7 +34,7 @@ export default function AboutPage() {
               style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }}
               aria-label="自在星球介绍视频"
             >
-              <source src="/api/media/site/intro.mp4?v=2" type="video/mp4" />
+              <source src="/api/media/site/intro.mp4?v=3" type="video/mp4" />
             </video>
           </div>
           <p className="help" style={{ fontSize: 13, lineHeight: 1.7, margin: "12px 0 10px", color: "#6D8B92" }}>
@@ -42,7 +42,7 @@ export default function AboutPage() {
           </p>
           <a
             className="btn-light"
-            href="/api/media/site/intro.mp4?v=2&download=1"
+            href="/api/media/site/intro.mp4?v=3&download=1"
             download="自在星球介绍视频.mp4"
             style={{
               color: "#164E56",
