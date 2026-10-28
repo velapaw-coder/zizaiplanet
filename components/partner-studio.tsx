@@ -150,7 +150,7 @@ export function PartnerStudio() {
   if (!state?.user) {
     return (
       <div className="warn">
-        AI 分身只对星球居民开放，需要读取你的七维画像做方向对话。
+        AI 分身只对自由创造者开放，需要读取你的七维画像做方向对话。
         <a href="/join?login=1&next=/partner" style={{ marginLeft: 8 }}>
           去登录 →
         </a>

@@ -24,11 +24,11 @@ export default async function TeaPage({
           <div className="section-head left">
             <div className="kicker">TEA GATHERINGS</div>
             <h1 className="page-title">星球茶局</h1>
-            <p>居民内部活动，不对站外公开浏览。</p>
+            <p>创造者之间的活动，不对站外公开浏览。</p>
           </div>
           <div className="warn">
             请先
-            <a href="/join?login=1&next=/tea">登录 / 成为星球居民</a>
+            <a href="/join?login=1&next=/tea">登录 / 成为自由创造者</a>
             ，再从「我的家园」进入茶局。
           </div>
           <p className="help">

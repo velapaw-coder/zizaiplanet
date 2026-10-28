@@ -10,9 +10,9 @@ export function SiteFooter() {
               <Logo light />
             </a>
             <p>
-              向内扎根，向外生长。
+              以道驭AI，以创造得自由。
               <br />
-              AI 时代的自由生意共创生态
+              AI自由创造，创造自由生活
             </p>
           </div>
           <nav aria-label="页脚导航" className="footer-nav">
@@ -29,13 +29,13 @@ export function SiteFooter() {
               <strong>更多</strong>
               <a href="/energy">AI能量站</a>
               <a href="/garden">我的家园</a>
-              <a href="/join">星球居民</a>
+              <a href="/join">成为自由创造者</a>
             </div>
           </nav>
         </div>
         <p className="compliance">线上提供认知、关系与场域；合作由成员线下独立协商。不做站内项目撮合。</p>
         <div className="footer-bottom">
-          <span>© 2026 自在星球 · AI时代的自由生意</span>
+          <span>© 2026 自在星球 · AI创造自由</span>
           <span>线上交流与连接 · 线下合作独立开展</span>
         </div>
       </div>

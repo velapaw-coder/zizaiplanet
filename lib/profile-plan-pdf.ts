@@ -80,14 +80,14 @@ export async function buildProfilePlanPdf(input: {
     "扫码加入自在星球社区（企业微信）\n带着「我的向往」回来，遇见同频的人。\n公开页不含七维探索私密原文。";
   const dateLabel = (input.profile.updatedAt || new Date().toISOString()).slice(0, 10);
   const footer = `生成于自在星球 · ${dateLabel} · 仅供自愿分享与转发`;
-  const emptyLine = "这位居民还在完善「我的向往」。";
+  const emptyLine = "这位创造者还在完善「我的向往」。";
   const urlLine = input.profile.publicUrl ? `在线查看：${input.profile.publicUrl}` : "";
   const oneLiner =
     input.profile.aspiration?.claim.sentence?.trim() || input.profile.direction.trim() || emptyLine;
 
   const texts = [
     "自在星球 · 我的向往",
-    input.profile.displayName || "星球居民",
+    input.profile.displayName || "自由创造者",
     "想成为、想去往的样子 · 可分享可转发",
     oneLiner,
     ...sections.flatMap((s) => [s.title, s.body]),
@@ -137,7 +137,7 @@ export async function buildProfilePlanPdf(input: {
   page.drawRectangle({ x: 0, y: pageHeight - 92, width: pageWidth, height: 92, color: PAPER });
   y = pageHeight - 36;
   drawText("自在星球 · 我的向往", 10, GREEN, 6);
-  drawText(input.profile.displayName || "星球居民", 22, INK, 8);
+  drawText(input.profile.displayName || "自由创造者", 22, INK, 8);
   drawText("想成为、想去往的样子 · 可分享可转发", 10, MUTE, 4);
   y -= 8;
   page.drawRectangle({ x: margin, y: y, width: contentWidth, height: 1, color: LINE });

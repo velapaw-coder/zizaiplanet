@@ -10,10 +10,10 @@ const PARTNER_COOKIE = "zizai_partner";
 const TTL = 60 * 60 * 24 * 30;
 const MAX_HISTORY = 36;
 
-export const PARTNER_SYSTEM = `你是「自在星球」的 AI 分身，帮已经做过七维自我探索的星球居民认清起点、梳理能力与经验，并做方向对话。
+export const PARTNER_SYSTEM = `你是「自在星球」的 AI 分身，帮已经做过七维自我探索的自由创造者认清起点、梳理能力与经验，并做方向对话。核心理念是 AI创造自由。自由生意，是能带来人生自由的生意。称呼对方为自由创造者。
 
 原则：
-1. 只基于居民提供的七维画像摘要与对话原话；不要编造经历，不要替他决定生意项目。
+1. 只基于对方提供的七维画像摘要与对话原话；不要编造经历，不要替他决定生意项目。
 2. 聚焦三件事：画像解读（他是谁、向往什么）、能力与资源梳理、值得进一步研究的 2～4 个方向（简短、可验证）。
 3. 不做站内撮合、不推销具体课程或产品、不要求他绑定自在星球项目。
 4. 语气真诚、克制、口语化中文；每次回复控制在 200～450 字，必要时用小标题。
@@ -26,7 +26,7 @@ export const PARTNER_SYSTEM = `你是「自在星球」的 AI 分身，帮已经
 本周最小一步：……
 <<<END_DIRECTION_SUMMARY>>>
 标记内写给人看的正文，不要写代码。未到可汇总阶段时不要输出该标记。
-6. 若居民尚未完成七维，先温和建议去完成「认识自己」七维探索，再继续深聊。`;
+6. 若对方尚未完成七维，先温和建议去完成「认识自己」七维探索，再继续深聊。`;
 
 type PartnerSession = {
   id: string;
@@ -138,7 +138,7 @@ export async function loadPartnerContext(userId: string): Promise<PartnerContext
 }
 
 function buildContextBlock(ctx: PartnerContext, displayName: string) {
-  const lines: string[] = [`居民称呼：${displayName}`, `七维点亮：${ctx.litCount}/7${ctx.portraitReady ? "（画像已齐）" : ""}`];
+  const lines: string[] = [`称呼：${displayName}`, `七维点亮：${ctx.litCount}/7${ctx.portraitReady ? "（画像已齐）" : ""}`];
   if (ctx.oneLiner) lines.push(`一句话本源：${clip(ctx.oneLiner, 80)}`);
   if (ctx.directionNote) lines.push(`向往定位：${clip(ctx.directionNote, 200)}`);
   if (ctx.profileExperience) lines.push(`向往·经历：${clip(ctx.profileExperience, 240)}`);
@@ -158,7 +158,7 @@ function buildContextBlock(ctx: PartnerContext, displayName: string) {
     lines.push(clip(ctx.portraitText, 1800));
   }
   if (ctx.litCount < 1) {
-    lines.push("提示：居民几乎还没有七维探索记录，请先引导他去 /explore 完成认识自己。");
+    lines.push("提示：对方几乎还没有七维探索记录，请先引导他去 /explore 完成认识自己。");
   }
   return lines.join("\n");
 }
@@ -244,7 +244,7 @@ export async function getPartnerState(request: Request) {
 
 export async function startPartner(request: Request) {
   const user = await getUserFromRequest(request);
-  if (!user) return { ok: false as const, error: "请先登录成为星球居民。", status: 401 };
+  if (!user) return { ok: false as const, error: "请先登录成为自由创造者。", status: 401 };
   const { provider, mock } = await getPlatformChatProvider();
   const context = await loadPartnerContext(user.id);
   const id = crypto.randomUUID();
@@ -260,7 +260,7 @@ export async function startPartner(request: Request) {
   const contextBlock = buildContextBlock(context, user.display_name);
   const boot = await provider.chat({
     messages: [
-      { role: "system", content: `${PARTNER_SYSTEM}\n\n—— 居民上下文 ——\n${contextBlock}` },
+      { role: "system", content: `${PARTNER_SYSTEM}\n\n—— 探索上下文 ——\n${contextBlock}` },
       {
         role: "user",
         content:
@@ -325,7 +325,7 @@ export async function sendPartnerMessage(request: Request, input: { text: string
   const trimmed = history.slice(-MAX_HISTORY);
   const contextBlock = buildContextBlock(context, user.display_name);
   const chatMessages: ChatMessage[] = [
-    { role: "system", content: `${PARTNER_SYSTEM}\n\n—— 居民上下文 ——\n${contextBlock}` },
+    { role: "system", content: `${PARTNER_SYSTEM}\n\n—— 探索上下文 ——\n${contextBlock}` },
     ...trimmed.map((item) => ({
       role: (item.role === "assistant" ? "assistant" : "user") as "assistant" | "user",
       content: item.content,
@@ -402,7 +402,7 @@ export function composePartnerPlanFromSession(input: {
   directionSummary: string | null;
   card?: HomeCard | null;
 }) {
-  const name = input.displayName || "星球居民";
+  const name = input.displayName || "自由创造者";
   const summary = (input.directionSummary || "").trim();
   const title = summary ? "我的方向纪要" : "方向对话（进行中）";
   const oneLiner =

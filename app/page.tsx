@@ -6,35 +6,38 @@ export default function HomePage() {
           <div className="wrap">
             <div className="hero-grid">
               <div className="hero-copy">
-                <div className="eyebrow">A business that frees your life</div>
+                <div className="eyebrow">AI creates freedom</div>
                 <h1 id="hero-title">
                   AI时代，
                   <br />
-                  帮每个人找到
+                  以创造
                   <br />
-                  <span>属于自己的自由生意</span>
+                  <span>获得人生自由</span>
                 </h1>
                 <p>
-                  通过自我探索、AI赋能与同频连接，看见真实需求，
+                  以道驭AI，以创造得自由。
                   <br />
-                  把热爱与专长长成可持续的事业。
+                  AI自由创造，创造自由生活。
+                  <br />
+                  自由生意，是能带来人生自由的事业。
                 </p>
                 <div className="hero-actions">
                   <a className="hb-btn" href="/join">
-                    星球居民 <span className="arrow" aria-hidden="true">
+                    成为自由创造者{" "}
+                    <span className="arrow" aria-hidden="true">
                       ↗
                     </span>
                   </a>
                   <a className="text-link" href="#philosophy">
-                    认识自由生意 <span aria-hidden="true">↓</span>
+                    认识 AI创造自由 <span aria-hidden="true">↓</span>
                   </a>
                 </div>
-                <div className="hero-note">看见自己 · 连接同频 · 找到自由生意</div>
+                <div className="hero-note">见自己 · 明其道 · 善用AI · 创造自由</div>
               </div>
               <div
                 className="planet-scene"
                 role="img"
-                aria-label="蓝绿星球与环绕轨道，象征彼此连接、共同生长"
+                aria-label="蓝绿星球与环绕轨道，象征以创造得自由"
               >
                 <div className="orbit-line" />
                 <div className="orbit-line two" />
@@ -63,13 +66,13 @@ export default function HomePage() {
                     fetchPriority="high"
                   />
                 </picture>
-                <div className="scene-label">ROOTED IN YOU. OPEN TO THE WORLD.</div>
+                <div className="scene-label">AI CREATES FREEDOM</div>
               </div>
             </div>
             <div className="hero-bottom">
               <span>
                 <i />
-                向内扎根 · 向外生长
+                见自己 · 创造自由
               </span>
               <span>SCROLL TO EXPLORE ↓</span>
             </div>
@@ -110,12 +113,14 @@ export default function HomePage() {
         <section className="intro-video-section" aria-labelledby="intro-video-title">
           <div className="wrap intro-video-inner">
             <div className="intro-video-copy">
-              <div className="eyebrow">Watch · Intro</div>
+              <div className="eyebrow">Watch · The idea</div>
               <h2 id="intro-video-title">认识自在星球</h2>
               <p>
-                看见自己 · 连接同频 · 找到自由生意。
+                AI创造自由。以道驭AI，以创造得自由。
                 <br />
-                一段宽屏介绍，帮你快速了解我们在做什么。
+                见自己 · 明其道 · 善用AI · 创造自由。
+                <br />
+                片中若还是更早的说法，以这一页为准。
               </p>
             </div>
             <div className="intro-video-frame">
@@ -139,12 +144,12 @@ export default function HomePage() {
         <section className="statement">
           <div className="wrap statement-inner">
             <h2>
-              生意，从一个真实的人开始。
+              技术可以更强。
               <br />
-              关系，在时间里慢慢长出来。
+              人，要更自由。
             </h2>
             <p>
-              自在星球，是一个关于「AI时代的自由生意」的交流社区。我们相信，一门能带来人生自由的生意，生长于真实的能力、被理解的需求，以及一次次兑现的承诺。先找到自己，再找到值得一起走下去的人。
+              自在星球，是 AI创造自由的同行之地。AI 是器，用来释放能力；自由是道，用来找回选择；创造是行，用来长出价值。一门自由生意，是能带来人生自由的生意：它生长于真实的能力、被理解的需求，以及一次次兑现的承诺。先见自己，再找到值得一起走的人。
             </p>
           </div>
         </section>
@@ -152,23 +157,23 @@ export default function HomePage() {
         <section className="section wrap" id="philosophy" aria-labelledby="philosophy-title">
           <div className="intro-row">
             <div>
-              <div className="eyebrow">01 / Start with people</div>
+              <div className="eyebrow">01 / See your way</div>
               <h2 id="philosophy-title">
-                向内看见自己，
+                见自己，明其道。
                 <br />
-                向外打开可能。
+                再让 AI 帮上忙。
               </h2>
             </div>
             <p>
-              从人出发，让方向清晰，让连接真实。
+              先有方向，再有能力。先创造价值，再谈自由生意。
               <br />
-              再用 AI，把想法一步步变成创造。
+              判断仍由人做。AI 负责把想法变成可以试的创造。
             </p>
           </div>
           <div className="pillars">
             <article className="pillar">
               <div className="pillar-top">
-                <span className="number">01 — SELF</span>
+                <span className="number">01 — SEE</span>
                 <svg
                   className="icon"
                   viewBox="0 0 60 60"
@@ -183,15 +188,15 @@ export default function HomePage() {
                   <path d="M30 2v12M30 46v12M2 30h12M46 30h12" />
                 </svg>
               </div>
-              <h3>看见自己</h3>
+              <h3>见自己</h3>
               <p>
-                从经历、品格与生活向往中，辨认真正擅长的事。让个人表达扎根于真实，把「我是谁」讲清楚，把「想去哪里」想明白。
+                从经历、品格与生活向往里，辨认真正擅长的事。认识自己，才知道哪一条路是自己的，而不是别人的成功模板。
               </p>
-              <p className="prompt">我愿意长期为谁，创造什么价值？</p>
+              <p className="prompt">我是谁，愿意为谁创造价值？</p>
             </article>
             <article className="pillar">
               <div className="pillar-top">
-                <span className="number">02 — CONNECTION</span>
+                <span className="number">02 — THE WAY</span>
                 <svg
                   className="icon"
                   viewBox="0 0 60 60"
@@ -206,15 +211,15 @@ export default function HomePage() {
                   <circle cx="30" cy="30" r="3" fill="#a9dbce" stroke="none" />
                 </svg>
               </div>
-              <h3>连接同频</h3>
+              <h3>明其道</h3>
               <p>
-                因为相近的价值观相遇，因为真实的交流走近。分享经验、理解彼此，在一次次小小的互动中，沉淀值得托付的信任。
+                先确立方向，再选择工具和事业。顺势而为：不必人人成为同一种创业者。找到适合自己的方式与节奏。
               </p>
-              <p className="prompt">与谁同行，值得放进时间里？</p>
+              <p className="prompt">我的道，通向怎样的自由生活？</p>
             </article>
             <article className="pillar">
               <div className="pillar-top">
-                <span className="number">03 — AI NATIVE</span>
+                <span className="number">03 — WITH AI</span>
                 <svg
                   className="icon"
                   viewBox="0 0 60 60"
@@ -228,11 +233,11 @@ export default function HomePage() {
                   <circle cx="13" cy="48" r="3" />
                 </svg>
               </div>
-              <h3>AI 原生，放大创造力</h3>
+              <h3>善用AI</h3>
               <p>
-                把 AI 融入思考、学习、表达与实践。让经验更容易整理，让灵感更容易验证，把人的判断力与创造力放在中心。
+                不为追逐 AI 而学习 AI。用它整理经验、验证想法，把一个人的热爱做成作品。判断与责任，仍由人承担。
               </p>
-              <p className="prompt">让一个人的热爱，走得更远。</p>
+              <p className="prompt">让创造，少受资源限制。</p>
             </article>
           </div>
         </section>
@@ -241,15 +246,15 @@ export default function HomePage() {
           <div className="wrap">
             <div className="flow-header">
               <div>
-                <div className="eyebrow">02 / Value before supply</div>
+                <div className="eyebrow">02 / Create real value</div>
                 <h2 id="flow-title">
-                  先理解真实需求，
+                  先创造真实价值，
                   <br />
-                  再让能力找到位置。
+                  自由生意才会长出来。
                 </h2>
               </div>
               <p>
-                自由生意的起点，是一个值得解决的问题。先听见需要，再理解能力；让每一次行动创造价值，让价值慢慢积累成信任。
+                自由生意不是想停就停，而是能带来人生自由的事业。先听见真实需要，再让能力对上。
               </p>
             </div>
             <div className="flow">
@@ -257,9 +262,9 @@ export default function HomePage() {
                 <div className="flow-dot">01</div>
                 <h3>真实的人</h3>
                 <p>
-                  看见经历、优势与向往，
+                  见自己：经历、优势与向往，
                   <br />
-                  找到愿意长期投入的方向。
+                  找到愿意投入的方向。
                 </p>
               </article>
               <article className="flow-step">
@@ -273,26 +278,26 @@ export default function HomePage() {
               </article>
               <article className="flow-step">
                 <div className="flow-dot">03</div>
-                <h3>合适的能力</h3>
+                <h3>善用能力</h3>
                 <p>
-                  让专业与问题相互理解，
+                  让专业与 AI 一起理解问题，
                   <br />
-                  以需求组织供给。
+                  以需求组织创造。
                 </p>
               </article>
               <article className="flow-step">
                 <div className="flow-dot">04</div>
                 <h3>持续的信任</h3>
                 <p>
-                  在认真行动中兑现承诺，
+                  知行合一，在行动里兑现，
                   <br />
-                  让价值带来下一次连接。
+                  让价值带来下一次自由。
                 </p>
               </article>
             </div>
             <div className="flow-foot">
-              <strong>人 → 需求 → 能力 → 价值 → 信任 → 新的连接</strong>
-              <span>这里分享自由生意的理念与方法；具体合作在线下独立开展。</span>
+              <strong>人 → 需求 → 能力 → 价值 → 信任 → 自由</strong>
+              <span>这里分享理念与方法；自由生意的具体合作，在线下独立开展。</span>
             </div>
           </div>
         </section>
@@ -304,15 +309,15 @@ export default function HomePage() {
               <h2 id="ecology-title">
                 一花多瓣，
                 <br />
-                各自生长，彼此成就。
+                各自创造，彼此成就。
               </h2>
               <p>
-                我们用一朵花，理解长期关系的样子。共享价值观的根基，也保留每个人、每个场域的独立性。连接让成长发生，边界让关系长久。
+                自由创造者共享同一套价值观，也保留每个人的独立性。利他共生：连接让成长发生，边界让关系长久。
               </p>
               <div className="ecology-lines">
                 <div className="ecology-line">
                   <strong>花芯</strong>
-                  <span>真实的人，以及品格、向往与价值观。</span>
+                  <span>真实的人，以及品格、向往与自己的道。</span>
                 </div>
                 <div className="ecology-line">
                   <strong>花瓣</strong>
@@ -320,7 +325,7 @@ export default function HomePage() {
                 </div>
                 <div className="ecology-line">
                   <strong>共生</strong>
-                  <span>分享认知、经验与连接，相互启发，彼此托举。</span>
+                  <span>分享认知、经验与创造，相互启发，彼此托举。</span>
                 </div>
               </div>
             </div>
@@ -328,7 +333,7 @@ export default function HomePage() {
               <svg viewBox="0 0 500 490" role="img" aria-labelledby="flower-title flower-desc">
                 <title id="flower-title">花型生态理念图</title>
                 <desc id="flower-desc">
-                  以品格、向往与价值观为花芯，五片花瓣表示独立场域。共享根基，各自生长。
+                  以品格、向往与自己的道为花芯，五片花瓣表示独立场域。共享根基，各自创造。
                 </desc>
                 <defs>
                   <linearGradient id="hb-petal" x1="0" y1="0" x2="1" y2="1">
@@ -413,10 +418,10 @@ export default function HomePage() {
                     真实的人
                   </text>
                   <text x="250" y="247" fontSize="11">
-                    品格 · 向往 · 价值观
+                    品格 · 向往 · 自己的道
                   </text>
                   <text x="250" y="268" fontSize="8" letterSpacing="2" fill="#7b9c9d">
-                    SHARED ROOTS
+                    CREATE FREELY
                   </text>
                 </g>
                 <path
@@ -435,7 +440,7 @@ export default function HomePage() {
                   共享根基 · 保持独立
                 </text>
               </svg>
-              <figcaption>花型生态为共生理念示意，不代表在营项目或服务承诺。</figcaption>
+              <figcaption>花型示意自由创造者如何共享根基、各自生长。不代表在营项目或服务承诺。</figcaption>
             </figure>
           </div>
         </section>
@@ -443,14 +448,14 @@ export default function HomePage() {
         <section className="wave-section" id="rhythm" aria-labelledby="wave-title">
           <div className="wrap wave-grid">
             <div className="wave-copy">
-              <div className="eyebrow">04 / A lighter rhythm</div>
+              <div className="eyebrow">04 / A freer rhythm</div>
               <h2 id="wave-title">
-                像轻量的波，
+                创造有节奏，
                 <br />
-                相聚，也自在生活。
+                生活才自在。
               </h2>
               <p>
-                围绕一个有意义的话题相聚，带着新的理解回到自己的生活。分享一次经验，参与一场对话，或只是安静地听一听。让连接有温度，也有呼吸的空间。
+                真正的自由，不是不工作、不连接。围绕有意义的话题相聚，带着新的理解回到自己的生活。让创造有温度，也留出呼吸的空间。
               </p>
             </div>
             <div className="wave-visual">
@@ -494,7 +499,7 @@ export default function HomePage() {
                 <span>自由参与</span>
                 <span>回归日常</span>
               </div>
-              <div className="wave-caption">不必时刻在线，也能持续同行。</div>
+              <div className="wave-caption">按自己的节奏创造，也按自己的节奏生活。</div>
             </div>
           </div>
         </section>
@@ -502,16 +507,16 @@ export default function HomePage() {
         <section className="section wrap" id="community" aria-labelledby="community-title">
           <div className="community-grid">
             <div className="community-copy">
-              <div className="eyebrow">05 / Find your people</div>
+              <div className="eyebrow">05 / Free creators</div>
               <h2 id="community-title">
-                愿意长期做事的你，
+                愿意创造自由的你，
                 <br />
                 欢迎在这里相遇。
               </h2>
               <p>
-                你可以正在经营一份事业，也可以仍在探索自己的方向。带着真实的经历、好奇与善意，先从一次真诚的对话开始。
+                你可以正在经营一门自由生意，也可以仍在见自己、明其道。做自由职业、一人公司，或在原来的工作里要回更多自主，都算。不必人人创业。
               </p>
-              <p className="tagline">真诚 · 尊重 · 贡献 · 长期主义</p>
+              <p className="tagline">顺势而为 · 以人为本 · 知行合一 · 利他共生 · 长期主义</p>
             </div>
             <ul className="community-list">
               <li>
@@ -520,7 +525,7 @@ export default function HomePage() {
                 </span>
                 <div>
                   <h3>创业者与经营者</h3>
-                  <p>交流真实的经营体会，澄清方向，认识同样看重长期价值的人。</p>
+                  <p>交流真实的经营体会。一门自由生意，是能带来人生自由的生意。</p>
                 </div>
               </li>
               <li>
@@ -529,7 +534,7 @@ export default function HomePage() {
                 </span>
                 <div>
                   <h3>专业者与创造者</h3>
-                  <p>分享自己的知识与经验，探索 AI 如何融入学习、表达与创造。</p>
+                  <p>分享知识与经验，探索如何善用 AI 做表达、研究与创造。</p>
                 </div>
               </li>
               <li>
@@ -537,8 +542,8 @@ export default function HomePage() {
                   ⌁
                 </span>
                 <div>
-                  <h3>正在探索的星球居民</h3>
-                  <p>看见优势，打开认知，从一个问题、一个想法、一次小行动出发。</p>
+                  <h3>正在出发的自由创造者</h3>
+                  <p>见自己，明其道，从一个问题、一个想法、一次小行动出发。</p>
                 </div>
               </li>
             </ul>
@@ -550,19 +555,19 @@ export default function HomePage() {
             <div>
               <div className="eyebrow">An open invitation</div>
               <h2 id="join-title">
-                从认识彼此开始，
+                从见自己开始，
                 <br />
-                让长期的事慢慢发生。
+                让自由慢慢发生。
               </h2>
               <p>
-                注册成为自在星球的星球居民，一起聊成长、聊 AI、聊自由生意。
+                注册成为自由创造者。一起见自己、善用 AI、把向往写成生活。
                 <br />
-                看见自己，连接同频，成就彼此。
+                AI自由创造，创造自由生活。
               </p>
             </div>
             <div className="join-action">
               <a className="hb-btn" href="/join">
-                星球居民{" "}
+                成为自由创造者{" "}
                 <span className="arrow" aria-hidden="true">
                   ↗
                 </span>
@@ -583,14 +588,14 @@ export default function HomePage() {
                 <a href="/about">关于我们</a>。
                 登录后进
                 <a href="/garden">我的家园</a>
-                ，可参与居民内部交流与星球茶局。
+                ，登录后可参与创造者之间的交流与星球茶局。
                 具体活动时间以实际通知为准。
               </p>
             </details>
             <details>
               <summary>线上社区与线下合作，是什么关系？</summary>
               <p>
-                线上社区用于理念传播、认知交流与同频连接，不展示或承接具体商业项目。线下合作由相关参与方独立沟通、独立约定并自行负责；加入并不构成任何商业合作、交易或收益承诺。
+                线上用于理念、认知与同频连接，不展示或承接具体商业项目。自由生意的线下合作，由相关参与方独立沟通、独立约定并自行负责；加入并不构成任何商业合作、交易或收益承诺。
               </p>
             </details>
             <details>
@@ -603,9 +608,9 @@ export default function HomePage() {
         </section>
       </main>
       <div className="home-mobile-join">
-        <span>与长期做事的人同行</span>
+        <span>与自由创造者同行</span>
         <a className="hb-btn" href="/join">
-          星球居民 <span aria-hidden="true">↗</span>
+          成为自由创造者 <span aria-hidden="true">↗</span>
         </a>
       </div>
     </>

@@ -212,12 +212,12 @@ export default async function GardenPage({
         </div>
         {user ? (
           <>
-            <section className="share" aria-label="居民内部活动">
-              <div className="kicker">居民内部</div>
+            <section className="share" aria-label="创造者之间的活动">
+              <div className="kicker">创造者之间</div>
               <h2 className="serif" style={{ fontSize: 24, marginTop: 0 }}>
                 同频家园 · 星球茶局
               </h2>
-              <p className="help">仅登录居民可见。短分享在家园发帖；茶局在这里报名或提议。不做站外公开栏目。</p>
+              <p className="help">仅登录后可见。短分享在家园发帖；茶局在这里报名或提议。不做站外公开栏目。</p>
               <div className="two" style={{ gap: 16, marginTop: 12 }}>
                 <a className="share" href="#garden-compose" style={{ display: "block", textDecoration: "none", margin: 0 }}>
                   <div className="kicker">同频家园</div>
@@ -243,7 +243,7 @@ export default async function GardenPage({
                 </h2>
                 <a href="/community#compose">去同频家园看帖 →</a>
               </div>
-              <p className="help">居民内部短分享。发出后会先审核；通过后其他登录居民可见。没有打卡，没有排行。</p>
+              <p className="help">创造者之间的短分享。发出后会先审核；通过后其他登录的自由创造者可见。没有打卡，没有排行。</p>
               <div className="field">
                 <Label htmlFor="garden-topic">话题</Label>
                 <Input id="garden-topic" name="topic" defaultValue="生活日常" maxLength={16} />

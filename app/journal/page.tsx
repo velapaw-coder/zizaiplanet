@@ -5,7 +5,7 @@ import { formatWhen, one, optimizeRemoteImageUrl } from "@/lib/text";
 
 const JOURNAL_TITLE = "星球生活志";
 const JOURNAL_DESCRIPTION =
-  "自我探索、AI 时代的个人成长，走向自己的自由生意。文章由编辑发布，可收藏进家园。";
+  "见自己、善用AI、创造自由生活。文章由编辑发布，可收藏进家园。";
 
 export const metadata: Metadata = {
   title: JOURNAL_TITLE,
@@ -40,7 +40,7 @@ export default async function JournalPage({
         <div className="section-head left">
           <div className="kicker">PLANET JOURNAL</div>
           <h1 className="page-title">星球生活志</h1>
-          <p>自我探索、AI 时代的个人成长，走向自己的自由生意。文章由编辑发布，可收藏进家园。</p>
+          <p>见自己、善用AI、创造自由生活。文章由编辑发布，可收藏进家园。</p>
         </div>
         <Notice text={one(params.notice)} />
         {articles.length === 0 ? <div className="warn">还没有文章。</div> : null}

@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     const qrUrl = (await getCommunityWecomQrUrl());
     const qrPath = qrUrl.startsWith("/") ? qrUrl : "/community-wecom-qr.png";
 
-    let displayName = "星球居民";
+    let displayName = "自由创造者";
     let experience = "";
     let expertise = "";
     let direction = "";
@@ -30,7 +30,7 @@ export async function GET(request: Request) {
       if (!pub) {
         return Response.json({ error: "该向往页未公开或不存在。" }, { status: 404 });
       }
-      displayName = pub.displayName || "星球居民";
+      displayName = pub.displayName || "自由创造者";
       experience = pub.experience || "";
       expertise = pub.expertise || "";
       direction = pub.direction || "";
@@ -48,7 +48,7 @@ export async function GET(request: Request) {
       if (!profile) {
         return Response.json({ error: "还没有向往内容，请先保存或重新生成。" }, { status: 400 });
       }
-      displayName = user.display_name || "星球居民";
+      displayName = user.display_name || "自由创造者";
       experience = profile.experience || "";
       expertise = profile.expertise || "";
       direction = profile.direction || "";
