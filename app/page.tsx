@@ -1,3 +1,8 @@
+import type { Metadata } from "next";
+import { PAGE_COPY, pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta(PAGE_COPY.home);
+
 export default function HomePage() {
   return (
     <>
@@ -561,6 +566,11 @@ export default function HomePage() {
                 注册成为自由创造者。一起见自己、善用 AI、把向往写成生活。
                 <br />
                 AI自由创造，创造自由生活。
+              </p>
+              <p>
+                想先读一读，去
+                <a href="/journal">创造手记</a>
+                ：见自己、善用AI、创造自由生活的文章。
               </p>
             </div>
             <div className="join-action">

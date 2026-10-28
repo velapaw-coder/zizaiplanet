@@ -4,9 +4,21 @@ import { Notice } from "@/components/cards";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@/lib/auth";
 import { getResource, isClaimed } from "@/lib/content";
-import { one, optimizeRemoteImageUrl } from "@/lib/text";
+import { PAGE_COPY, pageMeta } from "@/lib/seo";
+import { clip, one, optimizeRemoteImageUrl } from "@/lib/text";
 
-export const metadata: Metadata = { title: "善用AI" };
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const resource = await getResource(slug);
+  if (!resource) return pageMeta({ ...PAGE_COPY.energy, path: `/energy/${slug}`, noindex: true });
+  return pageMeta({
+    title: resource.title,
+    description: clip(resource.summary || resource.body, 110).replace(/…$/, "") || PAGE_COPY.energy.description,
+    path: `/energy/${resource.slug}`,
+    image: resource.cover,
+    imageAlt: resource.title,
+  });
+}
 
 function renderBlocks(body: string) {
   return body.split(/\n\n+/).map((block, index) => {

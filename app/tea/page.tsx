@@ -6,9 +6,15 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { currentUser } from "@/lib/auth";
 import { listEvents, myProposals } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
 import { formatWhen, one } from "@/lib/text";
 
-export const metadata: Metadata = { title: "星球茶局" };
+export const metadata: Metadata = pageMeta({
+  title: "星球茶局",
+  description: "创造者之间的茶局，登录后可见。",
+  path: "/tea",
+  noindex: true,
+});
 
 export default async function TeaPage({
   searchParams,

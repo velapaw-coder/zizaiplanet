@@ -12,9 +12,15 @@ import { gardenLists, savedHome } from "@/lib/content";
 import { buildExploreView } from "@/lib/explore";
 import { EXPLORE_COOKIE } from "@/lib/http";
 import { ROOMS } from "@/lib/rooms";
+import { pageMeta } from "@/lib/seo";
 import { formatWhen, one, postStatusLabel, roleLabel } from "@/lib/text";
 
-export const metadata: Metadata = { title: "家园后台" };
+export const metadata: Metadata = pageMeta({
+  title: "家园后台",
+  description: "登录后管理自己的创造者家园。",
+  path: "/garden/settings",
+  noindex: true,
+});
 
 export default async function GardenSettingsPage({
   searchParams,

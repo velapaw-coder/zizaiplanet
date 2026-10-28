@@ -27,7 +27,6 @@ export function SiteFooter() {
             </div>
             <div className="footer-col">
               <strong>更多</strong>
-              <a href="/energy">善用AI</a>
               <a href="/garden">创造者家园</a>
               <a href="/join">成为自由创造者</a>
             </div>

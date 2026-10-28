@@ -4,8 +4,8 @@ import { Notice } from "@/components/cards";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@/lib/auth";
 import { getArticle, isFavorite } from "@/lib/content";
-import { siteOrigin } from "@/lib/origin";
-import { absoluteUrl, clip, formatWhen, one, optimizeRemoteImageUrl } from "@/lib/text";
+import { PAGE_COPY, articleJsonLd, jsonLdScript, pageMeta } from "@/lib/seo";
+import { clip, formatWhen, one, optimizeRemoteImageUrl } from "@/lib/text";
 
 /** Remote URLs stay remote; site paths such as /images/journal/... render as figures too. */
 function articleImage(block: string) {
@@ -15,32 +15,25 @@ function articleImage(block: string) {
   return { alt: match[1] || "", src: match[2] };
 }
 
+function articleDescription(article: { summary: string; body: string; topic: string }) {
+  return clip(article.summary || article.body || article.topic, 110).replace(/…$/, "") || article.topic;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticle(slug);
-  if (!article) return { title: "创造手记" };
-  const origin = await siteOrigin();
-  const title = article.title;
-  const description =
-    clip(article.summary || article.body || article.topic, 110).replace(/…$/, "") || article.topic;
-  const cover = absoluteUrl(article.cover, origin);
-  const image = cover || `${origin}/og-default.png`;
-  const url = `${origin}/journal/${article.slug}`;
-  return {
-    title,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      title,
-      description,
-      url,
-      siteName: "自在星球",
-      locale: "zh_CN",
-      type: "article",
-      images: [{ url: image, alt: title }],
-    },
-    twitter: { card: "summary_large_image", title, description, images: [image] },
-  };
+  if (!article) {
+    return pageMeta({ ...PAGE_COPY.journal, path: `/journal/${slug}`, noindex: true });
+  }
+  return pageMeta({
+    title: article.title,
+    description: articleDescription(article),
+    path: `/journal/${article.slug}`,
+    type: "article",
+    image: article.cover,
+    imageAlt: article.title,
+    publishedTime: article.published_at,
+  });
 }
 
 export default async function ArticlePage({
@@ -56,8 +49,23 @@ export default async function ArticlePage({
   if (!article) notFound();
   const user = await currentUser();
   const saved = await isFavorite(user?.id, "article", article.id);
+  const description = articleDescription(article);
   return (
     <main className="section tight">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdScript(
+            articleJsonLd({
+              title: article.title,
+              description,
+              path: `/journal/${article.slug}`,
+              image: article.cover,
+              datePublished: article.published_at,
+            }),
+          ),
+        }}
+      />
       <div className="wrap">
         <a className="help" href="/journal">
           ← 创造手记

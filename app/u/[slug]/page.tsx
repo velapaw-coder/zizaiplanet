@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { AspirationDocument } from "@/components/aspiration-document";
 import { aspirationHasContent, aspirationShareText } from "@/lib/aspiration";
 import { getPublicProfileBySlug } from "@/lib/profile";
+import { pageMeta } from "@/lib/seo";
 import { formatWhen } from "@/lib/text";
 
 export async function generateMetadata({
@@ -12,12 +13,24 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const profile = await getPublicProfileBySlug(slug).catch(() => null);
-  if (!profile) return { title: "我的向往" };
-  const desc = aspirationShareText(profile.aspiration) || profile.direction || profile.expertise || "自在星球 · 我的向往";
-  return {
-    title: `${profile.displayName}`,
+  if (!profile) {
+    return pageMeta({
+      title: "我的向往",
+      description: "这位创造者的向往页还没有公开。",
+      path: `/u/${slug}`,
+      noindex: true,
+    });
+  }
+  const desc =
+    aspirationShareText(profile.aspiration) ||
+    profile.direction ||
+    profile.expertise ||
+    "自在星球上的一页向往。以道驭AI，以创造得自由。";
+  return pageMeta({
+    title: profile.displayName,
     description: desc.slice(0, 120),
-  };
+    path: `/u/${profile.slug}`,
+  });
 }
 
 export default async function PublicProfilePage({ params }: { params: Promise<{ slug: string }> }) {

@@ -1,31 +1,13 @@
 import type { Metadata } from "next";
 import { Notice } from "@/components/cards";
 import { listArticles } from "@/lib/content";
+import { PAGE_COPY, pageMeta } from "@/lib/seo";
 import { formatWhen, one, optimizeRemoteImageUrl } from "@/lib/text";
 
-const JOURNAL_TITLE = "创造手记";
-const JOURNAL_DESCRIPTION =
-  "见自己、善用AI、创造自由生活。文章由编辑发布，可收藏进创造者家园。";
+const JOURNAL_TITLE = PAGE_COPY.journal.title;
+const JOURNAL_DESCRIPTION = PAGE_COPY.journal.description;
 
-export const metadata: Metadata = {
-  title: JOURNAL_TITLE,
-  description: JOURNAL_DESCRIPTION,
-  openGraph: {
-    title: `${JOURNAL_TITLE} · 自在星球`,
-    description: JOURNAL_DESCRIPTION,
-    url: "/journal",
-    type: "website",
-    locale: "zh_CN",
-    siteName: "自在星球",
-    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "自在星球" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${JOURNAL_TITLE} · 自在星球`,
-    description: JOURNAL_DESCRIPTION,
-    images: ["/og-default.png"],
-  },
-};
+export const metadata: Metadata = pageMeta(PAGE_COPY.journal);
 
 export default async function JournalPage({
   searchParams,
@@ -41,6 +23,9 @@ export default async function JournalPage({
           <div className="kicker">PLANET JOURNAL</div>
           <h1 className="page-title">{JOURNAL_TITLE}</h1>
           <p>{JOURNAL_DESCRIPTION}</p>
+          <p className="help">
+            从 <a href="/explore">见自己</a> 开始，方法在 <a href="/energy">善用AI</a>。
+          </p>
         </div>
         <Notice text={one(params.notice)} />
         {articles.length === 0 ? <div className="warn">还没有文章。</div> : null}
@@ -55,9 +40,9 @@ export default async function JournalPage({
               />
               <div className="article-body">
                 <div className="topic">{article.topic}</div>
-                <h3>
+                <h2>
                   <a href={`/journal/${article.slug}`}>{article.title}</a>
-                </h3>
+                </h2>
                 <p>{article.summary}</p>
                 <p className="help">{formatWhen(article.published_at)}</p>
                 <a className="read" href={`/journal/${article.slug}`}>

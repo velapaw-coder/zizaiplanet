@@ -3,9 +3,15 @@ import { Notice } from "@/components/cards";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { pageMeta } from "@/lib/seo";
 import { one } from "@/lib/text";
 
-export const metadata: Metadata = { title: "设置新密码" };
+export const metadata: Metadata = pageMeta({
+  title: "设置新密码",
+  description: "为自在星球账号设置新密码。",
+  path: "/auth/reset",
+  noindex: true,
+});
 
 export default async function ResetPage({
   searchParams,

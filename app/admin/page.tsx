@@ -8,9 +8,15 @@ import { currentUser } from "@/lib/auth";
 import { adminSnapshot } from "@/lib/content";
 import { adminLlmStatus } from "@/lib/llm";
 import { getCommunityWecomQrUrl } from "@/lib/site-settings";
+import { pageMeta } from "@/lib/seo";
 import { formatWhen, one } from "@/lib/text";
 
-export const metadata: Metadata = { title: "运营" };
+export const metadata: Metadata = pageMeta({
+  title: "运营",
+  description: "自在星球运营后台。",
+  path: "/admin",
+  noindex: true,
+});
 
 export default async function AdminPage({
   searchParams,
