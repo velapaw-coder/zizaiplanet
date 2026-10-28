@@ -10,14 +10,12 @@ export default function HomePage() {
                 <h1 id="hero-title">
                   AI时代，
                   <br />
-                  以创造
+                  以AI自由创造，
                   <br />
-                  <span>获得人生自由</span>
+                  <span>创造自由生活</span>
                 </h1>
                 <p>
                   以道驭AI，以创造得自由。
-                  <br />
-                  AI自由创造，创造自由生活。
                   <br />
                   自由生意，是能带来人生自由的事业。
                 </p>
