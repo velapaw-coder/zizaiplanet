@@ -4,7 +4,7 @@ const PATH_STEPS = [
   {
     n: "1",
     href: "/explore",
-    title: "认识自己",
+    title: "见自己",
     desc: "走完七维自我探索卡。",
   },
   {

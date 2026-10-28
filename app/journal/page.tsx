@@ -3,9 +3,9 @@ import { Notice } from "@/components/cards";
 import { listArticles } from "@/lib/content";
 import { formatWhen, one, optimizeRemoteImageUrl } from "@/lib/text";
 
-const JOURNAL_TITLE = "星球生活志";
+const JOURNAL_TITLE = "创造手记";
 const JOURNAL_DESCRIPTION =
-  "见自己、善用AI、创造自由生活。文章由编辑发布，可收藏进家园。";
+  "见自己、善用AI、创造自由生活。文章由编辑发布，可收藏进创造者家园。";
 
 export const metadata: Metadata = {
   title: JOURNAL_TITLE,
@@ -39,8 +39,8 @@ export default async function JournalPage({
       <div className="wrap">
         <div className="section-head left">
           <div className="kicker">PLANET JOURNAL</div>
-          <h1 className="page-title">星球生活志</h1>
-          <p>见自己、善用AI、创造自由生活。文章由编辑发布，可收藏进家园。</p>
+          <h1 className="page-title">{JOURNAL_TITLE}</h1>
+          <p>{JOURNAL_DESCRIPTION}</p>
         </div>
         <Notice text={one(params.notice)} />
         {articles.length === 0 ? <div className="warn">还没有文章。</div> : null}

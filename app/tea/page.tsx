@@ -29,10 +29,10 @@ export default async function TeaPage({
           <div className="warn">
             请先
             <a href="/join?login=1&next=/tea">登录 / 成为自由创造者</a>
-            ，再从「我的家园」进入茶局。
+            ，再从「创造者家园」进入茶局。
           </div>
           <p className="help">
-            <a href="/garden">回我的家园</a>
+            <a href="/garden">回创造者家园</a>
             {" · "}
             <a href="/">回首页</a>
           </p>
@@ -51,7 +51,7 @@ export default async function TeaPage({
           <p>轻一点的相聚。报名和取消都随意，提议会先经过审核。通过之后，提议人会成为茶主。</p>
         </div>
         <p className="help">
-          <a href="/garden">← 回我的家园</a>
+          <a href="/garden">← 回创造者家园</a>
         </p>
         <Notice text={one(params.notice)} />
         {events.length === 0 ? <div className="warn">现在没有公开的茶局。</div> : null}

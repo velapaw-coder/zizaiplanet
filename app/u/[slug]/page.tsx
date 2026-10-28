@@ -43,7 +43,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
                 下载向往 PDF
               </a>
               <a href="/join">成为自由创造者</a>
-              <a href="/explore">我也开始认识自己</a>
+              <a href="/explore">我也去见自己</a>
               <a href="/">了解自在星球</a>
             </div>
           </footer>

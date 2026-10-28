@@ -188,7 +188,7 @@ export default function HomePage() {
               </div>
               <h3>见自己</h3>
               <p>
-                从经历、品格与生活向往里，辨认真正擅长的事。认识自己，才知道哪一条路是自己的，而不是别人的成功模板。
+                从经历、品格与生活向往里，辨认真正擅长的事。见自己，才知道哪一条路是自己的，而不是别人的成功模板。
               </p>
               <p className="prompt">我是谁，愿意为谁创造价值？</p>
             </article>
@@ -578,14 +578,14 @@ export default function HomePage() {
               <summary>加入之后，可以参与什么？</summary>
               <p>
                 顶栏：
-                <a href="/explore">认识自己</a>、
+                <a href="/explore">见自己</a>、
                 <a href="/partner">AI分身</a>、
-                <a href="/energy">AI能量站</a>、
-                <a href="/journal">星球生活志</a>、
+                <a href="/energy">善用AI</a>、
+                <a href="/journal">创造手记</a>、
                 <a href="/profile">我的向往</a>、
                 <a href="/about">关于我们</a>。
                 登录后进
-                <a href="/garden">我的家园</a>
+                <a href="/garden">创造者家园</a>
                 ，登录后可参与创造者之间的交流与星球茶局。
                 具体活动时间以实际通知为准。
               </p>

@@ -57,7 +57,7 @@ export default async function PostPage({
           <div className="warn">
             帖子仅登录后的自由创造者可见。请先
             <a href={`/join?login=1&next=/community/${id}`}>登录</a>
-            ，或从 <a href="/garden">我的家园</a> 进入。
+            ，或从 <a href="/garden">创造者家园</a> 进入。
           </div>
         </div>
       </main>

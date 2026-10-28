@@ -31,10 +31,10 @@ export default async function CommunityPage({
           <div className="warn">
             请先
             <a href="/join?login=1&next=/community">登录 / 成为自由创造者</a>
-            ，再从「我的家园」进入同频交流。
+            ，再从「创造者家园」进入同频交流。
           </div>
           <p className="help">
-            <a href="/garden">回我的家园</a>
+            <a href="/garden">回创造者家园</a>
             {" · "}
             <a href="/">回首页</a>
           </p>
@@ -51,10 +51,10 @@ export default async function CommunityPage({
         <div className="section-head left">
           <div className="kicker">同频家园</div>
           <h1 className="page-title">同频家园</h1>
-          <p>创造者之间的短分享与轻量讨论。没有打卡，没有排行，也不做站内项目撮合。也可在「我的家园」发帖。</p>
+          <p>创造者之间的短分享与轻量讨论。没有打卡，没有排行，也不做站内项目撮合。也可在「创造者家园」发帖。</p>
         </div>
         <p className="help">
-          <a href="/garden#garden-compose">← 回我的家园发帖</a>
+          <a href="/garden#garden-compose">← 回创造者家园发帖</a>
           {" · "}
           <a href="/tea">星球茶局</a>
         </p>
