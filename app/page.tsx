@@ -13,11 +13,11 @@ export default function HomePage() {
               <div className="hero-copy">
                 <div className="eyebrow">AI creates freedom</div>
                 <h1 id="hero-title">
-                  AI时代，
+                  AI 时代，
                   <br />
-                  以AI自由创造，
+                  让每个人活成
                   <br />
-                  <span>创造自由生活</span>
+                  <span>自己向往的自由</span>
                 </h1>
                 <p>
                   以道驭AI，以创造得自由。
