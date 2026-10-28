@@ -13,7 +13,7 @@ INSERT INTO resources (id, slug, title, summary, category, body, prompt, icon, c
   '对话模型',
   '## 这篇解决什么
 
-对话模型是个人长期生意里最高频的效率工具。本篇目标：30–60 分钟内，让 ChatGPT 与 Claude（或国内备用）都能登录、写中文、分好项目文件夹，并完成一次真实改写任务。
+对话模型是个人自由生意里最高频的效率工具。本篇目标：30–60 分钟内，让 ChatGPT 与 Claude（或国内备用）都能登录、写中文、分好项目文件夹，并完成一次真实改写任务。
 
 ![笔记本与 AI 对话界面](https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80)
 
@@ -134,7 +134,7 @@ INSERT INTO resources (id, slug, title, summary, category, body, prompt, icon, c
 
 ## 适用场景
 
-服务报价、合作一页纸、访谈后跟进、范围变更说明。长期生意里，这是最高频的交付前沟通。
+服务报价、合作一页纸、访谈后跟进、范围变更说明。自由生意里，这是最高频的交付前沟通。
 
 ## 怎么用下面的模板
 
@@ -483,7 +483,7 @@ INSERT INTO resources (id, slug, title, summary, category, body, prompt, icon, c
 
 ## 适用场景
 
-个人咨询、陪跑、定制服务等需要反复对齐需求的长期生意。
+个人咨询、陪跑、定制服务等需要反复对齐需求的自由生意。
 
 ## 怎么用下面的模板
 
@@ -659,7 +659,7 @@ INSERT INTO resources (id, slug, title, summary, category, body, prompt, icon, c
 
 ## 适用场景
 
-主业 + 副线验证长期生意时，保护交付与边界。
+主业 + 副线验证自由生意时，保护交付与边界。
 
 ## 怎么用下面的模板
 

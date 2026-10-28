@@ -148,7 +148,7 @@ export function WelcomeCard({
           </span>
           <small>ZIZAI PLANET</small>
         </div>
-        <p className="welcome-path-lead">AI 时代，帮每个人找到自己的长期生意。</p>
+        <p className="welcome-path-lead">AI 时代，帮每个人找到自己的自由生意。</p>
         <ol className="welcome-steps">
           {PATH_STEPS.map((step) => (
             <li key={step.n}>

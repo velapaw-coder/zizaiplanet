@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = { title: "关于我们" };
 
 const STORY = [
-  "自在星球想陪人做长期的事。看见自己 · 连接同频 · 共创长期生意。这是 AI 时代的长期生意共创生态：先看清自己，再把能力用明白，把经验留下来，与同频的人待在同一个场域。",
+  "自在星球想陪人做长期的事。看见自己 · 连接同频 · 共创自由生意。这是 AI 时代的自由生意共创生态：先看清自己，再把能力用明白，把经验留下来，与同频的人待在同一个场域。",
   "见自己，是七维自我探索。放大力，是 AI 能力成长，判断仍由自己做。认知分享留下文章和社区里的短记。同频与波，是茶局这样的交流场域。生活的样子不写在口号里，它留在你自己的探索之后。",
   "我们寻找愿意慢慢来的星球居民。不必一次想清全部，愿意看见自己，也愿意留下真实经验，就可以开始。线上提供认知、关系与场域。合作由成员线下独立协商。这里不做撮合，也不为交易或收益背书。",
 ];
@@ -16,10 +16,10 @@ export default function AboutPage() {
           <div className="kicker">ABOUT</div>
           <h1 className="page-title">关于我们</h1>
           <p className="serif" style={{ fontSize: 22, lineHeight: 1.7, marginBottom: 8 }}>
-            看见自己 · 连接同频 · 共创长期生意
+            看见自己 · 连接同频 · 共创自由生意
           </p>
           <p className="help" style={{ fontSize: 14 }}>
-            AI 时代的长期生意共创生态
+            AI 时代的自由生意共创生态
           </p>
         </div>
 

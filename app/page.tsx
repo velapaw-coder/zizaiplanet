@@ -6,13 +6,13 @@ export default function HomePage() {
           <div className="wrap">
             <div className="hero-grid">
               <div className="hero-copy">
-                <div className="eyebrow">A home for long-term creators</div>
+                <div className="eyebrow">A business that frees your life</div>
                 <h1 id="hero-title">
                   AI时代，
                   <br />
                   帮每个人找到
                   <br />
-                  <span>属于自己的长期生意</span>
+                  <span>属于自己的自由生意</span>
                 </h1>
                 <p>
                   通过自我探索、AI赋能与同频连接，看见真实需求，
@@ -26,10 +26,10 @@ export default function HomePage() {
                     </span>
                   </a>
                   <a className="text-link" href="#philosophy">
-                    认识长期生意 <span aria-hidden="true">↓</span>
+                    认识自由生意 <span aria-hidden="true">↓</span>
                   </a>
                 </div>
-                <div className="hero-note">看见自己 · 连接同频 · 找到长期生意</div>
+                <div className="hero-note">看见自己 · 连接同频 · 找到自由生意</div>
               </div>
               <div
                 className="planet-scene"
@@ -113,7 +113,7 @@ export default function HomePage() {
               <div className="eyebrow">Watch · Intro</div>
               <h2 id="intro-video-title">认识自在星球</h2>
               <p>
-                看见自己 · 连接同频 · 找到长期生意。
+                看见自己 · 连接同频 · 找到自由生意。
                 <br />
                 一段宽屏介绍，帮你快速了解我们在做什么。
               </p>
@@ -144,7 +144,7 @@ export default function HomePage() {
               关系，在时间里慢慢长出来。
             </h2>
             <p>
-              自在星球，是一个关于「AI时代的长期生意」的交流社区。我们相信，一门值得长期经营的生意，生长于真实的能力、被理解的需求，以及一次次兑现的承诺。先找到自己，再找到值得一起走下去的人。
+              自在星球，是一个关于「AI时代的自由生意」的交流社区。我们相信，一门能带来人生自由的生意，生长于真实的能力、被理解的需求，以及一次次兑现的承诺。先找到自己，再找到值得一起走下去的人。
             </p>
           </div>
         </section>
@@ -249,7 +249,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <p>
-                长期生意的起点，是一个值得解决的问题。先听见需要，再理解能力；让每一次行动创造价值，让价值慢慢积累成信任。
+                自由生意的起点，是一个值得解决的问题。先听见需要，再理解能力；让每一次行动创造价值，让价值慢慢积累成信任。
               </p>
             </div>
             <div className="flow">
@@ -292,7 +292,7 @@ export default function HomePage() {
             </div>
             <div className="flow-foot">
               <strong>人 → 需求 → 能力 → 价值 → 信任 → 新的连接</strong>
-              <span>这里分享长期生意的理念与方法；具体合作在线下独立开展。</span>
+              <span>这里分享自由生意的理念与方法；具体合作在线下独立开展。</span>
             </div>
           </div>
         </section>
@@ -555,7 +555,7 @@ export default function HomePage() {
                 让长期的事慢慢发生。
               </h2>
               <p>
-                注册成为自在星球的星球居民，一起聊成长、聊 AI、聊长期生意。
+                注册成为自在星球的星球居民，一起聊成长、聊 AI、聊自由生意。
                 <br />
                 看见自己，连接同频，成就彼此。
               </p>
