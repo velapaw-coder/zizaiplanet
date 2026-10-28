@@ -1,5 +1,26 @@
 import { formatJoinDotDate, residentNumber, roleLabel } from "@/lib/text";
 
+const PATH_STEPS = [
+  {
+    n: "1",
+    href: "/explore",
+    title: "认识自己",
+    desc: "走完七维自我探索卡。",
+  },
+  {
+    n: "2",
+    href: "/partner",
+    title: "做分身",
+    desc: "基于探索，认清起点与方向。",
+  },
+  {
+    n: "3",
+    href: "/profile",
+    title: "形成向往",
+    desc: "把想做的长期事写清楚。",
+  },
+] as const;
+
 const BENEFITS = [
   {
     href: "/explore",
@@ -9,18 +30,18 @@ const BENEFITS = [
     desc: "看见更多可能的自己",
   },
   {
-    href: "/energy",
-    icon: "🤖",
+    href: "/partner",
+    icon: "🪞",
     tone: "blue",
-    title: "AI能量站",
-    desc: "工具与操作手册，照着做",
+    title: "AI分身",
+    desc: "基于探索，认清起点与方向",
   },
   {
-    href: "/tea",
-    icon: "☕",
+    href: "/profile",
+    icon: "🌟",
     tone: "purple",
-    title: "星球茶局",
-    desc: "遇见有趣的灵魂",
+    title: "我的向往",
+    desc: "明确想做的事，形成可分享主页",
   },
   {
     href: "/garden#garden-compose",
@@ -118,6 +139,31 @@ export function WelcomeCard({
         <p className="welcome-identity-foot">
           从今天起，你将与一群真诚、开放、长期主义的同行者，一起探索更自在的生活方式。
         </p>
+      </div>
+
+      <div className="welcome-glass welcome-path" aria-label="进站流程">
+        <div className="welcome-glass-head">
+          <span>
+            <i aria-hidden="true">→</i> 在星球里怎么走
+          </span>
+          <small>ZIZAI PLANET</small>
+        </div>
+        <p className="welcome-path-lead">AI 时代，帮每个人找到自己的长期生意。</p>
+        <ol className="welcome-steps">
+          {PATH_STEPS.map((step) => (
+            <li key={step.n}>
+              <a className="welcome-step" href={step.href}>
+                <span className="welcome-step-num" aria-hidden="true">
+                  {step.n}
+                </span>
+                <span>
+                  <b>{step.title}</b>
+                  <small>{step.desc}</small>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ol>
       </div>
 
       <div className="welcome-glass benefits-glass">
