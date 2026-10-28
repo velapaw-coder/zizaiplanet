@@ -7,6 +7,14 @@ import { getArticle, isFavorite } from "@/lib/content";
 import { siteOrigin } from "@/lib/origin";
 import { absoluteUrl, clip, formatWhen, one, optimizeRemoteImageUrl } from "@/lib/text";
 
+/** Remote URLs stay remote; site paths such as /images/journal/... render as figures too. */
+function articleImage(block: string) {
+  const collapsed = block.replace(/\s+/g, " ").trim();
+  const match = /^!\[(.*?)\]\((https?:\/\/[^)\s]+|\/[^)\s]+)\)\s*$/.exec(collapsed);
+  if (!match) return null;
+  return { alt: match[1] || "", src: match[2] };
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticle(slug);
@@ -64,12 +72,12 @@ export default async function ArticlePage({
         <div className="prose">
           {article.body.split(/\n\n+/).map((block, index) => {
             const trimmed = block.trim();
-            const image = /^!\[(.*?)\]\((https?:\/\/[^)\s]+)\)\s*$/m.exec(trimmed);
-            if (image && trimmed.replace(/\s+/g, " ").match(/^!\[.*?\]\(https?:\/\/[^)\s]+\)$/)) {
+            const image = articleImage(trimmed);
+            if (image) {
               return (
                 <figure className="prose-figure" key={`img-${index}`}>
-                  <img src={optimizeRemoteImageUrl(image[2], { width: 1200, quality: 72 })} alt={image[1] || ""} loading="lazy" decoding="async" />
-                  {image[1] ? <figcaption>{image[1]}</figcaption> : null}
+                  <img src={optimizeRemoteImageUrl(image.src, { width: 1200, quality: 72 })} alt={image.alt} loading="lazy" decoding="async" />
+                  {image.alt ? <figcaption>{image.alt}</figcaption> : null}
                 </figure>
               );
             }
