@@ -1,0 +1,13 @@
+UPDATE resources SET cover = '/images/energy/ai-news-sources-follow.webp' WHERE slug = 'ai-news-sources-follow';
+UPDATE resources SET cover = '/images/energy/ai-image-tools-start.webp' WHERE slug = 'ai-image-tools-start';
+UPDATE resources SET cover = '/images/energy/ai-weekly-plan-timebox.webp' WHERE slug = 'ai-weekly-plan-timebox';
+UPDATE resources SET cover = '/images/energy/ai-short-copy-workflow.webp' WHERE slug = 'ai-short-copy-workflow';
+UPDATE resources SET cover = '/images/energy/ai-video-tools-start.webp' WHERE slug = 'ai-video-tools-start';
+UPDATE resources SET cover = '/images/energy/chatgpt-claude-setup.webp' WHERE slug = 'chatgpt-claude-setup';
+UPDATE resources SET cover = '/images/energy/notion-ai-client-notes.webp' WHERE slug = 'notion-ai-client-notes';
+UPDATE resources SET cover = '/images/energy/weekly-content-pipeline.webp' WHERE slug = 'weekly-content-pipeline';
+UPDATE resources SET cover = '/images/energy/personal-prompt-library.webp' WHERE slug = 'personal-prompt-library';
+UPDATE resources SET cover = '/images/energy/ollama-local-start.webp' WHERE slug = 'ollama-local-start';
+UPDATE resources SET cover = '/images/energy/ai-personal-page-workflow.webp' WHERE slug = 'ai-personal-page-workflow';
+UPDATE resources SET cover = '/images/energy/ai-client-draft-workflow.webp' WHERE slug = 'ai-client-draft-workflow';
+UPDATE resources SET cover = '/images/energy/meeting-transcript-tools.webp' WHERE slug = 'meeting-transcript-tools';

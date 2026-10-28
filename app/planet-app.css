@@ -1,0 +1,735 @@
+.logo-img-wrap{
+  width:44px;height:44px;border-radius:50%;overflow:hidden;flex:none;
+  border:1px solid rgba(42,155,143,.28);background:transparent;
+  box-shadow:0 4px 14px rgba(22,78,86,.08);
+}
+.footer .logo-img-wrap{border-color:rgba(255,255,255,.45);background:transparent;box-shadow:none}
+.logo-img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:transparent}
+.page-title{font:500 clamp(32px,4vw,46px)/1.45 "Songti SC","STSong","SimSun","Noto Serif SC",serif;letter-spacing:1px;margin:8px 0 12px}
+.section.tight{padding-top:48px;padding-bottom:72px}
+.section-head.left{text-align:left}
+.stack{display:flex;flex-direction:column;gap:14px}
+.row-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}
+.help{font-size:12px;color:#6D8B92;line-height:1.8}
+.warn{background:#E7F3F8;color:#3D6670;border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.8}
+.prose{max-width:720px;font-size:15px;line-height:2;color:#2C5560}
+.prose p{margin:0 0 16px}
+.prose-figure{margin:8px 0 28px}
+.prose-figure img{display:block;width:100%;max-width:100%;height:auto;border-radius:12px;border:1px solid #DCE8EA;box-shadow:0 10px 28px rgba(22,78,86,.06)}
+.prose-figure figcaption{margin-top:8px;font-size:12px;color:#6D8B92;line-height:1.7}
+.cover{height:320px;border-radius:10px;background-size:cover;background-position:center;margin:18px 0 28px}
+.explore-layout{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:start}
+.progress-card{position:sticky;top:96px;background:#fff;border:1px solid #DCE8EA;border-radius:16px;padding:16px;box-shadow:0 10px 28px rgba(22,78,86,.06)}
+.progress-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#3D6670;margin:8px 0}
+.progress-item.current{color:#2A9B8F;font-weight:600}
+.dot{width:8px;height:8px;border-radius:50%;background:#D4E4E8;margin-top:6px;flex:none}
+.dot.on{background:#2A9B8F}
+.timeline{display:flex;flex-direction:column;gap:12px;margin:8px 0 22px}
+.bubble{max-width:680px;padding:14px 16px;border-radius:12px;line-height:1.85;font-size:14px}
+.bubble.guide,.bubble.q{background:#fff;border:1px solid #DCE8EA}
+.bubble.q{font-family:"Songti SC","STSong","SimSun","Noto Serif SC",serif}
+.bubble.you{background:#E5F4F2;margin-left:auto}
+.q-panel{background:#fff;border:1px solid #DCE8EA;border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(22,78,86,.06)}
+.room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.room-tile{border:1px solid #DCE8EA;background:#fff;border-radius:18px;padding:18px 16px;min-height:180px;box-shadow:0 10px 28px rgba(22,78,86,.05)}
+.room-tile.lit{background:#F3FAF9;border-color:#C5E0DE}
+.room-tile h3{font-family:"Songti SC","STSong","SimSun","Noto Serif SC",serif;font-size:18px;margin:6px 0}
+.seven i.lit{background:#2A9B8F}
+.seven i.dim{background:#E3EEF0}
+.mini-card{margin-top:8px}
+.linkish{background:none;border:0;padding:0;color:#3D6670;font-size:13px;cursor:pointer}
+.admin-table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
+.admin-table th,.admin-table td{border-bottom:1px solid #DCE8EA;text-align:left;padding:10px 8px;vertical-align:top}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+.comment{padding:12px 0;border-top:1px dashed #D4E4E8}
+@media(max-width:800px){
+  .explore-layout,.two{grid-template-columns:1fr}
+  .progress-card{position:static}
+  .cover{height:220px}
+  .prose-figure{margin:4px 0 22px}
+  .prose-figure img{border-radius:10px}
+}
+
+/* —— 星球居民欢迎卡 —— */
+.welcome-card{
+  position:relative;overflow:hidden;border-radius:24px;
+  border:1px solid rgba(255,255,255,.55);
+  background:
+    linear-gradient(165deg,rgba(248,252,253,.55) 0%,rgba(230,247,244,.72) 42%,rgba(214,236,248,.78) 100%);
+  box-shadow:0 22px 60px rgba(22,78,86,.12);
+  padding:28px 26px 22px;color:#164E56;
+}
+.welcome-card-sky{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(420px 260px at 88% 8%,rgba(90,200,210,.45),transparent 60%),
+    radial-gradient(280px 180px at 12% 18%,rgba(255,255,255,.65),transparent 55%),
+    linear-gradient(180deg,rgba(232,247,250,.35),rgba(232,247,250,0) 38%);
+}
+.welcome-card-planet{
+  position:absolute;right:6%;top:18px;width:110px;height:110px;border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 30%,#e8fffb 0%,#5ec8c4 38%,#2A9B8F 70%,#1a6e78 100%);
+  box-shadow:0 0 40px rgba(90,200,210,.55),inset -10px -12px 24px rgba(22,78,86,.25);
+}
+.welcome-card-planet:before{
+  content:"";position:absolute;left:-18%;top:46%;width:136%;height:22px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.55);border-left-color:transparent;border-right-color:transparent;
+  transform:rotate(-18deg);box-shadow:0 0 8px rgba(255,255,255,.35);
+}
+.welcome-card-script{
+  position:absolute;right:8%;top:132px;font-family:"Songti SC","STSong","SimSun","Noto Serif SC",serif;
+  font-size:15px;letter-spacing:2px;color:rgba(255,255,255,.92);
+  text-shadow:0 2px 10px rgba(22,78,86,.35);transform:rotate(-8deg);
+}
+.welcome-card-star{position:absolute;color:rgba(255,255,255,.85);font-size:12px;text-shadow:0 0 8px #fff}
+.welcome-card-star.a{left:42%;top:28px}
+.welcome-card-star.b{left:58%;top:52px;font-size:10px}
+.welcome-card-star.c{right:28%;top:96px;font-size:9px}
+.welcome-card-brand,.welcome-card-title-block,.welcome-glass,.welcome-card-foot{position:relative;z-index:1}
+.welcome-card-brand{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.welcome-card-logo{
+  width:36px;height:36px;border-radius:50%;overflow:hidden;flex:none;
+  border:1px solid rgba(42,155,143,.35);background:rgba(255,255,255,.5);
+}
+.welcome-card-logo img{width:100%;height:100%;object-fit:contain;display:block}
+.welcome-card-brand b{display:block;font:600 16px/1.2 "Songti SC","STSong","SimSun","Noto Serif SC",serif;letter-spacing:2px;color:#164E56}
+.welcome-card-brand small{display:block;font-size:9px;letter-spacing:1.4px;color:#6D8B92;margin-top:2px}
+.welcome-card-title-block{margin:4px 0 20px;max-width:28em}
+.welcome-card-title{
+  margin:0;font:600 clamp(28px,4.4vw,40px)/1.35 "Songti SC","STSong","SimSun","Noto Serif SC",serif;
+  letter-spacing:3px;color:#fff;text-shadow:0 2px 16px rgba(42,155,143,.45),0 1px 0 rgba(22,78,86,.2);
+}
+.welcome-card-title-en{margin:6px 0 12px;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.88)}
+.welcome-card-greet{margin:0;font-size:13px;color:#2C5560;letter-spacing:.5px}
+.welcome-glass{
+  background:rgba(255,255,255,.42);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.72);border-radius:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 12px 32px rgba(22,78,86,.08);
+  padding:16px 18px 14px;margin-bottom:14px;
+}
+.welcome-glass-head{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  color:#2A9B8F;font-size:13px;font-weight:600;margin-bottom:14px;
+}
+.welcome-glass-head i{font-style:normal;margin-right:4px}
+.welcome-glass-head small{font-size:9px;letter-spacing:1.2px;color:#8AADB0;font-weight:500}
+.welcome-identity-row{
+  display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:center;
+}
+.welcome-avatar{
+  width:72px;height:72px;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,#fff 0%,#c9f0ec 45%,#7ec8d9 100%);
+  border:2px solid rgba(255,255,255,.85);box-shadow:0 0 0 4px rgba(126,182,217,.25),0 8px 20px rgba(42,155,143,.2);
+  color:#2A9B8F;font:600 26px/1 "Songti SC","STSong","SimSun","Noto Serif SC",serif;
+}
+.welcome-fields{margin:0;display:grid;gap:8px}
+.welcome-fields>div{display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:center}
+.welcome-fields dt{margin:0;font-size:12px;color:#6D8B92}
+.welcome-fields dd{margin:0;font-size:14px;color:#164E56}
+.welcome-pill{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;
+  background:linear-gradient(135deg,#2A9B8F,#3eb5c0);color:#fff;font-size:12px;font-weight:600;
+  box-shadow:0 4px 12px rgba(42,155,143,.28);
+}
+.welcome-pill i{font-style:normal;font-size:11px}
+.welcome-mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.6px;font-size:13px}
+.welcome-seal{position:relative;width:86px;height:86px;flex:none}
+.welcome-seal-ring{
+  width:86px;height:86px;border-radius:50%;border:2px solid rgba(42,155,143,.55);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  background:rgba(255,255,255,.35);color:#2A9B8F;box-shadow:inset 0 0 0 4px rgba(255,255,255,.35);
+}
+.welcome-seal-top,.welcome-seal-bot{font-size:7px;letter-spacing:.8px;font-weight:600}
+.welcome-seal-mid{font-size:18px;line-height:1}
+.welcome-seal-waves{
+  position:absolute;right:-10px;top:38%;width:22px;height:18px;
+  background:repeating-linear-gradient(-18deg,transparent,transparent 3px,rgba(42,155,143,.45) 3px,rgba(42,155,143,.45) 5px);
+  opacity:.7;
+}
+.welcome-identity-foot{
+  margin:14px 0 2px;padding-top:12px;border-top:1px dotted rgba(42,155,143,.28);
+  font-size:12px;line-height:1.9;color:#3E6670;
+}
+.welcome-benefits{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+}
+.welcome-benefit{
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+  padding:10px 6px;border-radius:14px;transition:transform .15s,background .15s;
+}
+.welcome-benefit:hover{transform:translateY(-2px);background:rgba(255,255,255,.45)}
+.welcome-benefit-icon{
+  width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:22px;
+  border:1px solid rgba(255,255,255,.7);box-shadow:0 8px 18px rgba(22,78,86,.1);
+}
+.welcome-benefit.tone-teal .welcome-benefit-icon{background:linear-gradient(145deg,#dff8f4,#7ecfc6)}
+.welcome-benefit.tone-blue .welcome-benefit-icon{background:linear-gradient(145deg,#e4f3ff,#8ec3e8)}
+.welcome-benefit.tone-purple .welcome-benefit-icon{background:linear-gradient(145deg,#efe8ff,#b7a4e8)}
+.welcome-benefit.tone-green .welcome-benefit-icon{background:linear-gradient(145deg,#e5f8ea,#8fd4a8)}
+.welcome-benefit b{font-size:13px;font-weight:600;color:#164E56}
+.welcome-benefit small{font-size:11px;color:#6D8B92;line-height:1.5}
+.welcome-card-foot{text-align:center;margin-top:8px;padding-top:10px}
+.welcome-card-foot p{
+  margin:0;font-size:13px;letter-spacing:1px;color:#3E6670;
+  display:inline-block;padding:0 12px;border-top:1px solid rgba(42,155,143,.2);border-bottom:1px solid rgba(42,155,143,.2);
+  line-height:2.2;
+}
+.welcome-card-foot small{display:block;margin-top:10px;font-size:9px;letter-spacing:1.6px;color:#8AADB0}
+@media(max-width:800px){
+  .welcome-card{padding:22px 16px 18px;border-radius:20px}
+  .welcome-card-planet{width:78px;height:78px;right:4%;top:12px}
+  .welcome-card-planet:before{height:16px;left:-22%}
+  .welcome-card-script{top:96px;font-size:12px;right:4%}
+  .welcome-identity-row{grid-template-columns:64px 1fr;gap:12px}
+  .welcome-seal{display:none}
+  .welcome-avatar{width:64px;height:64px;font-size:22px}
+  .welcome-benefits{grid-template-columns:repeat(2,1fr);gap:8px}
+  .welcome-card-title{letter-spacing:1px}
+  .welcome-fields>div{grid-template-columns:52px 1fr}
+}
+@media(max-width:420px){
+  .welcome-benefits{grid-template-columns:1fr 1fr}
+  .welcome-card-greet{font-size:12px}
+}
+
+/* —— 七维自我探索卡 —— */
+.seven-card{
+  position:relative;overflow:hidden;border-radius:24px;
+  border:1px solid rgba(255,255,255,.55);
+  background:
+    linear-gradient(165deg,rgba(248,252,253,.58) 0%,rgba(230,247,244,.74) 42%,rgba(214,236,248,.8) 100%);
+  box-shadow:0 22px 60px rgba(22,78,86,.12);
+  padding:28px 26px 22px;color:#164E56;
+}
+.seven-card-sky{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(420px 260px at 88% 6%,rgba(90,200,210,.42),transparent 60%),
+    radial-gradient(280px 180px at 10% 16%,rgba(255,255,255,.7),transparent 55%),
+    linear-gradient(180deg,rgba(232,247,250,.35),rgba(232,247,250,0) 40%);
+}
+.seven-card-planet{
+  position:absolute;right:5%;top:14px;width:100px;height:100px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#e8fffb 0%,#5ec8c4 38%,#2A9B8F 70%,#1a6e78 100%);
+  box-shadow:0 0 40px rgba(90,200,210,.5),inset -10px -12px 24px rgba(22,78,86,.22);
+}
+.seven-card-planet:before{
+  content:"";position:absolute;left:-18%;top:46%;width:136%;height:20px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.55);border-left-color:transparent;border-right-color:transparent;
+  transform:rotate(-18deg);box-shadow:0 0 8px rgba(255,255,255,.35);
+}
+.seven-card-star{position:absolute;color:rgba(255,255,255,.85);font-size:12px;text-shadow:0 0 8px #fff}
+.seven-card-star.a{left:40%;top:24px}
+.seven-card-star.b{left:56%;top:48px;font-size:10px}
+.seven-card-star.c{right:30%;top:90px;font-size:9px}
+.seven-card-brand,.seven-card-title-block,.seven-glass,.seven-card-foot{position:relative;z-index:1}
+.seven-card-brand{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.seven-card-logo{
+  width:36px;height:36px;border-radius:50%;overflow:hidden;flex:none;
+  border:1px solid rgba(42,155,143,.35);background:rgba(255,255,255,.5);
+}
+.seven-card-logo img{width:100%;height:100%;object-fit:contain;display:block}
+.seven-card-brand b{display:block;font:600 16px/1.2 "Songti SC","STSong","SimSun","Noto Serif SC",serif;letter-spacing:2px;color:#164E56}
+.seven-card-brand small{display:block;font-size:9px;letter-spacing:1.4px;color:#6D8B92;margin-top:2px}
+.seven-card-title-block{margin:0 0 18px;max-width:34em}
+.seven-card-title{
+  margin:0;font:600 clamp(26px,4vw,38px)/1.35 "Songti SC","STSong","SimSun","Noto Serif SC",serif;
+  letter-spacing:3px;color:#fff;text-shadow:0 2px 16px rgba(42,155,143,.45),0 1px 0 rgba(22,78,86,.2);
+}
+.seven-card-title-en{margin:6px 0 10px;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.88)}
+.seven-card-slogan{margin:0;font-size:13px;line-height:1.8;color:#2C5560}
+.seven-glass{
+  background:rgba(255,255,255,.42);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.72);border-radius:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 12px 32px rgba(22,78,86,.08);
+  padding:16px 18px 14px;margin-bottom:14px;
+}
+.seven-glass-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;
+  color:#2A9B8F;font-size:13px;font-weight:600;margin-bottom:14px;
+}
+.seven-glass-head i{font-style:normal;margin-right:4px}
+.seven-glass-head small{font-size:11px;letter-spacing:.2px;color:#6D8B92;font-weight:500;max-width:36em;line-height:1.6}
+.seven-orbs{
+  display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px 6px;
+  align-items:start;
+}
+.seven-orb-form{margin:0;min-width:0}
+.seven-orb{
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+  padding:8px 4px 10px;border-radius:16px;transition:transform .15s,background .15s,box-shadow .15s;
+  width:100%;border:0;background:transparent;cursor:pointer;font:inherit;color:inherit;
+  -webkit-appearance:none;appearance:none;
+}
+.seven-orb:hover{transform:translateY(-2px);background:rgba(255,255,255,.42)}
+.seven-orb:focus-visible{outline:2px solid #2A9B8F;outline-offset:2px}
+.seven-orb.current{background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(42,155,143,.35)}
+.seven-orb-glow{
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:0 6px 14px rgba(22,78,86,.12),0 0 0 3px rgba(255,255,255,.25);
+  transition:filter .2s,box-shadow .2s,opacity .2s;
+}
+.seven-orb-icon{font-size:18px;line-height:1;filter:drop-shadow(0 2px 4px rgba(22,78,86,.15))}
+.seven-orb.dim .seven-orb-glow{filter:grayscale(.85) saturate(.35);opacity:.72;box-shadow:0 6px 14px rgba(22,78,86,.08)}
+.seven-orb.lit .seven-orb-glow{box-shadow:0 0 22px rgba(42,155,143,.45),0 8px 18px rgba(22,78,86,.12)}
+.seven-orb.tone-blue .seven-orb-glow{background:linear-gradient(145deg,#e4f1ff,#6ea8e8)}
+.seven-orb.tone-cyan .seven-orb-glow{background:linear-gradient(145deg,#e4fffb,#6fd4d0)}
+.seven-orb.tone-purple .seven-orb-glow{background:linear-gradient(145deg,#f0e8ff,#b7a4e8)}
+.seven-orb.tone-orange .seven-orb-glow{background:linear-gradient(145deg,#fff0e0,#f0b07a)}
+.seven-orb.tone-sky .seven-orb-glow{background:linear-gradient(145deg,#e7f4ff,#7eb6d9)}
+.seven-orb.tone-green .seven-orb-glow{background:linear-gradient(145deg,#e5f8ea,#8fd4a8)}
+.seven-orb.tone-magenta .seven-orb-glow{background:linear-gradient(145deg,#ffe8f4,#e89abf)}
+.seven-orb b{
+  font-size:12px;font-weight:600;color:#164E56;
+  white-space:nowrap;word-break:keep-all;line-height:1.3;
+}
+.seven-orb-guide{font-size:10px;color:#6D8B92;line-height:1.4;min-height:2.6em}
+.seven-orb-state{
+  font-size:10px;letter-spacing:.5px;padding:3px 8px;border-radius:999px;
+  background:rgba(255,255,255,.55);color:#6D8B92;white-space:nowrap;
+}
+.seven-orb.lit .seven-orb-state{background:#E5F4F2;color:#2A9B8F;font-weight:600}
+.seven-orb.current .seven-orb-state{background:#2A9B8F;color:#fff}
+.seven-explainer{
+  margin:16px 0 2px;padding-top:12px;border-top:1px dotted rgba(42,155,143,.28);
+  font-size:12px;line-height:1.9;color:#3E6670;text-align:center;
+}
+.seven-harvest{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.seven-harvest-item{
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:8px 6px;
+}
+.seven-harvest-icon{
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:18px;
+  background:linear-gradient(145deg,#e8f8f6,#b7e0dc);border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 8px 16px rgba(22,78,86,.08);
+}
+.seven-harvest-item b{font-size:13px;color:#164E56}
+.seven-harvest-item small{font-size:11px;color:#6D8B92;line-height:1.5}
+.seven-card-foot{text-align:center;margin-top:4px;padding-top:6px}
+.seven-card-foot p{
+  margin:0;font-size:13px;letter-spacing:1px;color:#3E6670;
+  display:inline-block;padding:0 12px;border-top:1px solid rgba(42,155,143,.2);border-bottom:1px solid rgba(42,155,143,.2);
+  line-height:2.2;
+}
+.seven-card-foot small{display:block;margin-top:10px;font-size:9px;letter-spacing:1.6px;color:#8AADB0}
+.seven-card-compact .seven-card-title{font-size:clamp(22px,3.5vw,30px);letter-spacing:2px}
+/* Tablet: keep one row, allow light horizontal scroll without clipping */
+@media(max-width:980px){
+  .seven-orbs{
+    grid-template-columns:repeat(7,minmax(96px,1fr));
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    scroll-snap-type:x proximity;
+    padding-bottom:6px;
+    gap:10px 8px;
+  }
+  .seven-orb{scroll-snap-align:start;min-width:96px}
+}
+/* Phone: 2-column grid — no squeeze, no single-char vertical titles */
+@media(max-width:768px){
+  .seven-card{padding:20px 14px 16px;border-radius:20px}
+  .seven-card-planet{width:72px;height:72px;top:10px}
+  .seven-glass{padding:14px 12px 12px}
+  .seven-harvest{grid-template-columns:1fr;gap:8px}
+  .seven-orbs,
+  .seven-card-studio .seven-orbs{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px 10px;
+    overflow-x:visible;
+    scroll-snap-type:none;
+    padding-bottom:0;
+  }
+  .seven-orb,
+  .seven-card-studio .seven-orb{
+    min-width:0;scroll-snap-align:unset;
+    padding:12px 8px 12px;gap:8px;
+    background:rgba(255,255,255,.28);
+  }
+  .seven-orb-glow,
+  .seven-card-studio .seven-orb-glow{width:44px;height:44px}
+  .seven-orb-icon{font-size:17px}
+  .seven-orb b{font-size:13px}
+  .seven-orb-guide{
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;min-height:0;max-height:2.8em;line-height:1.4;
+  }
+  .seven-orb-state{margin-top:2px;padding:4px 10px}
+  .seven-glass-head{flex-direction:column;gap:6px}
+  .seven-card-studio .seven-orb-guide{display:-webkit-box}
+}
+
+.deep-explore-note{margin-top:18px;padding:20px 22px;border:1px solid #DCE8EA;border-radius:18px;background:linear-gradient(180deg,#F7FBFC,#EEF7F6);box-shadow:0 10px 28px rgba(22,78,86,.05)}
+.deep-explore-note.compact{padding:16px 18px;margin-top:14px}
+.deep-explore-note h3{font-family:"Songti SC","STSong","SimSun","Noto Serif SC",serif;color:#2C5560}
+.deep-explore-steps{margin:10px 0 8px 1.2em;padding:0;line-height:2}
+.deep-explore-steps li{margin:2px 0}
+.deep-explore-note code{font-size:12px;background:#E5F4F2;padding:1px 6px;border-radius:4px}
+.dim-grid.room-grid{
+  margin-top:8px;
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:10px;
+  align-items:stretch;
+}
+.dim-grid.room-grid .room-tile-form{margin:0;min-width:0;display:flex;height:100%}
+.dim-grid.room-grid .room-tile{
+  min-height:0;
+  padding:12px 10px;
+  border-radius:14px;
+  display:flex;flex-direction:column;gap:6px;align-items:stretch;
+  width:100%;border:1px solid #DCE8EA;background:#fff;cursor:pointer;font:inherit;color:inherit;text-align:left;
+  box-shadow:0 10px 28px rgba(22,78,86,.05);
+  -webkit-appearance:none;appearance:none;
+}
+.dim-grid.room-grid .room-tile:hover{border-color:#C5E0DE;transform:translateY(-1px)}
+.dim-grid.room-grid .room-tile.lit{background:#F3FAF9;border-color:#C5E0DE}
+.dim-grid.room-grid .room-tile h3{
+  font-size:13px;line-height:1.45;margin:2px 0;
+}
+.dim-grid.room-grid .room-tile .topic{font-size:12px}
+.dim-grid.room-grid .room-tile .help{font-size:11px;line-height:1.55}
+.dim-grid.room-grid .room-tile .tag{display:none}
+@media(max-width:980px){
+  .dim-grid.room-grid{
+    grid-template-columns:repeat(7,minmax(118px,1fr));
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:6px;
+  }
+}
+.seven i.lit{background:#3E8F86}
+.seven i.dim{background:#B7D5D2;opacity:.55}
+
+
+/* —— 七维自我探索：左对话 + 右卡 —— */
+.explore-page-wide{max-width:1180px}
+.explore-studio{margin-top:14px}
+.explore-studio-grid{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.9fr);
+  gap:18px;align-items:stretch;
+}
+.explore-studio .explore-chat{min-height:min(70vh,760px);max-height:min(78vh,860px)}
+.explore-studio-card{position:sticky;top:18px;align-self:start}
+.explore-studio-card .seven-card{margin:0}
+.seven-card-studio{padding:18px 14px 14px}
+.seven-card-studio .seven-card-title{font-size:clamp(20px,2.4vw,28px);letter-spacing:2px}
+.seven-card-studio .seven-orbs{grid-template-columns:repeat(7,minmax(0,1fr));gap:6px 4px}
+.seven-card-studio .seven-orb{padding:6px 2px 8px}
+.seven-card-studio .seven-orb-glow{width:42px;height:42px}
+.seven-card-studio .seven-orb-guide{display:none}
+@media (max-width:960px){
+  .explore-studio-grid{grid-template-columns:1fr;gap:16px}
+  .explore-studio-card{position:static}
+  .explore-studio .explore-chat{min-height:52vh;max-height:68vh}
+  .seven-card-studio{padding:18px 14px 16px}
+  .seven-card-studio .seven-orb-guide{display:block}
+}
+@media (max-width:768px){
+  .explore-page-wide.wrap,
+  .wrap.explore-page-wide{width:min(100% - 28px,1180px)}
+  .explore-studio{margin-top:10px}
+  .explore-studio .explore-chat{
+    min-height:48vh;max-height:62vh;border-radius:16px;
+  }
+  /* Re-assert after .seven-card-studio desktop 7-col rule */
+  .seven-card-studio .seven-orbs{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;overflow-x:visible;scroll-snap-type:none;padding-bottom:0;
+  }
+  .seven-card-studio .seven-orb{
+    min-width:0;padding:12px 8px;gap:8px;
+    background:rgba(255,255,255,.28);
+  }
+  .seven-card-studio .seven-orb-glow{width:44px;height:44px}
+  .seven-card-studio .seven-orb-guide{
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;min-height:0;max-height:2.8em;
+  }
+  .seven-orbs > .seven-orb:last-child,
+  .seven-card-studio .seven-orbs > .seven-orb:last-child{
+    grid-column:1 / -1;
+    max-width:calc((100% - 10px) / 2);
+    justify-self:center;
+  }
+}
+
+/* —— 七维自我探索对话 —— */
+.explore-chat-shell,.workbench-shell{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.workbench-banner{margin:0}
+.glass-panel{
+  background:rgba(255,255,255,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.72);border-radius:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 12px 32px rgba(22,78,86,.08);
+}
+.explore-chat{
+  display:flex;flex-direction:column;
+  min-height:min(72vh,720px);max-height:min(78vh,820px);overflow:hidden;
+}
+.explore-chat-messages{
+  flex:1;display:flex;flex-direction:column;gap:14px;
+  padding:22px 18px 12px;overflow:auto;
+}
+.explore-chat-empty{text-align:center;padding:48px 16px 36px;margin:auto}
+.explore-chat-row{display:flex;width:100%}
+.explore-chat-row.is-user{justify-content:flex-end}
+.explore-chat-row.is-assistant,.explore-chat-row.is-guide{justify-content:flex-start}
+.explore-chat-bubble{
+  max-width:min(760px,92%);padding:12px 16px;border-radius:18px;
+  white-space:pre-wrap;line-height:1.7;font-size:15px;
+}
+.explore-chat-bubble.you{
+  background:linear-gradient(180deg,#2A9B8F,#248F84);color:#fff;
+  border-bottom-right-radius:6px;
+}
+.explore-chat-bubble.q,.explore-chat-bubble.guide{
+  background:rgba(255,255,255,.88);border:1px solid rgba(212,228,232,.95);
+  color:#1C3A42;border-bottom-left-radius:6px;
+}
+.workbench-msg-body{white-space:pre-wrap}
+.workbench-typing{opacity:.75;font-style:italic}
+.explore-chat-composer{
+  padding:14px 16px 16px;border-top:1px solid rgba(212,228,232,.8);
+  background:rgba(245,250,251,.72);
+}
+.explore-chat-input-wrap{display:flex;gap:10px;align-items:center}
+.explore-chat-input-wrap > button{flex:none;align-self:center;height:44px;min-width:72px}
+.explore-chat-input{
+  flex:1;min-width:0;
+  min-height:84px!important;max-height:160px;resize:none;
+  border-radius:16px!important;padding:14px 14px!important;
+  line-height:1.5!important;overflow-y:auto;
+}
+.explore-chat-toolbar{
+  display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;
+  margin-top:12px;padding-bottom:2px;
+}
+.explore-chat-linkbtn{
+  border:0;background:transparent;color:#2A9B8F;font:inherit;font-size:13px;
+  cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px;
+}
+.explore-chat-linkbtn:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:768px){
+  .explore-chat-messages{padding:16px 14px 10px}
+  .explore-chat-composer{padding:14px 14px 18px}
+  .explore-chat-input-wrap{gap:10px;align-items:center}
+  .explore-chat-input{
+    min-height:88px!important;
+    padding:14px 12px!important;
+    font-size:15px!important;
+    line-height:1.5!important;
+  }
+  .explore-chat-input-wrap > button{
+    height:48px;min-width:64px;padding-left:16px;padding-right:16px;
+  }
+  .explore-chat-toolbar{margin-top:14px;gap:10px 12px;row-gap:8px;padding-bottom:4px}
+}
+.workbench-select,.admin-llm-select{
+  width:100%;border:1px solid #D4E6E8;background:#fff;border-radius:10px;
+  padding:11px 12px;font:inherit;font-size:13px;color:#1C3A42;
+}
+.admin-llm-status{display:flex;flex-wrap:wrap;gap:8px 14px;margin:8px 0 14px}
+.admin-llm-pill{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;
+  background:#E8F6F4;color:#1C3A42;font-size:12px;
+}
+.admin-llm-pill.warn{background:#FFF3E0;color:#8A4B12}
+.deep-explore-note{
+  background:rgba(255,255,255,.6);border:1px solid #DCE8EA;border-radius:18px;
+  padding:18px 20px;box-shadow:0 10px 28px rgba(22,78,86,.05);
+}
+.deep-explore-note.compact{padding:14px 16px}
+.deep-explore-steps{margin:8px 0 0;padding-left:1.2em;line-height:1.9}
+.deep-explore-steps code,.admin-llm-hint code{font-size:11px;background:#E5F4F2;padding:1px 6px;border-radius:6px}
+
+/* 自我探索方案 */
+.explore-plan{margin-top:22px;border:1px solid #D4E4E8;border-radius:18px;background:#F7FBFC;box-shadow:0 12px 32px rgba(22,78,86,.07);padding:28px 30px}
+.explore-plan-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.explore-plan-title{font-size:28px;margin:6px 0 4px;letter-spacing:1px}
+.explore-plan-oneliner{font-size:18px;line-height:1.8;color:#2C5560;margin:12px 0 18px}
+.explore-plan-sections{display:grid;gap:14px}
+.explore-plan-section{border-top:1px dashed #D4E4E8;padding-top:12px}
+.explore-plan-section h3{font:600 15px "Songti SC","STSong","SimSun","Noto Serif SC",serif;color:#2A9B8F;margin:0 0 6px}
+.explore-plan-body{white-space:pre-wrap;line-height:1.95;margin:0}
+.explore-plan-closing{margin-top:18px;line-height:1.95}
+.explore-plan-join{display:flex;gap:20px;align-items:center;margin-top:22px;padding:18px 20px;border-radius:14px;background:#E5F4F2;border:1px solid #D4E4E8}
+.explore-plan-qr{width:120px;height:120px;object-fit:contain;border-radius:10px;background:#fff;flex:none;box-shadow:0 4px 14px rgba(22,78,86,.06)}
+.explore-plan-join-copy{flex:1;min-width:0}
+.explore-plan-join h3{margin:0 0 6px;font:600 16px "Songti SC","STSong","SimSun","Noto Serif SC",serif}
+.explore-plan-join-note{margin:8px 0 0;color:#6D8B92}
+.explore-plan-join-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;flex:none;min-width:200px;padding:22px 26px;border-radius:16px;font-size:15px;letter-spacing:.4px;line-height:1.35;text-align:center;box-shadow:0 10px 24px rgba(33,127,118,.22)}
+.explore-plan-join-cta:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(33,127,118,.28)}
+.explore-plan-join-cta-title{font-weight:700;font-size:16px}
+.explore-plan-join-cta-sub{font-size:11px;opacity:.92;font-weight:500;max-width:11em}
+.explore-plan-download{white-space:nowrap}
+.explore-plan.is-compact{padding:22px}
+.explore-plan-actions{margin:14px 0}
+@media(max-width:900px){
+  .explore-plan-join{flex-wrap:wrap}
+  .explore-plan-join-cta{min-width:180px;margin-left:auto}
+}
+@media(max-width:700px){
+  .explore-plan{padding:20px}
+  .explore-plan-join{flex-direction:column;align-items:stretch}
+  .explore-plan-join-cta{width:100%;min-width:0;margin-left:0;padding:20px 18px}
+}
+
+.explore-studio-plan-panel{margin-top:14px;padding:16px;border-radius:16px;border:1px solid #D4E4E8;background:#E5F4F2}
+.explore-studio-plan-panel.is-progress{background:#F7FBFC}
+.explore-studio-pdf-btn{display:inline-flex;width:100%;justify-content:center;text-align:center;box-sizing:border-box}
+
+/* —— AI 分身工作台：左聊天 · 右要点 —— */
+.partner-studio{margin-top:18px}
+.partner-studio-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:22px;align-items:start}
+.partner-chat-panel{min-height:560px;display:flex;flex-direction:column;background:#fff;border:1px solid #DCE8EA;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(22,78,86,.06)}
+.partner-chat-scroll{flex:1;overflow:auto;padding:18px 16px;max-height:min(68vh,640px)}
+.partner-side-panel{display:flex;flex-direction:column;gap:14px;position:sticky;top:88px}
+.partner-side-card{background:#fff;border:1px solid #DCE8EA;border-radius:16px;padding:16px 18px;box-shadow:0 10px 28px rgba(22,78,86,.05)}
+.partner-side-links{display:flex;flex-direction:column;gap:8px;margin-top:14px;font-size:13px}
+.partner-side-links a{color:#2A9B8F}
+.partner-dim-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.partner-dim-list li{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:10px;background:#F3FAF9;border:1px solid #D4E4E8}
+.partner-dim-name{font-size:13px;font-weight:600;color:#164E56}
+.profile-public-card{background:#fff}
+.profile-regen-btn{
+  border:1px solid #D4E4E8;background:#F3FAF9;color:#2A9B8F;border-radius:999px;
+  padding:10px 16px;font:inherit;font-size:13px;cursor:pointer;
+}
+.profile-regen-btn:hover{background:#E5F4F2}
+.profile-regen-btn:disabled{opacity:.45;cursor:not-allowed}
+.pp-owner-bar{
+  position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:16px 24px;
+  justify-content:space-between;align-items:flex-start;margin-bottom:18px;
+}
+.pp-owner-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pp-owner-card{position:relative}
+.pp-block-editable{cursor:text;position:relative}
+.pp-block-editable.is-editing,.pp-block-editable:focus-within{
+  border-color:#2A9B8F;box-shadow:0 0 0 3px rgba(42,155,143,.16);transform:none;
+}
+.pp-block-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px}
+.pp-block-head .pp-block-icon{margin-bottom:0}
+.pp-edit-hint{font-size:11px;color:#8AADB0;letter-spacing:.5px}
+.pp-inline-edit{
+  width:100%;border:none;outline:none;resize:vertical;background:transparent;
+  font:inherit;font-size:14px;line-height:1.95;color:#2C5560;padding:0;min-height:88px;
+}
+.pp-placeholder{color:#9BB4BA !important;font-style:italic}
+.pp-tagline-muted{color:#8AADB0 !important;font-style:italic}
+.pp-owner-meta{
+  margin:8px 28px 0;padding:18px 20px;border-radius:16px;
+  background:#F3FAF9;border:1px dashed #D4E4E8;
+  display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end;justify-content:space-between;
+}
+.pp-slug-field{display:flex;flex-direction:column;gap:6px;min-width:min(100%,320px);flex:1}
+.pp-slug-field > span{font-size:12px;color:#2A9B8F;font-weight:600}
+.pp-slug-row{display:flex;align-items:center;gap:0;background:#fff;border:1px solid #D4E4E8;border-radius:12px;overflow:hidden}
+.pp-slug-prefix{padding:10px 0 10px 12px;color:#8AADB0;font-size:13px}
+.pp-slug-row input{
+  flex:1;border:none;outline:none;padding:10px 12px 10px 0;font:inherit;font-size:14px;color:#164E56;background:transparent;
+}
+.pp-slug-field small{color:#8AADB0;font-size:12px;word-break:break-all}
+.pp-publish-toggle{display:flex;gap:8px;align-items:center;font-size:13px;color:#2C5560;padding-bottom:4px}
+.pp-owner-foot{align-items:center}
+.pp-owner-foot-actions{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;font-size:13px}
+.pp-owner-foot-actions a{color:#2A9B8F}
+.pp-owner-foot-actions a:hover{text-decoration:underline}
+@media(max-width:700px){
+  .pp-owner-meta{margin:8px 16px 0;padding:14px}
+  .pp-owner-bar{flex-direction:column}
+}
+
+/* —— Public shareable profile /u/:slug —— */
+.pp-page{position:relative;min-height:calc(100vh - 77px);padding:48px 0 72px;overflow:hidden}
+.pp-bg{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 420px at 12% -10%,rgba(126,182,217,.35),transparent 60%),
+    radial-gradient(700px 380px at 95% 10%,rgba(42,155,143,.22),transparent 55%),
+    linear-gradient(165deg,#f8fcfd 0%,#e6f7f4 48%,#eef5fb 100%);
+}
+.pp-wrap{position:relative;z-index:1;max-width:860px}
+.pp-card{
+  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  border:1px solid #D4E4E8;border-radius:24px;
+  box-shadow:0 24px 60px rgba(22,78,86,.10);
+  overflow:hidden;
+}
+.pp-hero{
+  display:flex;gap:22px;align-items:flex-start;
+  padding:36px 36px 28px;
+  background:
+    linear-gradient(135deg,rgba(229,244,242,.95),rgba(247,251,252,.7) 55%,rgba(231,243,248,.85)),
+    radial-gradient(circle at 90% 20%,rgba(42,155,143,.12),transparent 45%);
+  border-bottom:1px solid #E3EEF0;
+}
+.pp-orb{
+  width:84px;height:84px;flex:none;border-radius:50%;
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,#e8fffb 0%,#5ec8c4 40%,#2A9B8F 72%,#1a6e78 100%);
+  box-shadow:0 12px 28px rgba(42,155,143,.28), inset 0 0 0 3px rgba(255,255,255,.35);
+  color:#fff;font:600 34px/1 "Songti SC","STSong","SimSun","Noto Serif SC",serif;
+}
+.pp-kicker{margin:0 0 8px;color:#2A9B8F;font-size:12px;letter-spacing:3px;font-weight:600}
+.pp-name{margin:0 0 10px;font:500 clamp(28px,4vw,40px)/1.35 "Songti SC","STSong","SimSun","Noto Serif SC",serif;color:#164E56;letter-spacing:1px}
+.pp-tagline{margin:0;font:400 16px/1.85 "Songti SC","STSong","SimSun","Noto Serif SC",serif;color:#3E6670;max-width:36em;white-space:pre-wrap}
+.pp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pp-tag{
+  border-radius:999px;background:#fff;border:1px solid #D4E4E8;
+  color:#3D6A72;font-size:12px;padding:7px 12px;
+}
+.pp-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;
+  padding:24px 28px 8px;
+}
+.pp-block{
+  background:#F7FBFC;border:1px solid #DCE8EA;border-radius:16px;
+  padding:20px 20px 18px;min-height:140px;
+  transition:transform .18s,box-shadow .18s;
+}
+.pp-block:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(22,78,86,.08)}
+.pp-block-icon{color:#2A9B8F;font-size:18px;margin-bottom:8px}
+.pp-block h2{margin:0 0 10px;font:600 16px "Songti SC","STSong","SimSun","Noto Serif SC",serif;color:#2A9B8F}
+.pp-block p{margin:0;font-size:14px;line-height:1.95;color:#2C5560;white-space:pre-wrap}
+.pp-block-direction,.pp-block-cases{grid-column:1 / -1}
+.pp-empty{padding:28px;text-align:center;color:#6D8B92}
+.pp-foot{
+  margin-top:8px;padding:22px 28px 28px;border-top:1px dashed #D4E4E8;
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;
+}
+.pp-foot p{margin:0;font-size:12px;color:#8AADB0}
+.pp-foot-links{display:flex;flex-wrap:wrap;gap:14px;font-size:13px}
+.pp-foot-links a{color:#2A9B8F}
+.pp-foot-links a:hover{text-decoration:underline}
+@media(max-width:700px){
+  .pp-page{padding:28px 0 48px}
+  .pp-hero{flex-direction:column;padding:28px 22px 22px;align-items:center;text-align:center}
+  .pp-tagline{margin-inline:auto}
+  .pp-tags{justify-content:center}
+  .pp-grid{grid-template-columns:1fr;padding:18px 16px 4px}
+  .pp-block-direction,.pp-block-cases{grid-column:auto}
+  .pp-foot{flex-direction:column;align-items:flex-start;padding:18px 18px 22px}
+}
+@media(max-width:900px){
+  .partner-studio-grid{grid-template-columns:1fr}
+  .partner-side-panel{position:static}
+  .partner-chat-panel{min-height:480px}
+}
+
+
+/* energy resource cards with cover */
+.resource-grid{align-items:stretch}
+a.resource-card{flex-direction:column;padding:0;overflow:hidden;color:inherit}
+a.resource-card .r-cover{display:block;height:148px;width:100%;background-size:cover;background-position:center;background-color:#E5F4F2}
+a.resource-card .r-body{display:flex;gap:14px;padding:18px 18px 20px}
+a.resource-card .r-icon{background:#E5F4F2;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;font-size:18px;color:var(--green)}
+a.resource-card h3{font-size:15px;margin:0 0 8px;line-height:1.45}
+a.resource-card p{font-size:12px;color:#6D8B92;line-height:1.85;margin:0 0 12px}
+a.resource-card span{font-size:12px;color:var(--green)}
+@media(max-width:700px){
+  a.resource-card .r-cover{height:160px}
+}

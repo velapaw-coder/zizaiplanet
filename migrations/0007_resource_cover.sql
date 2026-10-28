@@ -1,0 +1,1 @@
+ALTER TABLE resources ADD COLUMN cover TEXT NOT NULL DEFAULT '';

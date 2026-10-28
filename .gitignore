@@ -1,0 +1,12 @@
+node_modules
+*.tsbuildinfo
+.env*
+.next
+next-env.d.ts
+/dist/
+.vinext/
+.wrangler/
+.dev.vars
+agent-tools/
+uploads/
+.cursor/

@@ -1,0 +1,28 @@
+# Copy to .dev.vars for local secrets. Wrangler and the Cloudflare Vite plugin load this file.
+# Do not commit .dev.vars.
+
+MAGIC_LINK_PREVIEW=true
+SESSION_SECRET=dev-only-change-with-wrangler-secret-put
+
+# Optional OpenAI-compatible LLM (七维探索工作台 + 可选维度润色).
+# Without a key, workbench runs in demo/mock mode.
+# LLM_API_KEY=
+# LLM_BASE_URL=https://api.deepseek.com/v1
+# LLM_MODEL=deepseek-chat
+# LLM_DEFAULT_PRESET=deepseek
+# Per-provider keys (optional; fall back to LLM_API_KEY):
+# LLM_API_KEY_DEEPSEEK=
+# LLM_API_KEY_QWEN=
+# LLM_API_KEY_ZHIPU=
+# LLM_API_KEY_MOONSHOT=
+# LLM_API_KEY_OPENAI=
+# Optional JSON overrides: {"deepseek":{"model":"deepseek-chat"},"custom":{"baseUrl":"https://gateway/v1","model":"x"}}
+# LLM_PRESETS=
+
+# Optional. POST { email, phone, url } when someone asks for a magic link.
+# Phone login uses the same preview flag. No SMS provider is required locally.
+# MAIL_WEBHOOK_URL=
+
+# Optional Turnstile. When TURNSTILE_SECRET_KEY is set, login requires a passing token.
+# TURNSTILE_SITE_KEY=
+# TURNSTILE_SECRET_KEY=
