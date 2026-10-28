@@ -17,7 +17,7 @@ const PATH_STEPS = [
     n: "3",
     href: "/profile",
     title: "形成向往",
-    desc: "把想做的长期事写清楚。",
+    desc: "把想过的自由生活写清楚。",
   },
 ] as const;
 
@@ -34,21 +34,21 @@ const BENEFITS = [
     icon: "🪞",
     tone: "blue",
     title: "AI分身",
-    desc: "基于探索，认清起点与方向",
+    desc: "善用AI，认清起点与方向",
   },
   {
     href: "/profile",
     icon: "🌟",
     tone: "purple",
     title: "我的向往",
-    desc: "明确想做的事，形成可分享主页",
+    desc: "写下自由生活，形成可分享主页",
   },
   {
     href: "/garden#garden-compose",
     icon: "🤝",
     tone: "green",
     title: "家园交流",
-    desc: "居民内部发帖分享",
+    desc: "创造者之间发帖分享",
   },
 ] as const;
 
@@ -66,12 +66,12 @@ export function WelcomeCard({
   const number = residentNumber(userId);
   const joinDate = formatJoinDotDate(createdAt);
   const identity = roleLabel(role);
-  const initial = displayName.trim().slice(0, 1) || "居";
+  const initial = displayName.trim().slice(0, 1) || "创";
   return (
-    <section className="welcome-card" aria-label="星球居民欢迎卡">
+    <section className="welcome-card" aria-label="自由创造者欢迎卡">
       <div className="welcome-card-sky" aria-hidden="true">
         <span className="welcome-card-planet" />
-        <span className="welcome-card-script">让生活多一种可能</span>
+        <span className="welcome-card-script">AI创造自由</span>
         <span className="welcome-card-star a">✦</span>
         <span className="welcome-card-star b">✧</span>
         <span className="welcome-card-star c">✦</span>
@@ -88,15 +88,15 @@ export function WelcomeCard({
       </header>
 
       <div className="welcome-card-title-block">
-        <h2 className="welcome-card-title">星球居民欢迎卡</h2>
-        <p className="welcome-card-title-en">Resident Welcome Card</p>
-        <p className="welcome-card-greet">✦ 欢迎加入自在星球，成为一位新的星球居民 ✦</p>
+        <h2 className="welcome-card-title">自由创造者欢迎卡</h2>
+        <p className="welcome-card-title-en">Free Creator Welcome Card</p>
+        <p className="welcome-card-greet">✦ 欢迎加入自在星球，成为一位自由创造者 ✦</p>
       </div>
 
       <div className="welcome-glass identity-glass">
         <div className="welcome-glass-head">
           <span>
-            <i aria-hidden="true">🪐</i> 居民身份认证
+            <i aria-hidden="true">🪐</i> 创造者身份
           </span>
           <small>ZIZAI PLANET</small>
         </div>
@@ -123,7 +123,7 @@ export function WelcomeCard({
               <dd className="welcome-mono">{joinDate}</dd>
             </div>
             <div className="welcome-name-line">
-              <dt>居民</dt>
+              <dt>创造者</dt>
               <dd>{displayName}</dd>
             </div>
           </dl>
@@ -137,7 +137,7 @@ export function WelcomeCard({
           </div>
         </div>
         <p className="welcome-identity-foot">
-          从今天起，你将与一群真诚、开放、长期主义的同行者，一起探索更自在的生活方式。
+          从今天起，你与一群顺势而为、知行合一的自由创造者同行。以道驭AI，以创造得自由。
         </p>
       </div>
 
@@ -148,7 +148,7 @@ export function WelcomeCard({
           </span>
           <small>ZIZAI PLANET</small>
         </div>
-        <p className="welcome-path-lead">AI 时代，帮每个人找到自己的自由生意。</p>
+        <p className="welcome-path-lead">AI创造自由。见自己，明其道，再把向往写成生活。</p>
         <ol className="welcome-steps">
           {PATH_STEPS.map((step) => (
             <li key={step.n}>
@@ -169,7 +169,7 @@ export function WelcomeCard({
       <div className="welcome-glass benefits-glass">
         <div className="welcome-glass-head">
           <span>
-            <i aria-hidden="true">▣</i> 居民权益
+            <i aria-hidden="true">▣</i> 创造者权益
           </span>
           <small>ZIZAI PLANET</small>
         </div>
@@ -187,7 +187,7 @@ export function WelcomeCard({
       </div>
 
       <footer className="welcome-card-foot">
-        <p>—— 一个星球，无数种自在生活 ——</p>
+        <p>—— AI自由创造，创造自由生活 ——</p>
         <small>ZIZAI PLANET</small>
       </footer>
     </section>

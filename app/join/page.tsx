@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { safeNext, one } from "@/lib/text";
 
-export const metadata: Metadata = { title: "星球居民" };
+export const metadata: Metadata = { title: "成为自由创造者" };
 
 export default async function JoinPage({
   searchParams,
@@ -26,11 +26,11 @@ export default async function JoinPage({
       <div className="wrap stack" style={{ maxWidth: 640 }}>
         <div>
           <div className="kicker">JOIN THE PLANET</div>
-          <h1 className="page-title">{loggingIn ? "已有账号登录" : "星球居民"}</h1>
+          <h1 className="page-title">{loggingIn ? "已有账号登录" : "成为自由创造者"}</h1>
           <p className="help">
             {loggingIn
               ? "用注册时的邮箱和密码回来。"
-              : "先填用户名和手机号，再用邮箱和自己设的密码加入。注册完成后，身份是星球居民。"}
+              : "先填用户名和手机号，再用邮箱和自己设的密码加入。注册完成后，身份是自由创造者。AI创造自由：见自己，明其道，善用AI。"}
           </p>
           <Notice text={one(params.notice)} />
         </div>
@@ -80,7 +80,7 @@ export default async function JoinPage({
               <Input id="email-password-2" name="password_confirm" type="password" required minLength={8} maxLength={64} autoComplete="new-password" />
             </div>
             <Turnstile siteKey={siteKey} />
-            <Button type="submit">星球居民</Button>
+            <Button type="submit">成为自由创造者</Button>
             <p className="help">
               <a href={loginHref}>已有账号登录</a>
             </p>

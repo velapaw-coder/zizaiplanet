@@ -22,7 +22,7 @@ test("phone accepts mainland mobiles and email stays an address", () => {
 });
 
 test("the three roles use Chinese labels", () => {
-  assert.equal(roleLabel("member"), "星球居民");
+  assert.equal(roleLabel("member"), "自由创造者");
   assert.equal(roleLabel("host"), "茶主");
   assert.equal(roleLabel("admin"), "运营管理员");
 });

@@ -121,7 +121,7 @@ export default async function AdminPage({
             大模型服务商
           </h2>
           <p className="help">
-            平台方在这里选择七维自我探索对话使用的默认服务商。居民前台不显示选择器。API 密钥仍用 Cloudflare secrets，不在此明文保存。
+            平台方在这里选择七维自我探索对话使用的默认服务商。前台不显示选择器。API 密钥仍用 Cloudflare secrets，不在此明文保存。
           </p>
           <div className="admin-llm-status">
             <span className={`admin-llm-pill${llm.active.configured ? "" : " warn"}`}>

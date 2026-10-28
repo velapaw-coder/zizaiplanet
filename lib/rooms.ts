@@ -117,7 +117,7 @@ export const EXPLORE_HARVEST = [
   { icon: "🪪", title: "生成个人画像", desc: "绘制属于你的独特地图" },
 ] as const;
 
-export const EXPLORE_SLOGAN = "看见自己，找到方向，开启属于你的自在生活。";
+export const EXPLORE_SLOGAN = "见自己，明其道，开启属于你的自由创造。";
 export const EXPLORE_EXPLAINER =
   "通过七个维度的自我探索，逐步看见你的向往、能力、关系与方向，形成为你而写的个人画像。";
 export const EXPLORE_TAGLINE = "一个星球，无数种自在生活";

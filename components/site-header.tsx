@@ -59,7 +59,7 @@ export function SiteHeader({
           </a>
         ) : (
           <a className="join" href="/join">
-            星球居民 ↗
+            自由创造者 ↗
           </a>
         )}
         <button className="menu" type="button" aria-label="展开菜单" onClick={() => setOpen((value) => !value)}>
@@ -73,7 +73,7 @@ export function SiteHeader({
           </a>
         ))}
         <a href={user ? "/garden" : "/join"} onClick={() => setOpen(false)}>
-          {user ? "我的家园" : "星球居民"}
+          {user ? "我的家园" : "自由创造者"}
         </a>
         {user ? (
           <form action="/api/action" method="post">

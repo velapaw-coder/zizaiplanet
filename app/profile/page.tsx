@@ -20,7 +20,7 @@ export default async function ProfileEditPage({
       <main className="section tight">
         <div className="wrap">
           <h1 className="page-title">我的向往</h1>
-          <p className="help">「我的向往」是你想成为、想去往的样子。完成七维探索或 AI 分身后会写成一页可分享的个人页，每一段都能改。请先登录。</p>
+          <p className="help">「我的向往」写下你想成为、想去往的自由生活。完成七维探索或 AI 分身后会写成一页可分享的个人页，每一段都能改。请先登录。</p>
           <a className="btn-primary" href="/join?login=1&next=/profile">
             去登录
           </a>
@@ -46,7 +46,7 @@ export default async function ProfileEditPage({
   return (
     <ProfileStudio
       data={{
-        displayName: user.display_name || "星球居民",
+        displayName: user.display_name || "自由创造者",
         slug: profile.slug,
         aspiration,
         published: profile.published === 1,

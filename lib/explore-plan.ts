@@ -34,7 +34,7 @@ export function composeExplorePlan(input: {
   portraitText?: string | null;
 }): ExplorePlan {
   const card = input.card;
-  const name = (input.displayName || "").trim() || "星球居民";
+  const name = (input.displayName || "").trim() || "自由创造者";
   const lit = card.rooms.filter((r) => r.lit && r.quote);
   const portraitReady = Boolean(card.portraitReady || lit.length >= 7);
 
@@ -88,7 +88,7 @@ export function composeExplorePlan(input: {
           ];
 
   const closing = portraitReady
-    ? `${name}，七维探索已经走完一轮。这份方案不是测评结论，而是你自己原话织成的地图：看见自己，找到方向，在自在星球安一个真正属于你的家园。`
+    ? `${name}，七维探索已经走完一轮。这份方案不是测评结论，而是你自己原话织成的地图：见自己，明其道，在自在星球安一个真正属于你的家园。`
     : `${name}，探索还在路上。已点亮 ${card.litCount} 维；等七维都有你的原话，完整方案会在这里长出来。`;
 
   const sections: ExplorePlanSection[] = [

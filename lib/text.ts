@@ -80,7 +80,7 @@ export function formatWhen(iso: string) {
 export function roleLabel(role: string) {
   if (role === "admin") return "运营管理员";
   if (role === "host") return "茶主";
-  return "星球居民";
+  return "自由创造者";
 }
 
 export function postStatusLabel(status: string) {

@@ -189,7 +189,7 @@ export async function sendWorkbenchMessage(request: Request, input: { text: stri
   const focusId = session.explore_session_id ? await loadFocusDimension(session.explore_session_id) : null;
   const focusRoom = focusId ? ROOMS.find((item) => item.id === focusId) : null;
   const systemExtra = focusRoom
-    ? `\n\n当前居民点选了「${focusRoom.name}」维（${focusRoom.guide}）。请优先在这一维追问与点亮；足够后输出 <<<LIT:${focusRoom.name}>>> 。`
+    ? `\n\n当前这位创造者点选了「${focusRoom.name}」维（${focusRoom.guide}）。请优先在这一维追问与点亮；足够后输出 <<<LIT:${focusRoom.name}>>> 。`
     : "";
   const chatMessages: ChatMessage[] = [
     { role: "system", content: SEVEN_DIMENSIONS_SKILL + systemExtra },
