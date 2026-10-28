@@ -110,7 +110,16 @@ export function SevenCard({
                   <b>{room.name}</b>
                   <small className="seven-orb-guide">{room.guide}</small>
                   <span className="seven-orb-state">
-                    {room.lit ? "已点亮 · 可重修" : room.current ? "进行中" : "待点亮"}
+                    {room.lit ? (
+                      <>
+                        <span className="seven-orb-lit-line">已点亮 ·</span>
+                        <span className="seven-orb-lit-line">可重修</span>
+                      </>
+                    ) : room.current ? (
+                      "进行中"
+                    ) : (
+                      "待点亮"
+                    )}
                   </span>
                 </button>
               );
