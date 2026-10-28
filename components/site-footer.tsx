@@ -12,7 +12,7 @@ export function SiteFooter() {
             <p>
               向内扎根，向外生长。
               <br />
-              AI 时代的长期生意共创生态
+              AI 时代的自由生意共创生态
             </p>
           </div>
           <nav aria-label="页脚导航" className="footer-nav">
@@ -35,7 +35,7 @@ export function SiteFooter() {
         </div>
         <p className="compliance">线上提供认知、关系与场域；合作由成员线下独立协商。不做站内项目撮合。</p>
         <div className="footer-bottom">
-          <span>© 2026 自在星球 · AI时代的长期生意</span>
+          <span>© 2026 自在星球 · AI时代的自由生意</span>
           <span>线上交流与连接 · 线下合作独立开展</span>
         </div>
       </div>

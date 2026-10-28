@@ -7,9 +7,9 @@ import "./globals.css";
 export const dynamic = "force-dynamic";
 
 const APP_URL = "https://www.zizaiplanet.com";
-const SITE_TITLE = "自在星球 · 看见自己 · 连接同频 · 找到长期生意";
+const SITE_TITLE = "自在星球 · 看见自己 · 连接同频 · 找到自由生意";
 const SITE_DESCRIPTION =
-  "帮每个人找到属于自己的长期生意。看见自己，连接同频，把热爱与专长长成可持续的事业。";
+  "帮每个人找到属于自己的自由生意。看见自己，连接同频，把热爱与专长长成能带来人生自由的事业。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
