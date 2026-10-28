@@ -1,4 +1,5 @@
 import { PDFDocument, rgb } from "pdf-lib";
+import { aspirationHasContent, aspirationPdfSections, type AspirationPage } from "./aspiration";
 import { embedPlanCjkFont, loadQrBytes } from "./pdf-cjk-font";
 
 const qrCache = new Map<string, Uint8Array>();
@@ -15,6 +16,7 @@ export type ProfilePdfInput = {
   expertise: string;
   direction: string;
   cases: string;
+  aspiration?: AspirationPage | null;
   publicUrl?: string | null;
   updatedAt?: string | null;
 };
@@ -60,11 +62,19 @@ export async function buildProfilePlanPdf(input: {
   profile: ProfilePdfInput;
   qrPath?: string;
 }): Promise<Uint8Array> {
-  const sections: Array<{ title: string; body: string }> = [];
-  if (input.profile.expertise.trim()) sections.push({ title: "专长", body: input.profile.expertise.trim() });
-  if (input.profile.experience.trim()) sections.push({ title: "真实经历", body: input.profile.experience.trim() });
-  if (input.profile.direction.trim()) sections.push({ title: "想成为 / 想去往", body: input.profile.direction.trim() });
-  if (input.profile.cases.trim()) sections.push({ title: "案例 / 正在验证", body: input.profile.cases.trim() });
+  const fromAspiration =
+    input.profile.aspiration && aspirationHasContent(input.profile.aspiration)
+      ? aspirationPdfSections(input.profile.aspiration)
+      : [];
+  const sections: Array<{ title: string; body: string }> = fromAspiration.length
+    ? fromAspiration
+    : [];
+  if (!sections.length) {
+    if (input.profile.expertise.trim()) sections.push({ title: "专长", body: input.profile.expertise.trim() });
+    if (input.profile.experience.trim()) sections.push({ title: "真实经历", body: input.profile.experience.trim() });
+    if (input.profile.direction.trim()) sections.push({ title: "想成为 / 想去往", body: input.profile.direction.trim() });
+    if (input.profile.cases.trim()) sections.push({ title: "案例 / 正在验证", body: input.profile.cases.trim() });
+  }
 
   const invite =
     "扫码加入自在星球社区（企业微信）\n带着「我的向往」回来，遇见同频的人。\n公开页不含七维探索私密原文。";
@@ -72,7 +82,8 @@ export async function buildProfilePlanPdf(input: {
   const footer = `生成于自在星球 · ${dateLabel} · 仅供自愿分享与转发`;
   const emptyLine = "这位居民还在完善「我的向往」。";
   const urlLine = input.profile.publicUrl ? `在线查看：${input.profile.publicUrl}` : "";
-  const oneLiner = input.profile.direction.trim() || emptyLine;
+  const oneLiner =
+    input.profile.aspiration?.claim.sentence?.trim() || input.profile.direction.trim() || emptyLine;
 
   const texts = [
     "自在星球 · 我的向往",
@@ -132,7 +143,8 @@ export async function buildProfilePlanPdf(input: {
   page.drawRectangle({ x: margin, y: y, width: contentWidth, height: 1, color: LINE });
   y -= 18;
 
-  drawText(oneLiner, input.profile.direction.trim() ? 14 : 12, input.profile.direction.trim() ? INK : MUTE, 8);
+  const hasLiner = oneLiner !== emptyLine;
+  drawText(oneLiner, hasLiner ? 14 : 12, hasLiner ? INK : MUTE, 8);
   y -= 6;
 
   for (const section of sections) {

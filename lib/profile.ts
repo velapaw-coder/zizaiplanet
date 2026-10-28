@@ -1,3 +1,10 @@
+import {
+  aspirationHasContent,
+  legacyMirror,
+  normalizeAspiration,
+  resolveAspiration,
+  type AspirationPage,
+} from "./aspiration";
 import { savedHome } from "./content";
 import { db } from "./db";
 import { nowIso } from "./http";
@@ -10,6 +17,8 @@ export type Profile = {
   expertise: string;
   direction: string;
   cases: string;
+  /** Empty until the six-section page is saved or generated. Missing on databases before migration 0008. */
+  aspiration_json?: string | null;
   published: number;
   updated_at: string;
 };
@@ -21,6 +30,7 @@ export type PublicProfile = {
   expertise: string;
   direction: string;
   cases: string;
+  aspiration: AspirationPage;
   updatedAt: string;
 };
 
@@ -48,23 +58,40 @@ export async function getProfileByUserId(userId: string) {
   return db().prepare("SELECT * FROM profiles WHERE user_id = ?").bind(userId).first<Profile>();
 }
 
-export async function getPublicProfileBySlug(slug: string): Promise<PublicProfile | null> {
-  const row = await db()
-    .prepare(
-      `SELECT p.slug, p.experience, p.expertise, p.direction, p.cases, p.updated_at, u.display_name
+type PublicProfileRow = {
+  slug: string;
+  experience: string;
+  expertise: string;
+  direction: string;
+  cases: string;
+  aspiration_json?: string | null;
+  updated_at: string;
+  display_name: string;
+};
+
+async function readPublicProfileRow(slug: string) {
+  const withAspiration = `SELECT p.slug, p.experience, p.expertise, p.direction, p.cases, p.aspiration_json, p.updated_at, u.display_name
        FROM profiles p JOIN users u ON u.id = p.user_id
-       WHERE p.slug = ? AND p.published = 1`,
-    )
-    .bind(slug)
-    .first<{
-      slug: string;
-      experience: string;
-      expertise: string;
-      direction: string;
-      cases: string;
-      updated_at: string;
-      display_name: string;
-    }>();
+       WHERE p.slug = ? AND p.published = 1`;
+  try {
+    return await db().prepare(withAspiration).bind(slug).first<PublicProfileRow>();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    if (!/no such column/i.test(message)) throw error;
+    const legacy = await db()
+      .prepare(
+        `SELECT p.slug, p.experience, p.expertise, p.direction, p.cases, p.updated_at, u.display_name
+         FROM profiles p JOIN users u ON u.id = p.user_id
+         WHERE p.slug = ? AND p.published = 1`,
+      )
+      .bind(slug)
+      .first<PublicProfileRow>();
+    return legacy ? { ...legacy, aspiration_json: "" } : null;
+  }
+}
+
+export async function getPublicProfileBySlug(slug: string): Promise<PublicProfile | null> {
+  const row = await readPublicProfileRow(slug);
   if (!row) return null;
   return {
     slug: row.slug,
@@ -73,6 +100,7 @@ export async function getPublicProfileBySlug(slug: string): Promise<PublicProfil
     expertise: row.expertise,
     direction: row.direction,
     cases: row.cases,
+    aspiration: resolveAspiration(row),
     updatedAt: row.updated_at,
   };
 }
@@ -97,22 +125,19 @@ export async function saveProfile(
   userId: string,
   input: {
     slug: string;
-    experience: string;
-    expertise: string;
-    direction: string;
-    cases: string;
+    aspiration: AspirationPage;
     published: boolean;
   },
 ): Promise<{ ok: true; profile: Profile } | { ok: false; reason: string }> {
   const parsed = parseProfileSlug(input.slug);
   if (!parsed.ok) return parsed;
-  const experience = String(input.experience || "").trim().slice(0, 2000);
-  const expertise = String(input.expertise || "").trim().slice(0, 800);
-  const direction = String(input.direction || "").trim().slice(0, 800);
-  const cases = String(input.cases || "").trim().slice(0, 2000);
-  if (!experience && !expertise && !direction) {
-    return { ok: false, reason: "至少填写经历、专长或长期方向中的一项。" };
+  const aspiration = normalizeAspiration(input.aspiration);
+  if (!aspirationHasContent(aspiration)) {
+    return { ok: false, reason: "至少写下主张、故事、相信、做事、向往或同频中的一项。" };
   }
+  const aspirationJson = JSON.stringify(aspiration);
+  if (aspirationJson.length > 20000) return { ok: false, reason: "内容太长了，请删掉一些再保存。" };
+  const mirrored = legacyMirror(aspiration);
   const taken = await db()
     .prepare("SELECT user_id FROM profiles WHERE slug = ? AND user_id != ?")
     .bind(parsed.slug, userId)
@@ -121,18 +146,29 @@ export async function saveProfile(
   const stamp = nowIso();
   await db()
     .prepare(
-      `INSERT INTO profiles (user_id, slug, experience, expertise, direction, cases, published, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      `INSERT INTO profiles (user_id, slug, experience, expertise, direction, cases, aspiration_json, published, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
        ON CONFLICT(user_id) DO UPDATE SET
          slug = excluded.slug,
          experience = excluded.experience,
          expertise = excluded.expertise,
          direction = excluded.direction,
          cases = excluded.cases,
+         aspiration_json = excluded.aspiration_json,
          published = excluded.published,
          updated_at = excluded.updated_at`,
     )
-    .bind(userId, parsed.slug, experience, expertise, direction, cases, input.published ? 1 : 0, stamp)
+    .bind(
+      userId,
+      parsed.slug,
+      mirrored.experience,
+      mirrored.expertise,
+      mirrored.direction,
+      mirrored.cases,
+      aspirationJson,
+      input.published ? 1 : 0,
+      stamp,
+    )
     .run();
   const profile = await getProfileByUserId(userId);
   if (!profile) return { ok: false, reason: "保存失败，请稍后再试。" };
@@ -210,12 +246,13 @@ export async function syncProfileFromSources(
     };
   }
 
-  if (!draft.experience && !draft.expertise && !draft.direction) {
+  if (!draft.experience && !draft.expertise && !draft.direction && !aspirationHasContent(draft.aspiration)) {
     const existing = await ensureProfileDraft(userId);
     return { ok: true, profile: existing, changed: false, source: draft.source, reason: "生成内容为空。" };
   }
 
   let profile = await getProfileByUserId(userId);
+  const draftJson = JSON.stringify(draft.aspiration);
 
   if (!profile) {
     const displayName = await displayNameFor(userId);
@@ -223,10 +260,10 @@ export async function syncProfileFromSources(
     const stamp = nowIso();
     await db()
       .prepare(
-        `INSERT INTO profiles (user_id, slug, experience, expertise, direction, cases, published, updated_at)
-         VALUES (?, ?, ?, ?, ?, ?, 0, ?)`,
+        `INSERT INTO profiles (user_id, slug, experience, expertise, direction, cases, aspiration_json, published, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?)`,
       )
-      .bind(userId, slug, draft.experience, draft.expertise, draft.direction, draft.cases, stamp)
+      .bind(userId, slug, draft.experience, draft.expertise, draft.direction, draft.cases, draftJson, stamp)
       .run();
     profile = (await getProfileByUserId(userId))!;
     return { ok: true, profile, changed: true, source: draft.source };
@@ -237,13 +274,25 @@ export async function syncProfileFromSources(
     expertise: profile.expertise,
     direction: profile.direction,
     cases: profile.cases,
+    aspiration_json: profile.aspiration_json || "",
   };
+
+  const legacyAllEmpty = ![profile.experience, profile.expertise, profile.direction, profile.cases].some((item) =>
+    String(item || "").trim(),
+  );
 
   if (mode === "overwrite") {
     next.experience = draft.experience || profile.experience;
     next.expertise = draft.expertise || profile.expertise;
     next.direction = draft.direction || profile.direction;
     next.cases = draft.cases;
+    if (aspirationHasContent(draft.aspiration)) next.aspiration_json = draftJson;
+  } else if (!next.aspiration_json.trim() && legacyAllEmpty && aspirationHasContent(draft.aspiration)) {
+    if (!next.experience.trim() && draft.experience) next.experience = draft.experience;
+    if (!next.expertise.trim() && draft.expertise) next.expertise = draft.expertise;
+    if (!next.direction.trim() && draft.direction) next.direction = draft.direction;
+    if (!next.cases.trim() && draft.cases) next.cases = draft.cases;
+    next.aspiration_json = draftJson;
   } else {
     if (!next.experience.trim() && draft.experience) next.experience = draft.experience;
     if (!next.expertise.trim() && draft.expertise) next.expertise = draft.expertise;
@@ -255,7 +304,8 @@ export async function syncProfileFromSources(
     next.experience !== profile.experience ||
     next.expertise !== profile.expertise ||
     next.direction !== profile.direction ||
-    next.cases !== profile.cases;
+    next.cases !== profile.cases ||
+    next.aspiration_json !== (profile.aspiration_json || "");
 
   if (!changed) {
     return { ok: true, profile, changed: false, source: draft.source };
@@ -264,10 +314,10 @@ export async function syncProfileFromSources(
   const stamp = nowIso();
   await db()
     .prepare(
-      `UPDATE profiles SET experience = ?, expertise = ?, direction = ?, cases = ?, updated_at = ?
+      `UPDATE profiles SET experience = ?, expertise = ?, direction = ?, cases = ?, aspiration_json = ?, updated_at = ?
        WHERE user_id = ?`,
     )
-    .bind(next.experience, next.expertise, next.direction, next.cases, stamp, userId)
+    .bind(next.experience, next.expertise, next.direction, next.cases, next.aspiration_json, stamp, userId)
     .run();
 
   profile = (await getProfileByUserId(userId))!;
