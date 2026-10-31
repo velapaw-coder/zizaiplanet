@@ -870,3 +870,170 @@ a.resource-card span{font-size:12px;color:var(--green)}
 @media(max-width:700px){
   a.resource-card .r-cover{height:160px}
 }
+
+/* —— 登录 / 注册页 —— */
+.auth-page{padding-top:40px;padding-bottom:88px}
+.auth-shell{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.auth-hero .page-title{margin-bottom:10px}
+.auth-lead{
+  margin:0;
+  font-size:16px;
+  line-height:1.85;
+  color:#3E6670;
+}
+.auth-tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  padding:6px;
+  border:1px solid #D4E4E8;
+  border-radius:999px;
+  background:#EEF6F8;
+}
+.auth-tab{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  border-radius:999px;
+  font-size:16px;
+  font-weight:600;
+  color:#3D6670;
+  transition:background .18s,color .18s,box-shadow .18s;
+}
+.auth-tab.is-active{
+  background:#2A9B8F;
+  color:#fff;
+  box-shadow:0 8px 18px rgba(33,127,118,.22);
+}
+.auth-tab:not(.is-active):hover{background:#fff;color:#164E56}
+.auth-card{
+  background:#fff;
+  border:1px solid #DCE8EA;
+  border-radius:18px;
+  padding:28px 24px 24px;
+  box-shadow:0 14px 36px rgba(22,78,86,.07);
+}
+.auth-card-head{margin-bottom:8px}
+.auth-card-head h2{
+  margin:0 0 8px;
+  font:600 22px/1.4 "Songti SC","STSong","SimSun","Noto Serif SC",serif;
+  color:#164E56;
+}
+.auth-card-head p{
+  margin:0;
+  font-size:15px;
+  line-height:1.75;
+  color:#6D8B92;
+}
+.auth-card .field{margin:16px 0}
+.auth-card .field label,
+.auth-card .field [data-slot="label"],
+.auth-card label{
+  font-size:15px !important;
+  color:#164E56;
+  font-weight:600;
+}
+.auth-card input{
+  min-height:48px;
+  font-size:16px !important;
+  border-radius:12px;
+}
+.auth-submit{
+  width:100%;
+  margin-top:8px;
+  min-height:50px;
+  font-size:16px !important;
+  font-weight:700;
+}
+.auth-foot{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 12px;
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px dashed #D4E4E8;
+}
+.auth-foot p{
+  margin:0;
+  font-size:15px;
+  color:#6D8B92;
+}
+.auth-foot-link{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:0 4px;
+  font-size:16px;
+  font-weight:700;
+  color:#2A9B8F;
+}
+.auth-foot-link:hover{color:#217F76;text-decoration:underline}
+.auth-signed-in{text-align:center;padding-top:32px;padding-bottom:28px}
+.auth-signed-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:32px;
+  padding:0 14px;
+  border-radius:999px;
+  background:#E5F4F2;
+  color:#2A9B8F;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.4px;
+}
+.auth-signed-name{
+  margin:18px 0 8px;
+  font:600 clamp(28px,6vw,36px)/1.35 "Songti SC","STSong","SimSun","Noto Serif SC",serif;
+  color:#164E56;
+}
+.auth-signed-meta{
+  margin:0 0 22px;
+  font-size:15px;
+  color:#6D8B92;
+}
+.auth-actions{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;
+}
+.auth-cta{
+  min-height:50px;
+  font-size:16px;
+  font-weight:700;
+  justify-content:center;
+}
+.auth-secondary-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  border-radius:999px;
+  border:1px solid #2A9B8F;
+  color:#2A9B8F;
+  font-size:16px;
+  font-weight:600;
+  background:#fff;
+}
+.auth-secondary-btn:hover{background:#E5F4F2}
+.auth-logout{margin-top:18px}
+.auth-text-btn{
+  background:none;
+  border:0;
+  padding:10px 8px;
+  min-height:44px;
+  font-size:15px;
+  color:#3D6670;
+  cursor:pointer;
+}
+.auth-text-btn:hover{color:#2A9B8F;text-decoration:underline}
+@media(max-width:560px){
+  .auth-page{padding-top:28px}
+  .auth-shell{width:min(100%,calc(100% - 32px))}
+  .auth-card{padding:24px 18px 20px;border-radius:16px}
+  .auth-tab{font-size:15px;min-height:46px}
+  .auth-lead{font-size:15px}
+}
