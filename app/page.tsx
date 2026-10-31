@@ -31,6 +31,13 @@ export default function HomePage() {
                       ↗
                     </span>
                   </a>
+                  <a
+                    className="hb-btn hb-btn-outline"
+                    href="/downloads/zizaiplanet.apk"
+                    download="zizaiplanet.apk"
+                  >
+                    下载安卓 App
+                  </a>
                   <a className="text-link" href="#philosophy">
                     认识 AI创造自由 <span aria-hidden="true">↓</span>
                   </a>
@@ -579,6 +586,14 @@ export default function HomePage() {
                 <span className="arrow" aria-hidden="true">
                   ↗
                 </span>
+              </a>
+              <a
+                className="hb-btn hb-btn-outline"
+                href="/downloads/zizaiplanet.apk"
+                download="zizaiplanet.apk"
+                style={{ marginTop: 12 }}
+              >
+                下载安卓 App
               </a>
               <p>自由参与 · 尊重边界 · 注册即可加入</p>
             </div>

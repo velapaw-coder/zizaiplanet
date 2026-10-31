@@ -29,6 +29,9 @@ export function SiteFooter() {
               <strong>更多</strong>
               <a href="/garden">创造者家园</a>
               <a href="/join">成为自由创造者</a>
+              <a href="/downloads/zizaiplanet.apk" download="zizaiplanet.apk">
+                下载安卓 App
+              </a>
             </div>
           </nav>
         </div>
