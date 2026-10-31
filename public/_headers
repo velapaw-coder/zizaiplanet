@@ -40,3 +40,9 @@
   Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
 /intro-poster-sm.webp
   Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+# Android APK download
+/downloads/zizaiplanet.apk
+  Content-Type: application/vnd.android.package-archive
+  Content-Disposition: attachment; filename="zizaiplanet.apk"
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400

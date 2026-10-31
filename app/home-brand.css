@@ -29,6 +29,10 @@ main.home-brand .hb-btn{
   background:var(--hb-ink);color:#fff;font-size:14px;transition:transform .2s,background .2s;
 }
 main.home-brand .hb-btn:hover{background:#256170;transform:translateY(-2px);color:#fff}
+main.home-brand .hb-btn-outline{
+  background:transparent;color:var(--hb-ink);border-color:#9dbabc;
+}
+main.home-brand .hb-btn-outline:hover{background:#eef7f6;transform:translateY(-2px);color:var(--hb-ink)}
 main.home-brand .text-link{
   display:inline-flex;align-items:center;gap:14px;font-size:14px;
   border-bottom:1px solid #9dbabc;padding:8px 0;
