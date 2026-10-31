@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PAGE_COPY, pageMeta } from "@/lib/seo";
+import { APK_DOWNLOAD_URL, APK_FILENAME } from "@/lib/downloads";
 
 export const metadata: Metadata = pageMeta(PAGE_COPY.home);
 
@@ -33,8 +34,8 @@ export default function HomePage() {
                   </a>
                   <a
                     className="hb-btn hb-btn-outline"
-                    href="/downloads/zizaiplanet.apk"
-                    download="zizaiplanet.apk"
+                    href={APK_DOWNLOAD_URL}
+                    download={APK_FILENAME}
                   >
                     下载安卓 App
                   </a>
@@ -589,8 +590,8 @@ export default function HomePage() {
               </a>
               <a
                 className="hb-btn hb-btn-outline"
-                href="/downloads/zizaiplanet.apk"
-                download="zizaiplanet.apk"
+                href={APK_DOWNLOAD_URL}
+                download={APK_FILENAME}
                 style={{ marginTop: 12 }}
               >
                 下载安卓 App

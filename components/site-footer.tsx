@@ -1,4 +1,5 @@
 import { Logo } from "./logo";
+import { APK_DOWNLOAD_URL, APK_FILENAME } from "@/lib/downloads";
 
 export function SiteFooter() {
   return (
@@ -29,7 +30,7 @@ export function SiteFooter() {
               <strong>更多</strong>
               <a href="/garden">创造者家园</a>
               <a href="/join">成为自由创造者</a>
-              <a href="/downloads/zizaiplanet.apk" download="zizaiplanet.apk">
+              <a href={APK_DOWNLOAD_URL} download={APK_FILENAME}>
                 下载安卓 App
               </a>
             </div>
