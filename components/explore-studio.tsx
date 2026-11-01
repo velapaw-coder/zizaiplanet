@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import type { ExplorePlan } from "@/lib/explore-plan";
 import type { DimensionId } from "@/lib/rooms";
+import { useKeyboardInset, useScrollLatest } from "@/components/use-mobile-chat";
 
 type Msg = { id: string; role: "user" | "assistant" | "system"; content: string; createdAt?: string };
 
@@ -55,6 +56,7 @@ export function ExploreStudio() {
   const [qrUrl, setQrUrl] = useState("/community-wecom-qr.png");
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const setComposer = useKeyboardInset();
 
   async function loadPlan() {
     try {
@@ -91,9 +93,7 @@ export function ExploreStudio() {
     void refresh();
   }, []);
 
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [state?.messages.length, sending]);
+  useScrollLatest(bottomRef, `${state?.messages.length ?? 0}:${sending ? 1 : 0}`, !loading);
 
   async function start() {
     setSending(true);
@@ -109,7 +109,7 @@ export function ExploreStudio() {
       if (!res.ok || !data.ok) throw new Error(data.error || "无法开始");
       setMockBanner(Boolean(data.mock));
       await refresh();
-      inputRef.current?.focus();
+      inputRef.current?.focus({ preventScroll: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "无法开始");
     } finally {
@@ -161,7 +161,7 @@ export function ExploreStudio() {
       setError(err instanceof Error ? err.message : "发送失败");
     } finally {
       setSending(false);
-      inputRef.current?.focus();
+      inputRef.current?.focus({ preventScroll: true });
     }
   }
 
@@ -196,7 +196,7 @@ export function ExploreStudio() {
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "无法聚焦该维");
       await refresh();
-      inputRef.current?.focus();
+      inputRef.current?.focus({ preventScroll: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "无法聚焦该维");
     } finally {
@@ -255,10 +255,13 @@ export function ExploreStudio() {
                 <div className="explore-chat-bubble guide workbench-typing">向导正在想…</div>
               </div>
             ) : null}
-            <div ref={bottomRef} />
+            <div ref={bottomRef} className="chat-scroll-anchor" />
           </div>
 
-          <div className="explore-chat-composer">
+          <div
+            ref={setComposer}
+            className={`explore-chat-composer${hasSession || messages.length > 0 ? " is-active" : ""}`}
+          >
             {hasSession || messages.length > 0 ? (
               <>
                 <div className="explore-chat-input-wrap">
@@ -270,6 +273,11 @@ export function ExploreStudio() {
                     aria-label="七维自我探索输入"
                     rows={1}
                     className="explore-chat-input"
+                    onFocus={(event) => {
+                      window.setTimeout(() => {
+                        event.currentTarget.scrollIntoView({ block: "nearest" });
+                      }, 280);
+                    }}
                     onKeyDown={(event) => {
                       if (event.key === "Enter" && !event.shiftKey) {
                         event.preventDefault();

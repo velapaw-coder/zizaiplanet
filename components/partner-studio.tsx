@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useKeyboardInset, useScrollLatest } from "@/components/use-mobile-chat";
 
 type Msg = { id: string; role: "user" | "assistant" | "system"; content: string; createdAt?: string };
 
@@ -35,6 +36,7 @@ export function PartnerStudio() {
   const [mockBanner, setMockBanner] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const setComposer = useKeyboardInset();
 
   async function refresh() {
     setLoading(true);
@@ -56,9 +58,7 @@ export function PartnerStudio() {
     void refresh();
   }, []);
 
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [state?.messages.length, sending]);
+  useScrollLatest(bottomRef, `${state?.messages.length ?? 0}:${sending ? 1 : 0}`, !loading);
 
   async function start() {
     setSending(true);
@@ -74,7 +74,7 @@ export function PartnerStudio() {
       if (!res.ok || !data.ok) throw new Error(data.error || "无法开始");
       setMockBanner(Boolean(data.mock));
       await refresh();
-      inputRef.current?.focus();
+      inputRef.current?.focus({ preventScroll: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "无法开始");
     } finally {
@@ -212,10 +212,13 @@ export function PartnerStudio() {
                 <div className="explore-chat-bubble guide workbench-typing">分身正在想…</div>
               </div>
             ) : null}
-            <div ref={bottomRef} />
+            <div ref={bottomRef} className="chat-scroll-anchor" />
           </div>
 
-          <div className="explore-chat-composer">
+          <div
+            ref={setComposer}
+            className={`explore-chat-composer${hasSession || messages.length > 0 ? " is-active" : ""}`}
+          >
             {hasSession || messages.length > 0 ? (
               <>
                 <div className="explore-chat-input-wrap">
@@ -227,6 +230,11 @@ export function PartnerStudio() {
                     aria-label="AI 分身输入"
                     rows={1}
                     className="explore-chat-input"
+                    onFocus={(event) => {
+                      window.setTimeout(() => {
+                        event.currentTarget.scrollIntoView({ block: "nearest" });
+                      }, 280);
+                    }}
                     onKeyDown={(event) => {
                       if (event.key === "Enter" && !event.shiftKey) {
                         event.preventDefault();
