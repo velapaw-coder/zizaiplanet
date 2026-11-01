@@ -7,17 +7,19 @@ export const metadata: Metadata = pageMeta(PAGE_COPY.explore);
 
 export default function ExplorePage() {
   return (
-    <main className="section tight">
+    <main className="section tight explore-page">
       <div className="wrap explore-page-wide">
-        <div className="kicker">见自己</div>
-        <h1 className="page-title">七维自我探索</h1>
-        <p className="help">
-          {EXPLORE_SLOGAN} 左侧和向导对话，右侧七维卡随探索逐步点亮；某一维不满意，点该维即可重修。
-        </p>
-        <p className="help">
-          下一步：<a href="/partner">我的AI分身</a>
-          ，善用AI认清起点、做方向对话。判断仍由你做。
-        </p>
+        <div className="page-lead">
+          <div className="kicker">见自己</div>
+          <h1 className="page-title">七维自我探索</h1>
+          <p className="help">
+            {EXPLORE_SLOGAN} 左侧和向导对话，右侧七维卡随探索逐步点亮；某一维不满意，点该维即可重修。
+          </p>
+          <p className="help">
+            下一步：<a href="/partner">我的AI分身</a>
+            ，善用AI认清起点、做方向对话。判断仍由你做。
+          </p>
+        </div>
         <ExploreStudio />
       </div>
     </main>

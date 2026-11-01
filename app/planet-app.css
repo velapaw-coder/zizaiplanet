@@ -480,9 +480,7 @@
   .explore-page-wide.wrap,
   .wrap.explore-page-wide{width:min(100% - 28px,1180px)}
   .explore-studio{margin-top:10px}
-  .explore-studio .explore-chat{
-    min-height:48vh;max-height:62vh;border-radius:16px;
-  }
+  .explore-studio .explore-chat{border-radius:16px}
   /* Re-assert after .seven-card-studio desktop 7-col rule */
   .seven-card-studio .seven-orbs{
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -565,9 +563,9 @@
   .explore-chat-composer{padding:14px 14px 18px}
   .explore-chat-input-wrap{gap:10px;align-items:center}
   .explore-chat-input{
-    min-height:88px!important;
-    padding:14px 12px!important;
-    font-size:15px!important;
+    min-height:80px!important;
+    padding:12px 12px!important;
+    font-size:16px!important;
     line-height:1.5!important;
   }
   .explore-chat-input-wrap > button{
@@ -854,7 +852,59 @@ textarea.pp-tagline{display:block;width:100%;max-width:36em;color:#164E56}
 @media(max-width:900px){
   .partner-studio-grid{grid-template-columns:1fr}
   .partner-side-panel{position:static}
-  .partner-chat-panel{min-height:480px}
+  .partner-chat-panel{min-height:0}
+}
+
+/*
+  Phone: one page scroll. The intro stays in normal flow (solid, above the chat).
+  Messages grow with the page instead of a vh-locked inner pane that sits on the copy.
+  The composer docks to the visual bottom and lifts with the keyboard inset.
+*/
+@media (max-width:768px){
+  .explore-page.section.tight,
+  .partner-page.section.tight{padding-top:18px;padding-bottom:28px}
+  .page-lead{
+    position:relative;z-index:2;
+    background:#F5FAFB;
+    margin:0 0 16px;
+    padding-bottom:2px;
+  }
+  .explore-studio,
+  .partner-studio{margin-top:0}
+  .explore-studio .explore-chat,
+  .partner-studio .partner-chat-panel{
+    min-height:0;max-height:none;height:auto;
+    overflow:hidden;
+    background:#fff;
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    box-shadow:0 8px 22px rgba(22,78,86,.06);
+  }
+  .explore-studio .explore-chat-messages,
+  .partner-studio .partner-chat-scroll,
+  .partner-studio .explore-chat-scroll{
+    flex:none;max-height:none;overflow:visible;min-height:0;
+  }
+  .explore-studio .explore-chat-composer:not(.is-active),
+  .partner-studio .explore-chat-composer:not(.is-active){
+    display:none;
+  }
+  .explore-studio .explore-chat-composer.is-active,
+  .partner-studio .explore-chat-composer.is-active{
+    position:fixed;left:0;right:0;bottom:var(--keyboard-inset,0px);z-index:20;
+    margin:0;
+    padding:10px 14px max(10px,env(safe-area-inset-bottom));
+    background:#F5FAFB;
+    border-top:1px solid rgba(212,228,232,.95);
+    box-shadow:0 -8px 24px rgba(22,78,86,.08);
+  }
+  .explore-chat-toolbar{margin-top:8px}
+  html:has(.explore-chat-composer.is-active){
+    scroll-padding-top:72px;
+    scroll-padding-bottom:calc(var(--composer-space, 140px) + var(--keyboard-inset, 0px) + 12px);
+  }
+  body:has(.explore-chat-composer.is-active){
+    padding-bottom:calc(var(--composer-space, 148px) + var(--keyboard-inset, 0px) + 20px);
+  }
 }
 
 
