@@ -12,6 +12,7 @@ const HUBS: Array<{ path: string; changeFrequency: "weekly" | "monthly"; priorit
   { path: "/journal", changeFrequency: "weekly", priority: 0.8 },
   { path: "/energy", changeFrequency: "weekly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/about/xiechang", changeFrequency: "monthly", priority: 0.3 },
   { path: "/join", changeFrequency: "monthly", priority: 0.5 },
 ];
 
