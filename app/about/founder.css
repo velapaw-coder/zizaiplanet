@@ -1,0 +1,16 @@
+/* Quiet credit at the bottom of /about. Not a site nav item. */
+.about-founder {
+  margin: 4.5rem 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  color: #8aa0a6;
+}
+
+.about-founder a {
+  color: inherit;
+}
+
+.about-founder a:hover {
+  color: #164e56;
+}

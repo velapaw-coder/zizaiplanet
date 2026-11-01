@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PAGE_COPY, pageMeta } from "@/lib/seo";
+import "./founder.css";
 
 export const metadata: Metadata = pageMeta(PAGE_COPY.about);
 
@@ -161,6 +162,9 @@ export default function AboutPage() {
           <a className="btn-primary" href="/join">
             成为自由创造者 ↗
           </a>
+        </p>
+        <p className="about-founder">
+          <a href="/about/xiechang">发起人 · 谢昌</a>
         </p>
       </div>
     </main>
