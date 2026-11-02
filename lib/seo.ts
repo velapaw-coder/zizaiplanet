@@ -5,7 +5,7 @@ export const SITE_URL = "https://www.zizaiplanet.com";
 export const SITE_NAME = "自在星球";
 export const SITE_TITLE = "自在星球 · AI创造自由";
 export const SITE_DESCRIPTION =
-  "以道驭AI，以创造得自由。见自己、明其道、善用AI，把热爱长成能带来人生自由的生意。AI自由创造，创造自由生活。";
+  "AI 时代，让每个人活成自己向往的自由。以道驭AI，以创造得自由。见自己、明其道、善用AI，把热爱长成能带来人生自由的生意。";
 export const OG_IMAGE_PATH = "/og-default.png";
 export const LOGO_PATH = "/logo.png";
 

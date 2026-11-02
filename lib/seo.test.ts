@@ -25,6 +25,14 @@ test("home title is absolute so the layout template does not double the brand", 
   assert.deepEqual(meta.title, { absolute: "自在星球 · AI创造自由" });
   assert.equal(meta.openGraph && "url" in meta.openGraph ? meta.openGraph.url : "", "https://www.zizaiplanet.com");
   assert.equal(meta.description, PAGE_COPY.home.description);
+  assert.match(String(meta.description), /AI 时代，让每个人活成自己向往的自由/);
+  assert.equal(
+    meta.openGraph && "description" in meta.openGraph ? meta.openGraph.description : "",
+    meta.description,
+  );
+  assert.equal(meta.twitter?.description, meta.description);
+  assert.equal(String(meta.description).includes("长期生意"), false);
+  assert.equal(String(meta.description).includes("以AI自由创造，创造自由生活"), false);
 });
 
 test("private pages are noindex, follow and still name their own url", () => {
