@@ -77,11 +77,12 @@ function articleImage(block: string) {
   return match ? { alt: match[1] || "", src: match[2] } : null;
 }
 
-test("xiaoyao migration is insert-only and matches its seed file", () => {
+test("0016 stays the historical insert and is no longer the live seed", () => {
   const sql = readFileSync(migrationPath, "utf8");
-  assert.equal(readFileSync(seedPath, "utf8"), sql);
+  assert.notEqual(readFileSync(seedPath, "utf8"), sql);
   assert.doesNotMatch(sql, /\b(DELETE|UPDATE|DROP|ALTER)\b/);
   assert.match(sql, /INSERT OR IGNORE INTO articles/);
+  assert.match(sql, /郭熙/);
   assert.match(readFileSync(path.join(root, "public/images/journal/xiaoyao-image-sources.md"), "utf8"), /Public domain/);
 });
 
@@ -91,7 +92,7 @@ test("ten xiaoyao essays keep distinct classics, sources, and old slugs", () => 
   assert.equal(values.length, 90);
   const older = new Set<string>();
   for (const file of readdirSync(path.join(root, "migrations"))) {
-    if (!file.endsWith(".sql") || file.startsWith("0016_")) continue;
+    if (!file.endsWith(".sql") || file >= "0016_") continue;
     for (const value of sqlStrings(readFileSync(path.join(root, "migrations", file), "utf8"))) {
       if (/^[a-z0-9-]{2,48}$/.test(value)) older.add(value);
     }
@@ -122,4 +123,40 @@ test("ten xiaoyao essays keep distinct classics, sources, and old slugs", () => 
   }
   assert.match(values[8 * 9 + 7], /与杨仕德薛尚谦/);
   assert.match(values[8 * 9 + 7], /不在《传习录》/);
+});
+
+test("0017 only rewrites the ten xiaoyao rows and drops painting attributions", () => {
+  const sql = readFileSync(path.join(root, "migrations/0017_journal_xiaoyao_concise.sql"), "utf8");
+  const original = readFileSync(migrationPath, "utf8");
+  assert.match(original, /郭熙/);
+  assert.doesNotMatch(sql, /\b(DELETE|DROP|ALTER)\b/);
+  assert.equal((sql.match(/UPDATE articles SET/g) || []).length, 10);
+  const forbidden = ["郭熙", "梁楷", "公有领域", "CC0", "故宫", "谢昌", "first-small-work", "dao-follows-nature"];
+  for (const word of forbidden) assert.equal(sql.includes(word), false, word);
+  for (const [id, slug, title] of EXPECTED) {
+    assert.match(sql, new RegExp(`WHERE id = '${id}' AND slug = '${slug}';`));
+    assert.doesNotMatch(sql, new RegExp(`title = '${title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}'`));
+  }
+  const bodies = sqlStrings(sql).filter((value) => value.includes("生成的生活场景"));
+  assert.equal(bodies.length, 10);
+  for (const body of bodies) {
+    const cjk = (body.match(/[\u4e00-\u9fff]/g) || []).length;
+    assert.ok(cjk >= 1000 && cjk <= 1500, String(cjk));
+    const images = body.split(/\n\n+/).map(articleImage).filter(Boolean);
+    assert.equal(images.length, 2);
+    for (const image of images) {
+      assert.match(image!.src, /^\/images\/journal\/xiao-zen-[a-z0-9-]+\.webp$/);
+      assert.match(image!.alt, /生成的生活场景，不是古画或实拍/);
+      assert.deepEqual(webpSize(readFileSync(path.join(root, "public", image!.src))), { width: 1600, height: 900 });
+    }
+  }
+  const covers = [...sql.matchAll(/cover = '(\/images\/journal\/xiao-zen-[^']+)'/g)].map((item) => item[1]);
+  assert.equal(covers.length, 10);
+  for (const cover of covers) {
+    assert.deepEqual(webpSize(readFileSync(path.join(root, "public", cover))), { width: 1600, height: 900 });
+  }
+  assert.match(sql, /xiao-zen-desire-cover\.webp/);
+  assert.doesNotMatch(sql, /wanting-more-freedom-cover\.webp/);
+  const seedBodies = sqlStrings(readFileSync(seedPath, "utf8")).filter((value) => value.includes("生成的生活场景"));
+  assert.deepEqual(seedBodies, bodies);
 });
