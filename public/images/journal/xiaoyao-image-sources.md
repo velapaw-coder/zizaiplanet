@@ -1,16 +1,12 @@
 # 逍遥专栏图片
 
-## 已上线、待替换的古画装裱
+## 现在用的图
 
-`0016` 用过的 30 张是公有领域或 CC0 古画复制件，装在宣纸底上。文件名仍是 `wanting-more-freedom-cover.webp` 这一组。生产已经执行 `0016`，这些文件先留着，避免旧地址失效。它们不再是精简稿要显示的图。
+`0017` 把这 10 篇的封面和文内图换成 30 张新的 webp，文件名是 `xiao-zen-` 开头，和 `0016` 的旧地址分开，避免缓存还指着古画。
 
-许可仍是 Public domain 或 CC0，页面在维基共享资源，文件名见该次迁移正文里的旧图注。
+这些图是按东方生活场景生成的：木窗、木桌、粗陶杯、热气、绿植、书、亚麻、柔和自然光、浅景深。它们不是古画，也不是实拍。生成时没有读到用户原来的参考图路径，用的是风格相近的摄影参考，加上画面说明。所以不要把它们说成用户原图的复刻。
 
-## 即将替换的生活场景图
-
-`0017` 会把这 10 篇的封面和文内图改到新文件名，避免沿用旧地址被缓存住。新图是东方生活场景的生成图像：木窗、木桌、粗陶杯、绿植、书、亚麻、柔和自然光。不是上面那些古画，图注里也不再写画家和博物馆。
-
-素材到达前，这些新文件还不在仓库里，不要执行 `0017`。
+图注写在正文的图片说明里，并标明「生成的生活场景，不是古画或实拍」。
 
 | 文章 | 封面 | 文内 |
 | --- | --- | --- |
@@ -24,3 +20,7 @@
 | freedom-to-refuse | xiao-zen-refuse-cover.webp | xiao-zen-refuse-book.webp、xiao-zen-refuse-table.webp |
 | thief-in-the-heart | xiao-zen-thief-cover.webp | xiao-zen-thief-night.webp、xiao-zen-thief-tea.webp |
 | near-but-not-seized | xiao-zen-near-cover.webp | xiao-zen-near-two.webp、xiao-zen-near-space.webp |
+
+## 0016 留下的古画文件
+
+`0016` 已经在生产执行过。当时的 30 张是公有领域或 CC0 古画装裱，文件名仍是 `wanting-more-freedom-cover.webp` 这一组。那些文件还在仓库里，只是文章不再引用。许可仍是 Public domain 或 CC0。

@@ -146,8 +146,14 @@ test("0017 only rewrites the ten xiaoyao rows and drops painting attributions", 
     assert.equal(images.length, 2);
     for (const image of images) {
       assert.match(image!.src, /^\/images\/journal\/xiao-zen-[a-z0-9-]+\.webp$/);
-      assert.match(image!.alt, /生成的生活场景/);
+      assert.match(image!.alt, /生成的生活场景，不是古画或实拍/);
+      assert.deepEqual(webpSize(readFileSync(path.join(root, "public", image!.src))), { width: 1600, height: 900 });
     }
+  }
+  const covers = [...sql.matchAll(/cover = '(\/images\/journal\/xiao-zen-[^']+)'/g)].map((item) => item[1]);
+  assert.equal(covers.length, 10);
+  for (const cover of covers) {
+    assert.deepEqual(webpSize(readFileSync(path.join(root, "public", cover))), { width: 1600, height: 900 });
   }
   assert.match(sql, /xiao-zen-desire-cover\.webp/);
   assert.doesNotMatch(sql, /wanting-more-freedom-cover\.webp/);
