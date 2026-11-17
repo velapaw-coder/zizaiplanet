@@ -92,9 +92,16 @@ function articleImage(block: string) {
   return match ? { alt: match[1], src: match[2] } : null;
 }
 
+const EDITOR_NOTES = [
+  "《庄子·渔父》在杂篇，不少学者认为此篇晚出，不宜径视为庄周本人所作。正文引作《庄子·渔父》，不写作庄周亲口之说。",
+  "「庸言之信，庸行之谨，闲邪存其诚」出《易传·文言》，不是卦辞经文；「信及豚鱼也」出《彖传》。正文未采用「孚」的卵字源说，也未把「豚鱼吉」写成现代经验上「诚则必吉」的保证。",
+  "《大学》原文作「此谓诚于中，形于外」，正文只引「诚于中，形于外」，以免把上一句的「此谓」连来。同段「自谦」传统多读为「自慊」，是心安、自足之意。",
+  "《大学》《中庸》本为《礼记》篇目，后来抽出单行。第十篇所引《礼记》，用的是《礼运》《缁衣》，不再重复那两篇。",
+];
+
 test("integrity migration inserts only the ten approved essays", () => {
   const sql = readFileSync(migrationPath, "utf8");
-  assert.equal(readFileSync(seedPath, "utf8"), sql);
+  assert.notEqual(readFileSync(seedPath, "utf8"), sql);
   assert.doesNotMatch(sql, /\b(DELETE|UPDATE|DROP|ALTER)\b/);
   assert.match(sql, /INSERT OR IGNORE INTO articles/);
   assert.doesNotMatch(readFileSync(path.join(root, "migrations/0016_journal_xiaoyao.sql"), "utf8"), /integrity-/);
@@ -103,7 +110,7 @@ test("integrity migration inserts only the ten approved essays", () => {
   assert.equal(values.length, 90);
   const older = new Set<string>();
   for (const file of readdirSync(path.join(root, "migrations"))) {
-    if (!file.endsWith(".sql") || file.startsWith("0018_")) continue;
+    if (!file.endsWith(".sql") || file >= "0018_") continue;
     for (const value of sqlStrings(readFileSync(path.join(root, "migrations", file), "utf8"))) {
       if (/^[a-z0-9-]{2,48}$/.test(value)) older.add(value);
     }
@@ -140,4 +147,37 @@ test("integrity migration inserts only the ten approved essays", () => {
     }
     assert.doesNotMatch(body, /返回目录|尚未发布|sources\.md|角度：/);
   }
+});
+
+test("0019 only strips review rules and editor notes from the ten integrity bodies", () => {
+  const original = sqlStrings(readFileSync(migrationPath, "utf8"));
+  const sql = readFileSync(path.join(root, "migrations/0019_journal_integrity_endings.sql"), "utf8");
+  assert.doesNotMatch(sql, /\b(DELETE|DROP|ALTER)\b/);
+  assert.equal((sql.match(/UPDATE articles SET/g) || []).length, 10);
+  assert.doesNotMatch(sql, /title =|summary =|topic =|tags =|cover =|published_at =/);
+  const updated = sqlStrings(sql).filter((value) => value.includes("AI生成的生活场景"));
+  assert.equal(updated.length, 10);
+  for (let n = 0; n < 10; n += 1) {
+    const [id, slug, , , , , cover, before] = original.slice(n * 9, n * 9 + 9);
+    assert.match(sql, new RegExp(`WHERE id = '${id}' AND slug = '${slug}';`));
+    const after = updated[n];
+    const beforeParts = before.split(/\n\n+/).map((part) => part.trim()).filter(Boolean);
+    const afterParts = after.split(/\n\n+/).map((part) => part.trim()).filter(Boolean);
+    assert.deepEqual(
+      afterParts,
+      beforeParts.filter((part) => part !== "---" && !EDITOR_NOTES.includes(part)),
+    );
+    assert.ok(afterParts.length < beforeParts.length);
+    assert.equal(afterParts.some((part) => part === "---"), false);
+    for (const note of EDITOR_NOTES) assert.equal(after.includes(note), false);
+    assert.deepEqual(
+      afterParts.filter((part) => articleImage(part)),
+      beforeParts.filter((part) => articleImage(part)),
+    );
+    assert.equal(cover, original[n * 9 + 6]);
+    assert.match(after, /AI生成的生活场景/);
+  }
+  assert.match(updated[7], /该承担的损失仍要承担/);
+  const seedBodies = sqlStrings(readFileSync(seedPath, "utf8")).filter((value) => value.includes("AI生成的生活场景"));
+  assert.deepEqual(seedBodies, updated);
 });
