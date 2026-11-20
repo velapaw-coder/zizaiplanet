@@ -1,0 +1,11 @@
+# 自在 Agent OS 独立静态站（https://os.zizaiplanet.com）
+# 与仓库根目录 wrangler.toml（www.zizaiplanet.com / zizai-planet）无关。
+# 不含 D1、KV、R2、routes、custom_domain。部署本文件不会改生产 DNS。
+# 绑定 os.zizaiplanet.com 需在合并后由人工在 Cloudflare 添加自定义域，不要写进本配置。
+name = "zizai-agent-os"
+compatibility_date = "2026-10-24"
+
+[assets]
+directory = "./public"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
