@@ -230,6 +230,22 @@ main.home-brand .faq details p{
   padding:14px 40px 2px 0;font-size:13px;max-width:900px;color:var(--hb-muted);line-height:2;
 }
 
+/* Homepage-only quiet footer entry. Hidden on every other page. */
+.footer-agent-os{display:none}
+body:has(main.home-brand) .footer-agent-os{
+  display:block;
+  margin:14px 0 0;
+  text-align:center;
+  font-size:12px;
+  line-height:1.5;
+}
+body:has(main.home-brand) .footer-agent-os a{
+  color:#C5DDD9;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+body:has(main.home-brand) .footer-agent-os a:hover{color:#fff}
+
 /* Mobile sticky CTA */
 .home-mobile-join{
   display:none;position:fixed;bottom:0;left:0;right:0;z-index:15;

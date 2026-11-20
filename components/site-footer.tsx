@@ -41,6 +41,11 @@ export function SiteFooter() {
           <span>© 2026 自在星球 · AI创造自由</span>
           <span>线上交流与连接 · 线下合作独立开展</span>
         </div>
+        <p className="footer-agent-os">
+          <a href="https://os.zizaiplanet.com/" target="_blank" rel="noopener noreferrer">
+            Agent OS
+          </a>
+        </p>
       </div>
     </footer>
   );

@@ -285,6 +285,73 @@ export function XiechangProfile() {
                 </div>
               </article>
             </div>
+            <article className="practice-os reveal">
+              <div className="eyebrow">ZIZAI AGENT OS</div>
+              <h3>自在 Agent OS</h3>
+              <p>
+                企业来找我，多半不是想再添一个工具。真正卡住的，常常是一件具体的事：信息要人来回传，经验只在某个人脑子里，几套系统对不上。我做自在 Agent OS，是希望技术先去服务这些工作。从企业真实的业务问题出发，让 AI 进入一件具体的事，帮做事的人，而不是堆一堆用不上的软件。
+              </p>
+              <p>
+                这件事我还在建设。下面是我可以和企业一起探索的服务方向，不是已经全面上线、可以按清单交付的成品，也还没有可以拿出来的客户成绩。
+              </p>
+              <ul>
+                <li>
+                  <strong>业务场景梳理。</strong>
+                  先看清谁在做、卡在哪里、哪一件事值得先试。
+                </li>
+                <li>
+                  <strong>企业知识与智能体。</strong>
+                  把已经有的知识和做事方法整理起来，让助手能接着帮忙，而不是每次从头问。
+                </li>
+                <li>
+                  <strong>业务流程协同。</strong>
+                  顺着人现有的习惯，把现有系统、做事的人和 AI 接在同一件工作上。
+                </li>
+                <li>
+                  <strong>AI 应用与硬件场景。</strong>
+                  如果工作发生在现场或设备旁，再一起看应用和硬件怎么配合。
+                </li>
+                <li>
+                  <strong>落地试点与迭代。</strong>
+                  先小范围试，看实际效果，再决定下一步。
+                </li>
+              </ul>
+              <p>
+                合作我希望从一次把需求说清楚的交流开始。选一个小场景做试点，按实际效果决定要不要扩展。能接上企业已经在用的系统，也尊重人本来的工作习惯。值不值得继续，以试点里看见的结果为准。
+              </p>
+              <p>
+                如果你想先看一份写给具体企业的方案，下面两份可以直接查看或下载。它们说明的是可以怎么开始谈，不是已经做完的项目。方案封面上的合作名称是企策AI。
+              </p>
+              <ul className="practice-files">
+                <li>
+                  <strong>艾窝创新科技：企业政策赋能与 AI 增长合作方案。</strong>
+                  面向宠物用品研发、生产与全球销售。先从企业资料和用工情况做政策适配评估，再讨论 AI 如何进入海外客户、销售和生产协同。其中的 90 天安排是建议路径。
+                  <span>
+                    <a href="https://os.zizaiplanet.com/cases/aiwo-policy-ai-growth-proposal.pdf" target="_blank" rel="noopener noreferrer">
+                      查看
+                    </a>
+                    <a href="https://os.zizaiplanet.com/cases/aiwo-policy-ai-growth-proposal.pdf" download="艾窝创新科技-企业政策赋能与AI增长合作方案.pdf" rel="noopener noreferrer">
+                      下载
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <strong>华天启新材：企业政策赋能与 AI 联合创新合作意向。</strong>
+                  封面写明是 2026 年 11 月的合作意向。从政策适配筛查切入，再看企业现有业务里的 AI 助手，以及个人助理、家庭助理等联合产品方向。收益和分工写的是另行约定，不是已结算的结果。
+                  <span>
+                    <a href="https://os.zizaiplanet.com/cases/huatianqi-ai-joint-innovation-proposal.pdf" target="_blank" rel="noopener noreferrer">
+                      查看
+                    </a>
+                    <a href="https://os.zizaiplanet.com/cases/huatianqi-ai-joint-innovation-proposal.pdf" download="华天启新材-企业政策赋能与AI联合创新合作方案.pdf" rel="noopener noreferrer">
+                      下载
+                    </a>
+                  </span>
+                </li>
+              </ul>
+              <a href="https://os.zizaiplanet.com/" target="_blank" rel="noopener noreferrer">
+                看看自在 Agent OS ↗
+              </a>
+            </article>
           </div>
         </section>
 
