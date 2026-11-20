@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>自在 Agent OS｜面向未来 AI 应用的通用智能体基础平台</title>
+  <meta name="description" content="自在 Agent OS（ZIZAI AGENT OS）是面向未来 AI 应用的通用智能体基础平台，统一核心引擎、长期记忆、知识系统、任务执行与软硬件连接。个人、宠物、健康、家庭与企业场景以方案示例和探索方向呈现。">
+  <link rel="canonical" href="https://os.zizaiplanet.com/">
+  <meta name="theme-color" content="#031014">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="自在 Agent OS">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="自在 Agent OS｜面向未来 AI 应用的通用智能体基础平台">
+  <meta property="og:description" content="让技术服务生活，让 AI 创造自由。自在 Agent OS 提供通用智能体底座，连接软件、服务与硬件。">
+  <meta property="og:url" content="https://os.zizaiplanet.com/">
+  <meta property="og:image" content="https://os.zizaiplanet.com/og.png">
+  <meta property="og:image:alt" content="自在 Agent OS，面向未来 AI 应用的通用智能体基础平台">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="自在 Agent OS｜面向未来 AI 应用的通用智能体基础平台">
+  <meta name="twitter:description" content="让技术服务生活，让 AI 创造自由。">
+  <meta name="twitter:image" content="https://os.zizaiplanet.com/og.png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "自在 Agent OS",
+    "url": "https://os.zizaiplanet.com/",
+    "description": "面向未来 AI 应用的通用智能体基础平台",
+    "publisher": {
+      "@type": "Organization",
+      "name": "自在星球",
+      "url": "https://www.zizaiplanet.com/"
+    }
+  }
+  </script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳到正文</a>
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5h8.2A3.8 3.8 0 0 1 17 9.3V19H8.2A3.2 3.2 0 0 0 5 22.2z"/><path d="M5 5.5v14"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6.5" rx="6.5" ry="2.6"/><path d="M5.5 6.5v11c0 1.5 2.9 2.7 6.5 2.7s6.5-1.2 6.5-2.7v-11"/><path d="M5.5 12c0 1.5 2.9 2.7 6.5 2.7s6.5-1.2 6.5-2.7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="15" rx="3"/><path d="M8 12.2l2.6 2.6L16.2 9"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3.5v3M12 3.5v3M15 3.5v3M9 17.5v3M12 17.5v3M15 17.5v3M3.5 9h3M3.5 12h3M3.5 15h3M17.5 9h3M17.5 12h3M17.5 15h3"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.2.4l1.6-1.6a4.2 4.2 0 0 0-6-6L11.4 7"/><path d="M14 11a5 5 0 0 0-7.2-.4L5.2 12.2a4.2 4.2 0 0 0 6 6L12.6 17"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="10" rx="3"/><path d="M12 8V4.5M9 13h.1M15 13h.1M9 16h6"/><circle cx="12" cy="4.2" r="1"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l8 4-8 4-8-4 8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 16l8 4 8-4"/></symbol>
+    <symbol id="i-nodes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.2"/><circle cx="17.5" cy="6.5" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8 8.2l3 7M15.6 8.2l-2.6 7M8.1 7h7.2"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.2"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.2"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L6 13h5l-1 8 8-11h-5l0-7z"/></symbol>
+    <symbol id="i-puzzle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h4a2 2 0 0 1 2 2v1h2.2A1.8 1.8 0 0 1 18 8.8V11h1.2a2 2 0 0 1 0 4H18v2.2a1.8 1.8 0 0 1-1.8 1.8H14v-1a2 2 0 0 0-4 0v1H7.8A1.8 1.8 0 0 1 6 17.2V14H4.8a2 2 0 0 1 0-4H6V8.8A1.8 1.8 0 0 1 7.8 7H10V6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19s-7-4.2-7-9a3.8 3.8 0 0 1 6.4-2.7L12 8l.6-.7A3.8 3.8 0 0 1 19 10c0 4.8-7 9-7 9z"/></symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="8" r="1.6"/><circle cx="12" cy="6.2" r="1.6"/><circle cx="17" cy="8" r="1.6"/><circle cx="8.6" cy="12.2" r="1.5"/><path d="M9 14.2c.8 2.6 2 4 3 4s2.2-1.4 3-4c.5 1.6 1.6 2.6 2.4 2.2 1-.5.6-2.4-.2-3.6C16 10.6 14.2 10 12 10s-4 .6-5.2 2.8c-.8 1.2-1.2 3.1-.2 3.6.8.4 1.9-.6 2.4-2.2z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 5l8 6.5"/><path d="M7 10.8V19h10v-8.2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3"/><path d="M6 19c1.2-3 3.2-4.2 6-4.2S16.8 16 18 19"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 3 10 2-5h7"/></symbol>
+    <symbol id="i-elder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7.5" r="2.4"/><path d="M5 18c.6-2.6 2.2-3.8 4-3.8 1.2 0 2.2.4 3 1.2"/><path d="M14 11.2h5M16.5 9v6.5M15 19h4"/><circle cx="16.2" cy="6.2" r="1.7"/></symbol>
+    <symbol id="i-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.2"/><circle cx="16" cy="8" r="2.2"/><circle cx="12" cy="6.2" r="1.7"/><path d="M4.5 18c.7-2.4 2.2-3.5 3.8-3.5 1 0 1.8.3 2.5.9M19.5 18c-.7-2.4-2.2-3.5-3.8-3.5-1 0-1.8.3-2.5.9"/><path d="M9.2 18c.4-1.8 1.4-2.7 2.8-2.7s2.4.9 2.8 2.7"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="10" height="17"/><path d="M15 9h4v11.5H5M8 7h2M8 11h2M8 15h2M12 7h1.5M12 11h1.5"/></symbol>
+    <symbol id="i-hands" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13l-2.2-2.2a1.8 1.8 0 0 1 2.5-2.5L10 10"/><path d="M16 13l2.2-2.2a1.8 1.8 0 0 0-2.5-2.5L14 10"/><path d="M8.5 12.5l3.2 3.2a2.2 2.2 0 0 0 3.1 0l.7-.7"/><path d="M10 14.5V8.8M14 14.5V8.8"/></symbol>
+    <symbol id="i-signal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15a7 7 0 0 1 14 0"/><path d="M8 15a4 4 0 0 1 8 0"/><circle cx="12" cy="16.5" r="1.2" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10z"/><circle cx="12" cy="11" r="1.8"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 64 32" aria-hidden="true">
+        <path d="M10 16c0-6 4.2-10 9.2-10 5.6 0 8.2 5.2 10.8 10 2.6-4.8 5.2-10 10.8-10 5 0 9.2 4 9.2 10s-4.2 10-9.2 10c-5.6 0-8.2-5.2-10.8-10-2.6 4.8-5.2 10-10.8 10-5 0-9.2-4-9.2-10z" fill="none" stroke="currentColor" stroke-width="3.2"/>
+      </svg>
+      <span>
+        <span class="brand-name">自在 Agent OS</span>
+        <span class="brand-en">ZIZAI AGENT OS</span>
+      </span>
+    </a>
+    <input class="nav-check" type="checkbox" id="nav-toggle">
+    <label class="nav-toggle" for="nav-toggle" aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span>菜单</span>
+    </label>
+    <nav id="site-nav" aria-label="页面导航">
+      <a href="#top" aria-current="page">首页</a>
+      <a href="#platform">平台能力</a>
+      <a href="#scenes">应用场景</a>
+      <a href="#cases">产品案例</a>
+      <a href="#cooperation">合作方式</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="kicker">ZIZAI AGENT OS</p>
+          <h1 id="hero-title">自在 <span>Agent OS</span></h1>
+          <p class="lead">面向未来 AI 应用的通用智能体基础平台</p>
+          <p class="hero-copy">通过统一的 AI 核心引擎、长期记忆、知识系统、任务执行和软硬件连接能力，帮助企业和开发者快速构建不同场景的持续性智能助理与 AI 产品。</p>
+          <p class="motto">让技术服务生活，让 AI 创造自由</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#cooperation">开启合作 →</a>
+            <a class="btn btn-ghost" href="#cases">探索产品 →</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="orbit">
+            <div class="ring ring-b" aria-hidden="true"></div>
+            <div class="ring ring-a" aria-hidden="true"></div>
+            <div class="ring ring-c" aria-hidden="true"></div>
+            <div class="node n-knowledge"><i><svg class="icon"><use href="#i-book"/></svg></i>知识系统</div>
+            <div class="node n-memory"><i><svg class="icon"><use href="#i-db"/></svg></i>长期记忆</div>
+            <div class="node n-task"><i><svg class="icon"><use href="#i-check"/></svg></i>任务执行</div>
+            <div class="node n-engine"><i><svg class="icon"><use href="#i-cpu"/></svg></i>AI 核心引擎</div>
+            <div class="node n-link"><i><svg class="icon"><use href="#i-link"/></svg></i>软硬件连接</div>
+            <div class="sphere" role="img" aria-label="AI"><b>AI</b></div>
+            <div class="pedestal">
+              <div class="pedestal-cap" aria-hidden="true"></div>
+              <div class="pedestal-body">自在 Agent OS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg class="ridges" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="heroFill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#1ee0d6" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#021216" stop-opacity="0"/>
+          </linearGradient>
+          <pattern id="heroDots" width="8" height="8" patternUnits="userSpaceOnUse">
+            <circle cx="1.2" cy="1.2" r="0.9" fill="#7af7ee"/>
+          </pattern>
+          <filter id="heroGlow" x="-10%" y="-40%" width="120%" height="180%">
+            <feGaussianBlur stdDeviation="2.2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path fill="url(#heroFill)" d="M0 150C180 110 280 180 460 130C650 76 790 170 1000 120C1180 80 1300 150 1440 110V220H0Z"/>
+        <path fill="url(#heroDots)" opacity="0.28" d="M0 160C200 120 320 190 500 145C690 96 820 180 1040 132C1220 96 1320 156 1440 124V220H0Z"/>
+        <g fill="none" stroke="#3ef6ea" stroke-width="1.4" filter="url(#heroGlow)">
+          <path d="M0 146C190 102 300 176 470 126C660 72 800 166 1010 116C1190 76 1310 146 1440 104"/>
+          <path d="M0 172C220 140 360 196 560 158C760 120 900 186 1120 150C1260 128 1340 168 1440 146" opacity="0.65"/>
+        </g>
+      </svg>
+    </section>
+
+    <section class="section" id="why" aria-labelledby="why-title">
+      <div class="wrap">
+        <h2 class="section-title" id="why-title">为什么是自在 Agent OS</h2>
+        <div class="cards-3">
+          <article class="panel why-card">
+            <span class="glyph"><svg class="icon"><use href="#i-bot"/></svg></span>
+            <h3>不止是 AI 对话，而是持续服务的智能助理能力</h3>
+          </article>
+          <article class="panel why-card">
+            <span class="glyph"><svg class="icon"><use href="#i-layers"/></svg></span>
+            <h3>统一底座，支持多场景 AI 产品快速落地</h3>
+          </article>
+          <article class="panel why-card">
+            <span class="glyph"><svg class="icon"><use href="#i-nodes"/></svg></span>
+            <h3>连接软件、服务与硬件，让 AI 真正进入现实世界</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="platform" aria-labelledby="platform-title">
+      <div class="wrap">
+        <h2 class="section-title" id="platform-title">平台定位</h2>
+        <p class="section-sub">自在 Agent OS 是一个面向未来 AI 应用的通用智能体基础平台。</p>
+        <div class="layers">
+          <article class="layer layer-app">
+            <span class="layer-mark"><svg class="icon"><use href="#i-grid"/></svg></span>
+            <h3>AI 应用层</h3>
+            <ul class="layer-items">
+              <li>Personal AI Agent</li>
+              <li>Pet AI</li>
+              <li>Health AI</li>
+              <li>Family AI</li>
+              <li>Enterprise AI</li>
+            </ul>
+          </article>
+          <div class="layer-arrow" aria-hidden="true"><svg viewBox="0 0 24 16"><path d="M4 12l8-8 8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <article class="layer layer-core">
+            <span class="layer-mark"><svg class="icon"><use href="#i-cpu"/></svg></span>
+            <h3>AI Agent 核心引擎</h3>
+            <ul class="layer-items">
+              <li>AI 核心引擎</li>
+              <li>长期记忆</li>
+              <li>知识系统</li>
+              <li>任务执行</li>
+              <li>Skill</li>
+              <li>Tool</li>
+              <li>Workflow</li>
+            </ul>
+          </article>
+          <div class="layer-arrow" aria-hidden="true"><svg viewBox="0 0 24 16"><path d="M4 12l8-8 8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <article class="layer layer-io">
+            <span class="layer-mark"><svg class="icon"><use href="#i-layers"/></svg></span>
+            <h3>连接与扩展层</h3>
+            <ul class="layer-items">
+              <li>模型</li>
+              <li>API</li>
+              <li>专业服务</li>
+              <li>智能硬件</li>
+              <li>数据系统</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="capabilities" aria-labelledby="cap-title">
+      <div class="wrap">
+        <h2 class="section-title" id="cap-title">核心能力</h2>
+        <div class="cards-6">
+          <article class="panel cap">
+            <span class="glyph"><svg class="icon"><use href="#i-cpu"/></svg></span>
+            <div>
+              <h3>AI 核心引擎</h3>
+              <p>理解、推理、规划与协作</p>
+            </div>
+          </article>
+          <article class="panel cap">
+            <span class="glyph"><svg class="icon"><use href="#i-db"/></svg></span>
+            <div>
+              <h3>长期记忆</h3>
+              <p>建立持续更新的个人与业务记忆</p>
+            </div>
+          </article>
+          <article class="panel cap">
+            <span class="glyph"><svg class="icon"><use href="#i-book"/></svg></span>
+            <div>
+              <h3>知识系统</h3>
+              <p>连接知识库，实现检索、分析与应用</p>
+            </div>
+          </article>
+          <article class="panel cap">
+            <span class="glyph"><svg class="icon"><use href="#i-bolt"/></svg></span>
+            <div>
+              <h3>任务执行</h3>
+              <p>从理解到行动，支持任务拆解与持续跟进</p>
+            </div>
+          </article>
+          <article class="panel cap">
+            <span class="glyph"><svg class="icon"><use href="#i-puzzle"/></svg></span>
+            <div>
+              <h3>模块扩展</h3>
+              <p>可按场景加载不同 Skill、工具与能力模块</p>
+            </div>
+          </article>
+          <article class="panel cap">
+            <span class="glyph"><svg class="icon"><use href="#i-link"/></svg></span>
+            <div>
+              <h3>软硬件连接</h3>
+              <p>连接 APP、服务、设备与真实场景</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="hardware" aria-labelledby="hw-title">
+      <div class="wrap">
+        <h2 class="section-title" id="hw-title">AI + 硬件连接能力</h2>
+        <p class="section-sub">让 AI 从软件能力，延伸到真实世界的感知、分析与服务。</p>
+        <div class="photo-grid">
+          <figure class="photo-card">
+            <img src="assets/hw-band.jpg" width="594" height="300" alt="智能手环示意图，深色腕带屏幕上有心形与波形">
+            <figcaption>
+              <span class="glyph"><svg class="icon"><use href="#i-heart"/></svg></span>
+              <div>
+                <h3>智能手环</h3>
+                <p>健康与精力管理</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="assets/hw-pet.jpg" width="612" height="300" alt="宠物智能项圈示意图，犬只佩戴发光项圈">
+            <figcaption>
+              <span class="glyph"><svg class="icon"><use href="#i-paw"/></svg></span>
+              <div>
+                <h3>宠物智能项圈</h3>
+                <p>持续健康看护</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="assets/hw-elder.jpg" width="606" height="300" alt="家庭陪护设备示意图，老人座椅旁有小型发光设备">
+            <figcaption>
+              <span class="glyph"><svg class="icon"><use href="#i-home"/></svg></span>
+              <div>
+                <h3>家庭或老人陪护设备</h3>
+                <p>持续提醒与协助</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="hw-bar"><svg class="icon" aria-hidden="true"><use href="#i-signal"/></svg>支持按场景接入 BLE / Wi-Fi / SDK 设备能力</p>
+      </div>
+    </section>
+
+    <section class="section" id="scenes" aria-labelledby="scene-title">
+      <div class="wrap">
+        <h2 class="section-title" id="scene-title">应用场景</h2>
+        <div class="cards-6">
+          <article class="panel scene">
+            <div class="scene-head"><span class="glyph"><svg class="icon"><use href="#i-user"/></svg></span><h3>Personal AI Agent</h3></div>
+            <p>个人专属的持续性智能助理，陪伴日常生活与成长。</p>
+          </article>
+          <article class="panel scene">
+            <div class="scene-head"><span class="glyph"><svg class="icon"><use href="#i-paw"/></svg></span><h3>Pet AI</h3></div>
+            <p>宠物的健康、行为与生活看护的智能助理。</p>
+          </article>
+          <article class="panel scene">
+            <div class="scene-head"><span class="glyph"><svg class="icon"><use href="#i-pulse"/></svg></span><h3>Health AI</h3></div>
+            <p>面向睡眠、精力、运动与健康管理的智能助理。</p>
+          </article>
+          <article class="panel scene">
+            <div class="scene-head"><span class="glyph"><svg class="icon"><use href="#i-elder"/></svg></span><h3>Elderly Care AI</h3></div>
+            <p>面向老年人群的日常关怀、健康提醒与安全守护。</p>
+          </article>
+          <article class="panel scene">
+            <div class="scene-head"><span class="glyph"><svg class="icon"><use href="#i-family"/></svg></span><h3>Family AI</h3></div>
+            <p>面向家庭的多成员智能助理，连接家人、健康与日常事务。</p>
+          </article>
+          <article class="panel scene">
+            <div class="scene-head"><span class="glyph"><svg class="icon"><use href="#i-building"/></svg></span><h3>Enterprise AI</h3></div>
+            <p>面向企业的 AI 助理与场景解决方案，提升效率与服务体验。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases" aria-labelledby="case-title">
+      <div class="wrap">
+        <h2 class="section-title" id="case-title">产品案例</h2>
+        <div class="case-grid">
+          <article class="case">
+            <img src="assets/case-personal.jpg" width="408" height="192" alt="方案示例配图：手机屏幕上的无限符号">
+            <span class="badge">方案示例</span>
+            <div class="case-copy">
+              <h3>Personal AI Agent</h3>
+              <p>个人专属智能助理，帮助理解、记录、规划与执行。</p>
+            </div>
+          </article>
+          <article class="case">
+            <img src="assets/case-pet.jpg" width="408" height="210" alt="探索方向配图：佩戴发光项圈的犬只">
+            <span class="badge">探索方向</span>
+            <div class="case-copy">
+              <h3>PetLife AI</h3>
+              <p>宠物生命健康看护，连接数据与硬件实现持续服务。</p>
+            </div>
+          </article>
+          <article class="case">
+            <img src="assets/case-health.jpg" width="408" height="231" alt="探索方向配图：月相与波形，不表示已验证的健康效果">
+            <span class="badge">探索方向</span>
+            <div class="case-copy">
+              <h3>Health AI</h3>
+              <p>面向睡眠、精力与健康管理的持续型智能助理。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cooperation" aria-labelledby="coop-title">
+      <div class="wrap">
+        <h2 class="section-title" id="coop-title">合作方式</h2>
+        <div class="cards-3">
+          <article class="panel why-card">
+            <span class="glyph"><svg class="icon"><use href="#i-hands"/></svg></span>
+            <div>
+              <h3>AI 产品联合开发</h3>
+              <p>基于自在 Agent OS 的能力底座，与合作伙伴共同打造面向用户的 AI 产品。</p>
+            </div>
+          </article>
+          <article class="panel why-card">
+            <span class="glyph"><svg class="icon"><use href="#i-cpu"/></svg></span>
+            <div>
+              <h3>AI + 硬件智能化升级</h3>
+              <p>为硬件产品提供 AI 能力、数据能力与持续服务能力，提升产品智能化水平。</p>
+            </div>
+          </article>
+          <article class="panel why-card">
+            <span class="glyph"><svg class="icon"><use href="#i-layers"/></svg></span>
+            <div>
+              <h3>垂直行业 AI 应用共创</h3>
+              <p>结合行业场景与业务需求，共同探索并落地具有行业价值的 AI 应用解决方案。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale" aria-labelledby="finale-title">
+      <svg class="ridges" viewBox="0 0 1440 280" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="endFill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#1ee0d6" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#021216" stop-opacity="0"/>
+          </linearGradient>
+          <pattern id="endDots" width="7" height="7" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.85" fill="#8ef8f0"/>
+          </pattern>
+          <filter id="endGlow" x="-10%" y="-40%" width="120%" height="180%">
+            <feGaussianBlur stdDeviation="2.4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path fill="url(#endFill)" d="M0 170C160 120 280 200 460 145C650 84 780 190 1020 130C1200 84 1320 170 1440 120V280H0Z"/>
+        <path fill="url(#endDots)" opacity="0.38" d="M0 188C180 140 340 214 540 164C740 112 900 204 1140 150C1280 116 1360 176 1440 142V280H0Z"/>
+        <g fill="none" stroke="#5ef8ee" stroke-width="1.5" filter="url(#endGlow)">
+          <path d="M0 164C170 112 300 196 480 140C670 78 800 186 1040 124C1220 78 1330 164 1440 112"/>
+          <path d="M0 198C200 156 360 226 580 176C800 126 940 210 1160 162C1300 132 1370 184 1440 156" opacity="0.7"/>
+          <path d="M0 228C240 198 420 250 680 214C940 178 1100 236 1440 196" opacity="0.45"/>
+        </g>
+      </svg>
+      <div class="wrap">
+        <h2 id="finale-title">让你的下一个 AI 产品，从自在 Agent OS 开始</h2>
+        <p class="section-sub">欢迎与我们交流产品共创、AI 应用开发与硬件智能化合作。</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#cooperation">开启合作 →</a>
+          <a class="btn btn-ghost" href="#cases">探索产品 →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-row">
+      <a class="footer-brand brand" href="#top">
+        <svg class="brand-mark" viewBox="0 0 64 32" aria-hidden="true">
+          <path d="M10 16c0-6 4.2-10 9.2-10 5.6 0 8.2 5.2 10.8 10 2.6-4.8 5.2-10 10.8-10 5 0 9.2 4 9.2 10s-4.2 10-9.2 10c-5.6 0-8.2-5.2-10.8-10-2.6 4.8-5.2 10-10.8 10-5 0-9.2-4-9.2-10z" fill="none" stroke="currentColor" stroke-width="3.2"/>
+        </svg>
+        <span>
+          <span class="brand-name">自在 Agent OS</span>
+          <span class="brand-en">ZIZAI AGENT OS</span>
+        </span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="https://www.zizaiplanet.com/about"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>了解自在星球</a></li>
+        <li><a href="#platform"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>平台能力</a></li>
+        <li><a href="#scenes"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg>应用场景</a></li>
+        <li><a href="#cooperation"><svg class="icon" aria-hidden="true"><use href="#i-hands"/></svg>合作方式</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
