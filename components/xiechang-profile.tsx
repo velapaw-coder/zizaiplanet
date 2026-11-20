@@ -288,37 +288,87 @@ export function XiechangProfile() {
             <article className="practice-os reveal">
               <div className="eyebrow">ZIZAI AGENT OS</div>
               <h3>自在 Agent OS</h3>
+              <p className="os-lead">面向未来 AI 应用的通用智能体基础平台</p>
               <p>
-                企业来找我，多半不是想再添一个工具。真正卡住的，常常是一件具体的事：信息要人来回传，经验只在某个人脑子里，几套系统对不上。我做自在 Agent OS，是希望技术先去服务这些工作。从企业真实的业务问题出发，让 AI 进入一件具体的事，帮做事的人，而不是堆一堆用不上的软件。
+                统一 AI 核心引擎、长期记忆、知识系统、任务执行和软硬件连接，帮助企业和开发者构建不同场景的持续性智能助理与 AI 产品。
               </p>
-              <p>
-                这件事我还在建设。下面是我可以和企业一起探索的服务方向，不是已经全面上线、可以按清单交付的成品，也还没有可以拿出来的客户成绩。
-              </p>
-              <ul>
-                <li>
-                  <strong>业务场景梳理。</strong>
-                  先看清谁在做、卡在哪里、哪一件事值得先试。
-                </li>
-                <li>
-                  <strong>企业知识与智能体。</strong>
-                  把已经有的知识和做事方法整理起来，让助手能接着帮忙，而不是每次从头问。
-                </li>
-                <li>
-                  <strong>业务流程协同。</strong>
-                  顺着人现有的习惯，把现有系统、做事的人和 AI 接在同一件工作上。
-                </li>
-                <li>
-                  <strong>AI 应用与硬件场景。</strong>
-                  如果工作发生在现场或设备旁，再一起看应用和硬件怎么配合。
-                </li>
-                <li>
-                  <strong>落地试点与迭代。</strong>
-                  先小范围试，看实际效果，再决定下一步。
-                </li>
-              </ul>
-              <p>
-                合作我希望从一次把需求说清楚的交流开始。选一个小场景做试点，按实际效果决定要不要扩展。能接上企业已经在用的系统，也尊重人本来的工作习惯。值不值得继续，以试点里看见的结果为准。
-              </p>
+              <h4>核心能力</h4>
+              <div className="os-caps">
+                <div>
+                  <strong>AI 核心引擎</strong>
+                  <span>理解、推理、规划与协作</span>
+                </div>
+                <div>
+                  <strong>长期记忆</strong>
+                  <span>建立持续更新的个人与业务记忆</span>
+                </div>
+                <div>
+                  <strong>知识系统</strong>
+                  <span>连接知识库，实现检索、分析与应用</span>
+                </div>
+                <div>
+                  <strong>任务执行</strong>
+                  <span>从理解到行动，支持任务拆解与持续跟进</span>
+                </div>
+                <div>
+                  <strong>模块扩展</strong>
+                  <span>按场景加载 Skill、工具与能力模块</span>
+                </div>
+                <div>
+                  <strong>软硬件连接</strong>
+                  <span>连接 APP、服务、设备与真实场景</span>
+                </div>
+              </div>
+              <h4>平台结构</h4>
+              <div className="os-layers">
+                <div>
+                  <strong>AI 应用层</strong>
+                  <span>Personal AI Agent</span>
+                  <span>Pet AI</span>
+                  <span>Health AI</span>
+                  <span>Family AI</span>
+                  <span>Enterprise AI</span>
+                </div>
+                <div>
+                  <strong>AI Agent 核心引擎</strong>
+                  <span>AI 核心引擎</span>
+                  <span>长期记忆</span>
+                  <span>知识系统</span>
+                  <span>任务执行</span>
+                  <span>Skill</span>
+                  <span>Tool</span>
+                  <span>Workflow</span>
+                </div>
+                <div>
+                  <strong>连接与扩展层</strong>
+                  <span>模型</span>
+                  <span>API</span>
+                  <span>专业服务</span>
+                  <span>智能硬件</span>
+                  <span>数据系统</span>
+                </div>
+              </div>
+              <h4>对企业</h4>
+              <div className="os-values">
+                <div>
+                  <strong>持续服务的智能助理</strong>
+                  <span>不止是一次 AI 对话，而是持续服务的智能助理能力。</span>
+                </div>
+                <div>
+                  <strong>统一底座</strong>
+                  <span>支持多场景 AI 产品在同一套能力上落地。</span>
+                </div>
+                <div>
+                  <strong>进入真实场景</strong>
+                  <span>连接软件、服务与硬件，让 AI 进入现实世界。</span>
+                </div>
+              </div>
+              <p className="os-for">面向企业的 AI 助理与场景解决方案，提升效率与服务体验。</p>
+              <div className="os-scope">
+                <span>AI 产品联合开发</span>
+                <span>AI + 硬件智能化升级</span>
+                <span>垂直行业 AI 应用共创</span>
+              </div>
               <p>
                 如果你想先看一份写给具体企业的方案，下面两份可以直接查看或下载。它们说明的是可以怎么开始谈，不是已经做完的项目。方案封面上的合作名称是企策AI。
               </p>
