@@ -24,8 +24,23 @@
 .xc .practice-files strong{color:var(--forest)}
 .xc .practice-files span{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:6px}
 .xc .practice-files span a{margin-top:0}
-@media(max-width:800px){.xc .os-caps,.xc .os-values{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.xc .practice-os{padding:24px 18px}.xc .practice-os h3{font-size:24px}.xc .os-caps,.xc .os-values{grid-template-columns:1fr}}
+.xc .practice-qice{margin-top:28px;background:#fff;border:1px solid var(--line);padding:36px 40px}
+.xc .practice-qice h3{color:var(--forest);font-size:28px;margin:8px 0 8px}
+.xc .practice-qice h4{margin:22px 0 10px;color:var(--gold);font-size:12px;letter-spacing:.18em;font-weight:700}
+.xc .practice-qice p{font-size:15px;max-width:68em}
+.xc .practice-qice .qice-lead{color:var(--forest);font-size:18px;font-weight:650;line-height:1.5;margin:0 0 8px}
+.xc .practice-qice .qice-note{color:var(--muted);font-size:13px;line-height:1.65;margin:10px 0 0}
+.xc .qice-caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.xc .qice-caps div{min-width:0;background:#f7f6f0;border:1px solid var(--line);padding:16px 16px 14px}
+.xc .qice-caps strong{display:block;color:var(--forest);font-size:15px;font-weight:650;line-height:1.4}
+.xc .qice-caps span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.55}
+.xc .qice-actions{display:flex;flex-wrap:wrap;gap:10px 14px;margin:18px 0 0}
+.xc .qice-actions a{display:inline-flex;align-items:center;margin-top:0;padding:10px 16px;border:1px solid var(--forest);color:var(--forest);font-size:14px;font-weight:650;border-bottom:1px solid var(--forest);line-height:1.2}
+.xc .qice-actions a.qice-apply{background:var(--forest);color:#fff;border-bottom-color:var(--forest)}
+.xc .practice-qice .practice-files{margin:8px 0 0}
+.xc .practice-qice .practice-files a{margin-top:0}
+@media(max-width:800px){.xc .os-caps,.xc .os-values,.xc .qice-caps{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.xc .practice-os,.xc .practice-qice{padding:24px 18px}.xc .practice-os h3,.xc .practice-qice h3{font-size:24px}.xc .os-caps,.xc .os-values,.xc .qice-caps{grid-template-columns:1fr}}
 .xc section{scroll-margin-top:160px}
 .xc h2.display{font-family:"Songti SC","STSong","SimSun","Noto Serif SC",serif;font-weight:600;letter-spacing:-.04em;font-size:clamp(33px,4.2vw,55px);line-height:1.32;margin:14px 0 24px}
 .xc .banner h2.display{font-size:39px;margin:12px 0}
