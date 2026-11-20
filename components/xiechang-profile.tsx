@@ -402,6 +402,67 @@ export function XiechangProfile() {
                 看看自在 Agent OS ↗
               </a>
             </article>
+            <article className="practice-qice reveal">
+              <div className="eyebrow">QICE AI GROWTH</div>
+              <h3>企策AI增长</h3>
+              <p className="qice-lead">AI 驱动企业价值重构与长期增长陪跑平台</p>
+              <p>
+                这是我本人在做的企业服务。主线是发现需求、商业重构与增长陪跑：重新看见客户向往，在已有资源上试新的产品与服务，再按确认范围小步陪跑。政策评估可自愿办理，不与 AI 合作捆绑。
+              </p>
+              <h4>六个环节</h4>
+              <div className="qice-caps">
+                <div>
+                  <strong>创始人 IP</strong>
+                  <span>从价值观和已有判断出发，作为讨论新机会的起点。</span>
+                </div>
+                <div>
+                  <strong>AI 分身</strong>
+                  <span>探讨如何把表达和经验整理成可复用的辅助。</span>
+                </div>
+                <div>
+                  <strong>用户洞察</strong>
+                  <span>一起看尚未被充分理解的需求、兴趣和向往。</span>
+                </div>
+                <div>
+                  <strong>同频社区</strong>
+                  <span>讨论怎样连接真正需要服务的人群。</span>
+                </div>
+                <div>
+                  <strong>商业重构</strong>
+                  <span>基于已有资源，看新产品、场景和收入是否值得试。</span>
+                </div>
+                <div>
+                  <strong>增长陪跑</strong>
+                  <span>确认范围后，做成可验证的一小步，再决定是否继续。</span>
+                </div>
+              </div>
+              <div className="qice-actions">
+                <a href="https://qicego.com/" target="_blank" rel="noopener noreferrer">
+                  了解服务
+                </a>
+                <a className="qice-apply" href="https://qicego.com/#contact" target="_blank" rel="noopener noreferrer">
+                  前往申请
+                </a>
+              </div>
+              <p className="qice-note">
+                「前往申请」直达官网申请区，可预约增长交流或申请 AI 场景体验。政策评估注册是另一入口，自愿办理，不是申请 AI 体验的必经步骤。
+              </p>
+              <h4>对外介绍方案</h4>
+              <ul className="practice-files">
+                <li>
+                  <strong>企策AI增长｜对外介绍方案。</strong>
+                  22 页介绍发现向往、连接同频、重构商业与增长陪跑。其中的案例数字和保证以官网现有说明为准，本文件供了解如何谈合作。
+                  <span>
+                    <a href="/cases/qice-ai-growth-intro-proposal.pdf" target="_blank" rel="noopener noreferrer">
+                      查看
+                    </a>
+                    <a href="/cases/qice-ai-growth-intro-proposal.pdf" download="企策AI增长-对外介绍方案.pdf" rel="noopener noreferrer">
+                      下载
+                    </a>
+                  </span>
+                </li>
+              </ul>
+            </article>
           </div>
         </section>
 
