@@ -451,7 +451,7 @@ export function XiechangProfile() {
               <ul className="practice-files">
                 <li>
                   <strong>企策AI增长｜对外介绍方案。</strong>
-                  22 页介绍发现向往、连接同频、重构商业与增长陪跑。其中的案例数字和保证以官网现有说明为准，本文件供了解如何谈合作。
+                  原始对外介绍方案，供了解服务与合作思路。文件中的案例数字不作为本站业绩或服务效果承诺；当前服务范围与申请方式以企策AI官网确认为准。
                   <span>
                     <a href="/cases/qice-ai-growth-intro-proposal.pdf" target="_blank" rel="noopener noreferrer">
                       查看
